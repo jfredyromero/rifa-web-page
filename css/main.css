@@ -181,7 +181,7 @@ label {
     background: var(--dark);
 }
 
-.module-border-wrap {
+.bg-gold-gradient {
     display: flex;
     justify-content: center;
     align-items: center;
