@@ -1,12 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
     <title>Prueba Inicial</title>
 </head>
+
 <body>
+    
+    <div class="m-1 d-flex-col">
+        
+        <div class="mb-1 logo"></div>
+        <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+            
+
+            <div class="mb-1 form-item">
+                <label for="">Nombre Completo<span> *</span></label>
+                <input class='form-input' type="text" placeholder="Nombre">
+            </div>
+
+            <div class="mb-1 form-item">
+                <label for="">Número de Identificación<span> *</span></label>
+                <input class='form-input' type="text" placeholder="1'060.400.300"  onkeypress="return onlyNumberKey(event)">
+            </div>
+            
+            <div class="mb-1 form-item">
+                <label for="">Celular<span> *</span></label>
+                <input class='form-input' id="inpCelular" type="tel" placeholder="300-000-0000" maxlength="12" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onkeypress="return onlyNumberKey(event)" >
+            </div>
+
+            <div class="mb-1 form-item">
+                <label for="">Teléfono Celular<span> *</span></label>
+                <input class='form-input' type="n" placeholder="800000"  onkeypress="return onlyNumberKey(event)" autocomplete="tel-local">
+            </div>
+
+            <div class="mb-1 form-item">
+                <label for="">Correo Electrónico<span> *</span></label>
+                <input class='form-input' type="email" placeholder="ejemplo@gmail.com">
+            </div>
+
+            <div class="mb-1 form-item">
+                <label for="">Código de Referencia<span> *</span></label>
+                <input class='form-input' type="text" placeholder="">
+            </div>
+
+
+            <!-- /*FREDDY*/ -->
+            <input name="merchantId" type="hidden" value="508029">
+            <input name="buyerFullName" type="hidden" value="APPROVED">
+            <input name="accountId" type="hidden" value="512321">
+            <input name="description" type="hidden" value="Test PAYU">
+            <input name="referenceCode" type="hidden" value="oainva67">
+            <input name="amount" type="hidden" value="50000">
+            <input name="tax" type="hidden" value="0">
+            <input name="taxReturnBase" type="hidden" value="0">
+            <input name="currency" type="hidden" value="COP">
+            <input name="signature" type="hidden" value="edc35f2b2dc1eb6037ac17a9ae2ad0fb">
+            <input name="test" type="hidden" value="1">
+            <input name="buyerEmail" type="hidden" value="test@test.com">
+            <input name="responseUrl" type="hidden" value="http://localhost:5500/respuesta.html">
+            <input name="confirmationUrl" type="hidden" value="http://www.test.com/confirmation">
+
+            <div class="form-item mb-1">
+                <div class="module-border-wrap">
+                    <input type="button" class="btn-special" value="Refrescar Boletas">
+                </div>
+                
+            </div>
+
+            <div class="form-item">
+                <input name="Submit" class="btn btn-primary" type="submit" value="Comprar">
+            </div>
+            
+        </form>
+    </div>
+
     <!-- 
     merchantId: de tu cuenta
     ApiKey: de tu cuenta
@@ -21,22 +92,21 @@
     test: 0
     buyerEmail: el correo del comprador 
     -->
-    <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
-        <input name="merchantId"    type="hidden"  value="508029"   >
-        <input name="buyerFullName"    type="hidden"  value="APPROVED"   >
-        <input name="accountId"     type="hidden"  value="512321" >
-        <input name="description"   type="hidden"  value="Test PAYU"  >
-        <input name="referenceCode" type="hidden"  value="oainva67" >
-        <input name="amount"        type="hidden"  value="50000"   >
-        <input name="tax"           type="hidden"  value="0"  >
-        <input name="taxReturnBase" type="hidden"  value="0" >
-        <input name="currency"      type="hidden"  value="COP" >
-        <input name="signature"     type="hidden"  value="edc35f2b2dc1eb6037ac17a9ae2ad0fb"  >
-        <input name="test"          type="hidden"  value="1" >
-        <input name="buyerEmail"    type="hidden"  value="test@test.com" >
-        <input name="responseUrl"    type="hidden"  value="http://localhost:5500/respuesta.html" >
-        <input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" >
-        <input name="Submit"        type="submit"  value="Enviar" >
-    </form>
+    
+
+    <script>
+        function onlyNumberKey(evt) {
+              
+            // Only ASCII character in that range allowed
+            var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+                return false;
+            return true;
+        }
+    </script>
+
+    <script src="js/index.js"></script>
+
 </body>
+
 </html>
