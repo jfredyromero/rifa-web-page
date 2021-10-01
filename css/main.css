@@ -154,7 +154,7 @@ label {
     border: 0.25em inset var(--secondary);
 }
 
-/* Botones */
+/* Buttons */
 
 .btn {
     text-decoration: none;
@@ -208,6 +208,8 @@ label {
     cursor: pointer;
 } */
 
+/* Forms*/
+
 .form-input {
     border: 0.15em solid var(--gray-d);
     background-color: var(--dark);
@@ -226,3 +228,48 @@ label {
 .form-input:focus {
     border-color: var(--secondary);
 }
+
+/* Tickets */
+
+.tickets-grid-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
+/* i.fas{
+    text-align: center;
+}
+
+.fa-ticket-alt{
+    color: var(--gray-l);
+}
+
+.fa-ticket-alt:hover{
+    color: var(--secondary);
+} */
+
+.ticket{
+    height: 100px;
+    background-image: url("../img/ticket-silver.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ticket:hover{
+    background-image: url("../img/ticket-gold.svg");
+    cursor: pointer;
+}
+
+.ticket h1{
+    color: var(--dark);
+    width: fit-content;
+    height: fit-content;
+}
+
+
+
