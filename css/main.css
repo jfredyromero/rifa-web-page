@@ -250,7 +250,7 @@ label {
 } */
 
 .ticket{
-    height: 100px;
+    height: 4rem;
     background-image: url("../img/ticket-silver.svg");
     background-repeat: no-repeat;
     background-size: contain;
