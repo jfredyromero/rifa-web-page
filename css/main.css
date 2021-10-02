@@ -125,6 +125,10 @@ label {
   padding-right: 1rem;
 }
 
+.fw-0 {
+  font-weight: 100;
+  font-size: small;
+}
 /* flex-box */
 
 .d-flex-row {
@@ -214,11 +218,24 @@ label {
 .btn-primary {
   color: var(--dark);
   background: var(--gold-gradient);
+  transition-duration: 0.25s;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.125);
+  transition-duration: 0.25s;
 }
 
 .btn-secondary {
   color: var(--secondary);
   background: var(--dark);
+  transition-duration: 0.25s;
+}
+
+.btn-secondary:hover {
+  color: var(--dark);
+  background: var(--gold-gradient);
+  transition-duration: 0.25s;
 }
 
 .bg-gold-gradient {
@@ -269,6 +286,15 @@ label {
 .form-input:focus {
   border-color: var(--secondary);
   transition-duration: 0.25s;
+}
+
+input[type="checkbox"] + label {
+  font-weight: bold;
+  line-height: 3em;
+  color: #ccc;
+}
+input[type="checkbox"]:checked + label {
+  color: #0fbf12;
 }
 
 /* Tickets */
