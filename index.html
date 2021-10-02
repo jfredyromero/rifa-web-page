@@ -1,117 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
     <title>Prueba Inicial</title>
-</head>
+  </head>
 
-<body>
-    
+  <body>
     <div class="m-1 d-flex-col">
-        
-        <div class="mb-1 logo"></div>
-        <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu">
-            
+      <div class="mb-1 logo"></div>
+      <h2 class="titulo mb-1">¡Compra tus Boletas!</h2>
 
-            <div class="mb-1 form-item">
-                <label for="">Nombre Completo<span> *</span></label>
-                <input class='form-input' type="text" placeholder="Nombre" required>
+      <div class="clock-counter mb-1 d-flex-row">
+        <div class="time-interval-container d-flex-col">
+          <h1 id="dias">00</h1>
+          <h2>Dias</h2>
+        </div>
+        <div class="line"></div>
+        <div class="time-interval-container d-flex-col">
+          <h1 id="horas">00</h1>
+          <h2>Horas</h2>
+        </div>
+        <div class="line"></div>
+        <div class="time-interval-container d-flex-col">
+          <h1 id="minutos">00</h1>
+          <h2>Min</h2>
+        </div>
+        <div class="line"></div>
+        <div class="time-interval-container d-flex-col">
+          <h1 id="segundos">00</h1>
+          <h2>Seg</h2>
+        </div>
+      </div>
+
+      <form
+        method="post"
+        action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu"
+      >
+        <div class="mb-1 form-item">
+          <label for="">Nombre Completo<span> *</span></label>
+          <input class="form-input" type="text" placeholder="Nombre" required />
+        </div>
+
+        <div class="mb-1 form-item">
+          <label for="">Número de Identificación<span> *</span></label>
+          <input
+            class="form-input"
+            type="text"
+            placeholder="1060400300"
+            onkeypress="return onlyNumberKey(event)"
+            required
+          />
+        </div>
+
+        <div class="mb-1 form-item">
+          <label for="">Celular<span> *</span></label>
+          <input
+            class="form-input"
+            id="inpCelular"
+            type="tel"
+            placeholder="300-000-0000"
+            maxlength="12"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            onkeypress="return onlyNumberKey(event)"
+            required
+          />
+        </div>
+
+        <div class="mb-1 form-item">
+          <label for="">Correo Electrónico<span> *</span></label>
+          <input
+            class="form-input"
+            type="email"
+            placeholder="ejemplo@gmail.com"
+            required
+          />
+        </div>
+
+        <div class="mb-1 form-item">
+          <label for="">Código de Referencia<span> </span></label>
+          <input class="form-input" type="text" placeholder="" />
+        </div>
+
+        <div class="mb-1 form-item">
+          <label for="">Selecciona tu Boleta <span> *</span></label>
+          <div class="tickets-grid-container">
+            <div class="ticket">
+              <h1>01</h1>
             </div>
-
-            <div class="mb-1 form-item">
-                <label for="">Número de Identificación<span> *</span></label>
-                <input class='form-input' type="text" placeholder="1060400300" onkeypress="return onlyNumberKey(event)" required>
+            <div class="ticket">
+              <h1>02</h1>
             </div>
-            
-            <div class="mb-1 form-item">
-                <label for="">Celular<span> *</span></label>
-                <input class='form-input' id="inpCelular" type="tel" placeholder="300-000-0000" maxlength="12" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" onkeypress="return onlyNumberKey(event)" required>
+            <div class="ticket">
+              <h1>03</h1>
             </div>
-
-            <div class="mb-1 form-item">
-                <label for="">Correo Electrónico<span> *</span></label>
-                <input class='form-input' type="email" placeholder="ejemplo@gmail.com" required>
+            <div class="ticket">
+              <h1>04</h1>
             </div>
-
-            <div class="mb-1 form-item">
-                <label for="">Código de Referencia<span> </span></label>
-                <input class='form-input' type="text" placeholder="">
+            <div class="ticket">
+              <h1>05</h1>
             </div>
-
-            <div class="mb-1 form-item">
-                <label for="">Selecciona tu Boleta <span> *</span></label>
-                <div class="tickets-grid-container">
-                    <div class="ticket">
-                        <h1>01</h1>
-                    </div>
-                    <div class="ticket">
-                        <h1>02</h1>
-                    </div>
-                    <div class="ticket">
-                        <h1>03</h1>
-                    </div>
-                    <div class="ticket">
-                        <h1>04</h1>
-                    </div>
-                    <div class="ticket">
-                        <h1>05</h1>
-                    </div>
-                    <div class="ticket">
-                        <h1>06</h1>
-                    </div>  
-                    <div class="ticket">
-                        <h1>07</h1>
-                    </div>
-                    <div class="ticket">
-                        <h1>08</h1>
-                    </div>
-                    <div class="ticket">
-                        <h1>09</h1>
-                    </div>  
-                    <div class="ticket">
-                        <h1>10</h1>
-                    </div>
-                    <div class="ticket">
-                        <h1>11</h1>
-                    </div>
-                    <div class="ticket">
-                        <h1>12</h1>
-                    </div>
-                </div>                
+            <div class="ticket">
+              <h1>06</h1>
             </div>
-
-
-            <div class="form-item mb-1">
-                <div class="bg-gold-gradient">
-                    <input type="button" class="btn btn-secondary w-100" value="Refrescar Boletas">
-                </div>                
+            <div class="ticket">
+              <h1>07</h1>
             </div>
-
-            <!-- /*FREDDY*/ -->
-            <input name="merchantId" type="hidden" value="508029">
-            <input name="buyerFullName" type="hidden" value="APPROVED">
-            <input name="accountId" type="hidden" value="512321">
-            <input name="description" type="hidden" value="Test PAYU">
-            <input name="referenceCode" type="hidden" value="ojdxn">
-            <input name="amount" type="hidden" value="50000">
-            <input name="tax" type="hidden" value="0">
-            <input name="taxReturnBase" type="hidden" value="0">
-            <input name="currency" type="hidden" value="COP">
-            <input name="signature" type="hidden" value="c3a7e021ae26e0d39dd7605bde8b2de3">
-            <input name="test" type="hidden" value="1">
-            <input name="buyerEmail" type="hidden" value="test@test.com">
-            <input name="responseUrl" type="hidden" value="/rifa-web-page/respuesta.php">
-            <input name="confirmationUrl" type="hidden" value="http://www.test.com/confirmation">            
-
-            <div class="form-item">
-                <input name="Submit" class="btn btn-primary" type="submit" value="Comprar">
+            <div class="ticket">
+              <h1>08</h1>
             </div>
-            
-        </form>
+            <div class="ticket">
+              <h1>09</h1>
+            </div>
+            <div class="ticket">
+              <h1>10</h1>
+            </div>
+            <div class="ticket">
+              <h1>11</h1>
+            </div>
+            <div class="ticket">
+              <h1>12</h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-item mb-05">
+          <div class="bg-gold-gradient">
+            <input
+              type="button"
+              class="btn btn-secondary w-100"
+              value="Refrescar Boletas"
+            />
+          </div>
+        </div>
+
+        <!-- /*FREDDY*/ -->
+        <input name="merchantId" type="hidden" value="508029" />
+        <input name="buyerFullName" type="hidden" value="APPROVED" />
+        <input name="accountId" type="hidden" value="512321" />
+        <input name="description" type="hidden" value="Test PAYU" />
+        <input name="referenceCode" type="hidden" value="ojdxn" />
+        <input name="amount" type="hidden" value="50000" />
+        <input name="tax" type="hidden" value="0" />
+        <input name="taxReturnBase" type="hidden" value="0" />
+        <input name="currency" type="hidden" value="COP" />
+        <input
+          name="signature"
+          type="hidden"
+          value="c3a7e021ae26e0d39dd7605bde8b2de3"
+        />
+        <input name="test" type="hidden" value="1" />
+        <input name="buyerEmail" type="hidden" value="test@test.com" />
+        <input
+          name="responseUrl"
+          type="hidden"
+          value="/rifa-web-page/respuesta.php"
+        />
+        <input
+          name="confirmationUrl"
+          type="hidden"
+          value="http://www.test.com/confirmation"
+        />
+
+        <div class="form-item">
+          <input
+            name="Submit"
+            class="btn btn-primary"
+            type="submit"
+            value="Comprar"
+          />
+        </div>
+      </form>
     </div>
 
     <!-- 
@@ -128,22 +189,20 @@
     test: 0
     buyerEmail: el correo del comprador 
     -->
-    
 
     <script>
-        function onlyNumberKey(evt) {
-              
-            // Only ASCII character in that range allowed
-            var ASCIICode = (evt.which) ? evt.which : evt.keyCode
-            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
-                return false;
-            return true;
-        }
+      function onlyNumberKey(evt) {
+        // Only ASCII character in that range allowed
+        var ASCIICode = evt.which ? evt.which : evt.keyCode;
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) return false;
+        return true;
+      }
     </script>
 
     <script src="js/index.js"></script>
-    <script src="https://kit.fontawesome.com/981ff97f79.js" crossorigin="anonymous"></script>
-
-</body>
-
+    <script
+      src="https://kit.fontawesome.com/981ff97f79.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
