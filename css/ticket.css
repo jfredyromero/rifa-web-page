@@ -1,0 +1,7 @@
+.ticket {
+    fill: url("#silver");
+}
+
+.ticket:hover {
+    fill: url("#gold");
+}
