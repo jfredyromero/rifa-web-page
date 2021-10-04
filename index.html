@@ -37,12 +37,13 @@
       </div>
 
       <form
+        id="form-boleta"
         method="post"
         action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu"
       >
         <div class="mb-1 form-item">
           <label for="">Nombre Completo<span> *</span></label>
-          <input class="form-input" type="text" placeholder="Nombre" required />
+          <input class="form-input" type="text" placeholder="Nombre" name="buyerFullName" required/>
         </div>
 
         <div class="mb-1 form-item">
@@ -52,6 +53,7 @@
             type="text"
             placeholder="1060400300"
             onkeypress="return onlyNumberKey(event)"
+            name="payerDocument"
             required
           />
         </div>
@@ -64,8 +66,7 @@
             type="tel"
             placeholder="300-000-0000"
             maxlength="12"
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-            onkeypress="return onlyNumberKey(event)"
+            name="mobilePhone"
             required
           />
         </div>
@@ -76,13 +77,14 @@
             class="form-input"
             type="email"
             placeholder="ejemplo@gmail.com"
+            name="buyerEmail"
             required
           />
         </div>
 
         <div class="mb-1 form-item">
           <label for="">Código de Referencia<span> </span></label>
-          <input class="form-input" type="text" placeholder="" />
+          <input class="form-input" type="text" placeholder="" name="referencia" disabled/>
         </div>
 
         <div class="mb-1 form-item">
@@ -136,29 +138,44 @@
             />
           </div>
         </div>
+        
 
         <!-- /*FREDDY*/ -->
+        <input name="boleta" type="hidden" value="3467" />
+
         <input name="merchantId" type="hidden" value="508029" />
-        <input name="buyerFullName" type="hidden" value="APPROVED" />
+        
         <input name="accountId" type="hidden" value="512321" />
+
         <input name="description" type="hidden" value="Test PAYU" />
-        <input name="referenceCode" type="hidden" value="ojdxn" />
+
+        <input name="referenceCode" type="hidden"/>
+
+        <input name="payerFullName" type="hidden"/>
+
+        <input name="payerMobilePhone" type="hidden"/>
+
         <input name="amount" type="hidden" value="50000" />
+
         <input name="tax" type="hidden" value="0" />
+
         <input name="taxReturnBase" type="hidden" value="0" />
+
         <input name="currency" type="hidden" value="COP" />
+
         <input
           name="signature"
           type="hidden"
-          value="c3a7e021ae26e0d39dd7605bde8b2de3"
         />
+
         <input name="test" type="hidden" value="1" />
-        <input name="buyerEmail" type="hidden" value="test@test.com" />
+
         <input
           name="responseUrl"
           type="hidden"
-          value="/rifa-web-page/respuesta.php"
+          value="http://127.0.0.1/rifa-web-page/respuesta.php"
         />
+
         <input
           name="confirmationUrl"
           type="hidden"
@@ -210,7 +227,8 @@
         return true;
       }
     </script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
     <script src="js/index.js"></script>
     <script
       src="https://kit.fontawesome.com/981ff97f79.js"
