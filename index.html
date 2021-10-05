@@ -84,7 +84,7 @@
 
         <div class="mb-1 form-item">
           <label for="">Código de Referencia<span> </span></label>
-          <input class="form-input" type="text" placeholder="" name="referencia" disabled/>
+          <input class="form-input" type="text" placeholder="" name="extra2" disabled/>
         </div>
 
         <div class="mb-1 form-item">
@@ -141,7 +141,8 @@
         
 
         <!-- /*FREDDY*/ -->
-        <input name="boleta" type="hidden" value="3467" />
+        <!-- extra1 es el numero de la boleta a comprar -->
+        <input name="extra1" type="hidden" value="9127" />
 
         <input name="merchantId" type="hidden" value="508029" />
         
@@ -179,7 +180,7 @@
         <input
           name="confirmationUrl"
           type="hidden"
-          value="http://www.test.com/confirmation"
+          value="http://127.0.0.1/rifa-web-page/confirmacion.php"
         />
 
         <div class="form-item mb-05">
@@ -203,22 +204,6 @@
         </div>
       </form>
     </div>
-
-    <!-- 
-    merchantId: de tu cuenta
-    ApiKey: de tu cuenta
-    referenceCode: referencia de venta única por cada transacción
-    accountId: de tu cuenta
-    description: descripción de la venta
-    amount: valor de la venta
-    tax: valor del impuesto asociado a la venta
-    taxReturnBase: valor de devolución del impuesto
-    currency: la moneda de tu cuenta
-    signature: la firma que se genera para cada transacción
-    test: 0
-    buyerEmail: el correo del comprador 
-    -->
-
     <script>
       function onlyNumberKey(evt) {
         // Only ASCII character in that range allowed

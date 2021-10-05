@@ -3,29 +3,29 @@ document.addEventListener("DOMContentLoaded", ()=>{
     var inpCelular = document.getElementById("inpCelular");
     var flag = 0;
 
-    inpCelular.addEventListener("keyup", function () {
-      var tel = inpCelular.value;
+    // inpCelular.addEventListener("keyup", function () {
+    //   var tel = inpCelular.value;
 
-      if (tel.length > 0 && tel.length < 3) {
-        flag = 0;
-      }
+    //   if (tel.length > 0 && tel.length < 3) {
+    //     flag = 0;
+    //   }
 
-      if (tel.length > 3 && tel.length < 7) {
-        flag = 1;
-      }
+    //   if (tel.length > 3 && tel.length < 7) {
+    //     flag = 1;
+    //   }
 
-      if (tel.length == 3 && flag == 0) {
-        tel = tel + "-";
-        inpCelular.value = tel;
-        flag = 1;
-      }
+    //   if (tel.length == 3 && flag == 0) {
+    //     tel = tel + "-";
+    //     inpCelular.value = tel;
+    //     flag = 1;
+    //   }
 
-      if (tel.length == 7 && flag == 1) {
-        tel = tel + "-";
-        inpCelular.value = tel;
-        flag = 2;
-      }
-    });
+    //   if (tel.length == 7 && flag == 1) {
+    //     tel = tel + "-";
+    //     inpCelular.value = tel;
+    //     flag = 2;
+    //   }
+    // });
 
     const countdown = () => {
       const tiempoObjetivo = new Date("Jan 1, 2022 00:00:00").getTime();
@@ -69,11 +69,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
 	})
   
 	function generarCodigoReferencia(){
-		numeroBoleta = document.querySelector('input[name="boleta"]');
+		numeroBoleta = document.querySelector('input[name="extra1"]');
     	let referenceCode = buyerName.value + "-" + mobilePhone.value + "-" + numeroBoleta.value;
       	let hashReferenceCode = CryptoJS.MD5(referenceCode);
 		document.querySelector('input[name="referenceCode"]').value = hashReferenceCode;
-		console.log(hashReferenceCode);
 	}
 
 	function generarSignature(){
@@ -84,7 +83,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
 		let referenceCode = document.querySelector('input[name="referenceCode"]').value;
 		let signature = CryptoJS.MD5(apiKey + "~" + merchanId + "~" + referenceCode + "~" + amount + "~" + currency);
     	document.querySelector('input[name="signature"]').value = signature;
-		console.log(signature);
 	}
 
 })
