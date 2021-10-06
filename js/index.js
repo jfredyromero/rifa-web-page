@@ -5,6 +5,66 @@ function onlyNumberKey(evt) {
 	return true;
 }
 
+
+document.getElementById("tickets-grid-container").addEventListener("click",function(){
+
+	var iframes = Array.from(document.getElementsByTagName("iframe"));	
+	var tickets = Array.from(document.getElementsByName("checkbox-ticket"));
+	var inputExtra1 = document.querySelector('input[name="extra1"]');
+	var inputAmount = document.querySelector('input[name="amount"]');
+
+	var tickets_values=[];
+	var ticket_price = 50000;
+
+	console.clear();
+
+	tickets.forEach(t => {
+		if(t.checked == true){
+			tickets_values.push(t.value);
+			iframes[tickets.indexOf(t)].src = "img/ticket-gold.svg";
+		}else{
+			iframes[tickets.indexOf(t)].src = "img/ticket-silver.svg";
+		}
+	});
+
+	inputExtra1.value = tickets_values.join("-");
+	inputAmount.value = tickets_values.length * ticket_price;
+
+	console.log(inputExtra1.value);
+	console.log(inputAmount.value);
+
+
+	// inputExtra1 = document.querySelector('input[name="extra1"]');
+	// inputAmount = document.querySelector('input[name="amount"]');
+	// inputExtra1.value = allValueTickets;
+	// inputAmount.value = 50000 * checked_tickets.length;
+
+	// console.log(inputExtra1.value);
+	// console.log(inputAmount.value);
+	// console.table(svg);
+
+	// var tickets_values = [];
+	// tickets_values = tickets.filter(n => n.value == true);
+	
+	// var tickets_values = tickets.map(function() {
+	// 	console.log(this.checked)
+	// 	if (this.checked == true){
+	// 		console.log(this.checked)
+	// 		return this.value;
+	// 	}		
+	// });
+
+	// var tickets_values = tickets.filter(n => {
+	// 	if (n.checked == true){
+	// 		return n.value;
+	// 	}	
+	// });
+
+	// console.table(tickets_values);
+
+});
+
+
 document.addEventListener("DOMContentLoaded", () => {
 
 	var inpCelular = document.getElementById("inpCelular");

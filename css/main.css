@@ -254,23 +254,6 @@ label {
 	background: var(--gold-gradient);
 }
 
-/* .btn-special {
-    text-decoration: none;
-    text-align: center;
-    color: var(--secondary);
-    background-color: var(--dark);
-    border-radius: 0.25rem;
-    width: 100%;
-    font-weight: 400;
-    font-size: 1rem;
-    text-transform: capitalize;
-    padding: 0.6em;
-    border: none;
-}
-
-.btn-special:hover {
-    cursor: pointer;
-} */
 
 /* Forms*/
 
@@ -342,6 +325,7 @@ input[type="checkbox"]:checked + label {
 	border: none;
 	width: 100%;
 	height: 100%;
+	z-index: 0;
 }
 
 .ticket h1{
@@ -351,37 +335,17 @@ input[type="checkbox"]:checked + label {
 	z-index: 1;
 }
 
-/* .ticket {
-	height: 4rem;
+.ticket input{
 	width: 6rem;
-	background-image: url("../img/ticket-silver.svg");
-	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	transition-duration: 0.25s;
+	height: 4rem;
+	position: absolute;
+	opacity: 0;
+	z-index: 2;
 }
 
-.ticket:hover {
-	background-image: url("../img/ticket-gold.svg");
+.ticket input:hover{
 	cursor: pointer;
-	transition-duration: 0.25s;
 }
-
-.ticket h1 {
-	color: var(--dark);
-	width: fit-content;
-	height: fit-content;
-} */
-
-/* Media Querys */
-
-/* 
-  ##Device = Desktops
-  ##Screen = 1281px to higher resolution desktops
-*/
 
 @media (min-width: 1269px) {
 
@@ -394,7 +358,15 @@ input[type="checkbox"]:checked + label {
 	}
 
 	.first-section{		
+		position: relative;
 		width: min-content;
+		min-width: 50%;
+	}
+
+	.line-section{
+		width: 2px;
+		height: 80vh;
+		background-color: var(--gray-d);
 	}
 
 	.mb-1{
@@ -404,66 +376,5 @@ input[type="checkbox"]:checked + label {
 	.tickets-grid-container{
 		grid-template-columns: repeat(6, 1fr);
 	}
-	/* .page-content {
-		display: grid;
-		height: 100vh;
-		width: 100vw;
-		grid-template-columns: 70% 30%;
-		grid-template-rows: 50% repeat(4, 12.5%);
-	}
-
-	.counter-block {
-		height: auto;
-		width: auto;
-		align-self: end;
-		justify-self: center;
-	}
-
-	.clock-counter {
-		width: 60%;
-	}
-
-	.ticket-block {
-		height: auto;
-		width: auto;
-		align-self: center;
-		justify-self: center;
-
-		grid-area: 2 / 1 / 4 / 2;
-	}
-
-	.tickets-grid-container {
-		width: 90%;
-		grid-template-columns: repeat(6, 1fr);
-		grid-gap: 2rem;
-		align-self: center;
-		justify-items: center;
-	}
-
-	.refresh-block {
-		height: auto;
-		width: auto;
-		align-self: center;
-		justify-self: center;
-
-		grid-area: 4 / 1 / 5 / 2;
-	}
-
-	.form-block {
-		height: auto;
-		width: auto;
-		align-self: end;
-		justify-self: center;
-
-		grid-area: 1 / 2 / 4 / 3;
-	}
-
-	.buy-block {
-		height: auto;
-		width: auto;
-		align-self: start;
-		justify-self: center;
-
-		grid-area: 4 / 2 / 6 / 3;
-	} */
+	
 }
