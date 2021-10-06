@@ -5,15 +5,15 @@ function onlyNumberKey(evt) {
 	return true;
 }
 
-
-document.getElementById("tickets-grid-container").addEventListener("click",function(){
+var tickets_values = [];
+document.getElementById("tickets-grid-container").addEventListener("click", function(){
 
 	var iframes = Array.from(document.getElementsByTagName("iframe"));	
 	var tickets = Array.from(document.getElementsByName("checkbox-ticket"));
 	var inputExtra1 = document.querySelector('input[name="extra1"]');
 	var inputAmount = document.querySelector('input[name="amount"]');
 
-	var tickets_values=[];
+	tickets_values = [];
 	var ticket_price = 50000;
 
 	console.clear();
@@ -135,23 +135,24 @@ document.addEventListener("DOMContentLoaded", () => {
 		document.querySelector('input[name="extra2"]').value = text;
 	})
 
-	let codreferencia = document.querySelector('input[name="codigoReferido"]');
-	codreferencia.addEventListener('change', () => {
-		let text = codreferencia.value;
+	let codigoReferido = document.querySelector('input[name="codigoReferido"]');
+	codigoReferido.addEventListener('change', () => {
+		let text = codigoReferido.value;
 		document.querySelector('input[name="extra3"]').value = text;
 	})
 
 	let formBoleta = document.querySelector('#form-boleta');
-	formBoleta.addEventListener('submit', () => {
+	formBoleta.addEventListener('submit', (e) => {
 		generarCodigoReferencia();
 		generarSignature();
+		// generarDescripcion();
 	})
 
 	function generarCodigoReferencia() {
 		numeroBoleta = document.querySelector('input[name="extra1"]');
 		let referenceCode = buyerName.value + "-" + mobilePhone.value + "-" + numeroBoleta.value + "-" + Date.now();
 		let hashReferenceCode = CryptoJS.MD5(referenceCode);
-		document.querySelector('input[name="referenceCode"]').value = hashReferenceCode;
+		document.querySelector('input[name="referenceCode"]').value = hashReferenceCode + "";
 	}
 
 	function generarSignature() {
@@ -161,7 +162,23 @@ document.addEventListener("DOMContentLoaded", () => {
 		const currency = "COP";
 		let referenceCode = document.querySelector('input[name="referenceCode"]').value;
 		let signature = CryptoJS.MD5(apiKey + "~" + merchanId + "~" + referenceCode + "~" + amount + "~" + currency);
-		document.querySelector('input[name="signature"]').value = signature;
+		document.querySelector('input[name="signature"]').value = signature + "";
+	}
+
+	function generarDescripcion(){
+		let nombre = buyerName.value;
+		let boletas = [];
+		for(let ticket of tickets_values){
+			boletas.push(" #" + ticket);
+		}
+		let description = "";
+		if (boletas.length > 1) {
+			last_boletas = boletas.pop();
+			description = `Compra de las boletas${boletas} y${last_boletas} válidas para sorteo de espectacular vehículo. La compra es realizada a nombre de ${nombre}`;
+		} else {
+			description = `Compra de la boleta${boletas} válida para sorteo de espectacular vehículo. La compra es realizada a nombre de ${nombre}`;
+		}
+		document.querySelector('input[name="description"]').value = description;
 	}
 
 })
