@@ -20,7 +20,7 @@
         $firma = $_REQUEST['signature'];
         $reference_pol = $_REQUEST['reference_pol'];
         $cus = $_REQUEST['cus'];
-        $extra1 = $_REQUEST['description'];
+        $description = $_REQUEST['description'];
         $pseBank = $_REQUEST['pseBank'];
         $lapPaymentMethod = $_REQUEST['lapPaymentMethod'];
         $transactionId = $_REQUEST['transactionId'];
@@ -44,6 +44,57 @@
             else {
                 $estadoTx=$_REQUEST['mensaje'];
             }
+            // Generacion de codigo QR
+            if (file_exists("phpqrcode/qrlib.php")){
+                require "phpqrcode/qrlib.php";
+                $link = "https://www.ganatucarro.com";
+                $rutaQR = "img/prueba.png";
+                $tamaño = 10;
+                $level = "Q";
+                $framesize = 3;
+                QRcode ::png($link, $rutaQR, $level, $tamaño, $framesize);
+                if (file_exists($rutaQR)){
+                    $error = 0;
+                    $mensaje = "Archivo generado";
+                }
+            }else{
+                $error = 1;
+                $mensaje = "No existe la libreria";
+            }
+            // Envío de correo electrónico
+            $destinatario = 'gigia.munoz@gmail.com' . ', '; // note the comma
+            $destinatario .= 'jfredyrom@gmail.com' . ', '; // note the comma
+            $asunto = "Este mensaje es de prueba"; 
+            $cuerpo = ' 
+            <html> 
+            <head> 
+            <title>Prueba de correo</title> 
+            </head> 
+            <body> 
+            <h1>Hola amigos!</h1> 
+            <p> 
+            <b>Bienvenidos a mi correo electrónico de prueba</b>. Estoy encantado de tener tantos lectores. Este cuerpo del mensaje es del artículo de envío de mails por PHP. Habría que cambiarlo para poner tu propio cuerpo. Por cierto, cambia también las cabeceras del mensaje. 
+            </p>
+            <h1>Tu boleta comprada fue '.'4567'.'</h1> 
+            <img src="img/prueba.png"></img>
+            </body> 
+            </html> 
+            '; 
+
+            //para el envío en formato HTML 
+            $headers = "MIME-Version: 1.0\r\n"; 
+            $headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
+
+            //dirección del remitente 
+            $headers .= "From: Gana Tu Carro <noreply@ganatucarro.com>\r\n"; 
+
+            //dirección de respuesta, si queremos que sea distinta que la del remitente 
+            $headers .= "Reply-To: soporte@ganatucarro.com\r\n"; 
+
+            //direcciones que recibirán copia oculta 
+            // $headers .= "Bcc: pepe@pepe.com,juan@juan.com\r\n"; 
+
+            mail($destinatario, $asunto, $cuerpo, $headers);
     ?>
         <h2>Resumen Transacción</h2>
         <table>
@@ -89,7 +140,7 @@
         </tr>
         <tr>
         <td>Descripción</td>
-        <td><?php echo ($extra1); ?></td>
+        <td><?php echo ($description); ?></td>
         </tr>
         <tr>
         <td>Entidad:</td>
