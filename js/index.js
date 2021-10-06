@@ -28,24 +28,24 @@ document.addEventListener("DOMContentLoaded", ()=>{
     // });
 
     const countdown = () => {
-      const tiempoObjetivo = new Date("Jan 1, 2022 00:00:00").getTime();
-      const tiempoActual = new Date().getTime();
-      const tiempoRestante = tiempoObjetivo - tiempoActual;
+		const tiempoObjetivo = new Date("Jan 1, 2022 00:00:00").getTime();
+		const tiempoActual = new Date().getTime();
+		const tiempoRestante = tiempoObjetivo - tiempoActual;
 
-      const segundos = 1000;
-      const minutos = segundos * 60;
-      const horas = minutos * 60;
-      const dias = horas * 24;
+		const segundos = 1000;
+		const minutos = segundos * 60;
+		const horas = minutos * 60;
+		const dias = horas * 24;
 
-      const textoDias = Math.floor(tiempoRestante / dias);
-      const textoHoras = Math.floor((tiempoRestante % dias) / horas);
-      const textoMinutos = Math.floor((tiempoRestante % horas) / minutos);
-      const textoSegundos = Math.floor((tiempoRestante % minutos) / segundos);
+		const textoDias = Math.floor(tiempoRestante / dias);
+		const textoHoras = Math.floor((tiempoRestante % dias) / horas);
+		const textoMinutos = Math.floor((tiempoRestante % horas) / minutos);
+		const textoSegundos = Math.floor((tiempoRestante % minutos) / segundos);
 
-      document.getElementById("dias").innerHTML = textoDias;
-      document.getElementById("horas").innerHTML = textoHoras;
-      document.getElementById("minutos").innerHTML = textoMinutos;
-      document.getElementById("segundos").innerHTML = textoSegundos;
+		document.getElementById("dias").innerHTML = textoDias;
+		document.getElementById("horas").innerHTML = textoHoras;
+		document.getElementById("minutos").innerHTML = textoMinutos;
+		document.getElementById("segundos").innerHTML = textoSegundos;
     };
 
     setInterval(countdown, 1000);
@@ -62,15 +62,27 @@ document.addEventListener("DOMContentLoaded", ()=>{
 		document.querySelector('input[name="payerMobilePhone"]').value = text;
 	})
 
+  	let payerDocument = document.querySelector('input[name="payerDocument"]');
+	payerDocument.addEventListener('change', ()=>{
+		let text = payerDocument.value;
+		document.querySelector('input[name="extra2"]').value = text;
+	})
+
+  	let codreferencia = document.querySelector('input[name="codigoReferido"]');
+	codreferencia.addEventListener('change', ()=>{
+		let text = codreferencia.value;
+		document.querySelector('input[name="extra3"]').value = text;
+	})
+
 	let formBoleta = document.querySelector('#form-boleta');
 	formBoleta.addEventListener('submit', ()=>{
-  	  	generarCodigoReferencia();
+		generarCodigoReferencia();
 		generarSignature();
 	})
   
 	function generarCodigoReferencia(){
 		numeroBoleta = document.querySelector('input[name="extra1"]');
-    	let referenceCode = buyerName.value + "-" + mobilePhone.value + "-" + numeroBoleta.value;
+    	let referenceCode = buyerName.value + "-" + mobilePhone.value + "-" + numeroBoleta.value + "-" + Date.now();
       	let hashReferenceCode = CryptoJS.MD5(referenceCode);
 		document.querySelector('input[name="referenceCode"]').value = hashReferenceCode;
 	}

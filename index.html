@@ -1,223 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/checkbox.css" />
-    <title>Prueba Inicial</title>
-  </head>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/checkbox.css" />
+		<title>Prueba Inicial</title>
+	</head>
+	<body>
+		<div class="m-1 d-flex-col">
+		<div class="mb-1 logo"></div>
+		<h2 class="titulo mb-1">¡Compra tus Boletas!</h2>
 
-  <body>
-    <div class="m-1 d-flex-col">
-      <div class="mb-1 logo"></div>
-      <h2 class="titulo mb-1">¡Compra tus Boletas!</h2>
+		<div class="clock-counter mb-1 d-flex-row">
+			<div class="time-interval-container d-flex-col">
+			<h1 id="dias">00</h1>
+			<h2>Dias</h2>
+			</div>
+			<div class="line"></div>
+			<div class="time-interval-container d-flex-col">
+			<h1 id="horas">00</h1>
+			<h2>Horas</h2>
+			</div>
+			<div class="line"></div>
+			<div class="time-interval-container d-flex-col">
+			<h1 id="minutos">00</h1>
+			<h2>Min</h2>
+			</div>
+			<div class="line"></div>
+			<div class="time-interval-container d-flex-col">
+			<h1 id="segundos">00</h1>
+			<h2>Seg</h2>
+			</div>
+		</div>
 
-      <div class="clock-counter mb-1 d-flex-row">
-        <div class="time-interval-container d-flex-col">
-          <h1 id="dias">00</h1>
-          <h2>Dias</h2>
-        </div>
-        <div class="line"></div>
-        <div class="time-interval-container d-flex-col">
-          <h1 id="horas">00</h1>
-          <h2>Horas</h2>
-        </div>
-        <div class="line"></div>
-        <div class="time-interval-container d-flex-col">
-          <h1 id="minutos">00</h1>
-          <h2>Min</h2>
-        </div>
-        <div class="line"></div>
-        <div class="time-interval-container d-flex-col">
-          <h1 id="segundos">00</h1>
-          <h2>Seg</h2>
-        </div>
-      </div>
+		<form
+			id="form-boleta"
+			method="post"
+			action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu"
+		>
+			<div class="mb-1 form-item">
+			<label for="">Nombre Completo<span> *</span></label>
+			<input class="form-input" type="text" placeholder="Nombre" name="buyerFullName" required/>
+			</div>
 
-      <form
-        id="form-boleta"
-        method="post"
-        action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu"
-      >
-        <div class="mb-1 form-item">
-          <label for="">Nombre Completo<span> *</span></label>
-          <input class="form-input" type="text" placeholder="Nombre" name="buyerFullName" required/>
-        </div>
+			<div class="mb-1 form-item">
+			<label for="">Número de Identificación<span> *</span></label>
+			<input
+				class="form-input"
+				type="text"
+				placeholder="1060400300"
+				onkeypress="return onlyNumberKey(event)"
+				name="payerDocument"
+				required
+			/>
+			</div>
 
-        <div class="mb-1 form-item">
-          <label for="">Número de Identificación<span> *</span></label>
-          <input
-            class="form-input"
-            type="text"
-            placeholder="1060400300"
-            onkeypress="return onlyNumberKey(event)"
-            name="payerDocument"
-            required
-          />
-        </div>
+			<div class="mb-1 form-item">
+			<label for="">Celular<span> *</span></label>
+			<input
+				class="form-input"
+				id="inpCelular"
+				type="tel"
+				placeholder="300-000-0000"
+				maxlength="12"
+				name="mobilePhone"
+				required
+			/>
+			</div>
 
-        <div class="mb-1 form-item">
-          <label for="">Celular<span> *</span></label>
-          <input
-            class="form-input"
-            id="inpCelular"
-            type="tel"
-            placeholder="300-000-0000"
-            maxlength="12"
-            name="mobilePhone"
-            required
-          />
-        </div>
+			<div class="mb-1 form-item">
+			<label for="">Correo Electrónico<span> *</span></label>
+			<input
+				class="form-input"
+				type="email"
+				placeholder="ejemplo@gmail.com"
+				name="buyerEmail"
+				required
+			/>
+			</div>
 
-        <div class="mb-1 form-item">
-          <label for="">Correo Electrónico<span> *</span></label>
-          <input
-            class="form-input"
-            type="email"
-            placeholder="ejemplo@gmail.com"
-            name="buyerEmail"
-            required
-          />
-        </div>
+			<div class="mb-1 form-item">
+			<label for="">Código de Referencia<span> </span></label>
+			<input class="form-input" type="text" placeholder="" name="codigoReferido"/>
+			</div>
 
-        <div class="mb-1 form-item">
-          <label for="">Código de Referencia<span> </span></label>
-          <input class="form-input" type="text" placeholder="" name="extra2" disabled/>
-        </div>
+			<div class="mb-1 form-item">
+			<label for="">Selecciona tu Boleta <span> *</span></label>
+			<div class="tickets-grid-container">
+				<div class="ticket">
+				<h1>01</h1>
+				</div>
+				<div class="ticket">
+				<h1>02</h1>
+				</div>
+				<div class="ticket">
+				<h1>03</h1>
+				</div>
+				<div class="ticket">
+				<h1>04</h1>
+				</div>
+				<div class="ticket">
+				<h1>05</h1>
+				</div>
+				<div class="ticket">
+				<h1>06</h1>
+				</div>
+				<div class="ticket">
+				<h1>07</h1>
+				</div>
+				<div class="ticket">
+				<h1>08</h1>
+				</div>
+				<div class="ticket">
+				<h1>09</h1>
+				</div>
+				<div class="ticket">
+				<h1>10</h1>
+				</div>
+				<div class="ticket">
+				<h1>11</h1>
+				</div>
+				<div class="ticket">
+				<h1>12</h1>
+				</div>
+			</div>
+			</div>
 
-        <div class="mb-1 form-item">
-          <label for="">Selecciona tu Boleta <span> *</span></label>
-          <div class="tickets-grid-container">
-            <div class="ticket">
-              <h1>01</h1>
-            </div>
-            <div class="ticket">
-              <h1>02</h1>
-            </div>
-            <div class="ticket">
-              <h1>03</h1>
-            </div>
-            <div class="ticket">
-              <h1>04</h1>
-            </div>
-            <div class="ticket">
-              <h1>05</h1>
-            </div>
-            <div class="ticket">
-              <h1>06</h1>
-            </div>
-            <div class="ticket">
-              <h1>07</h1>
-            </div>
-            <div class="ticket">
-              <h1>08</h1>
-            </div>
-            <div class="ticket">
-              <h1>09</h1>
-            </div>
-            <div class="ticket">
-              <h1>10</h1>
-            </div>
-            <div class="ticket">
-              <h1>11</h1>
-            </div>
-            <div class="ticket">
-              <h1>12</h1>
-            </div>
-          </div>
-        </div>
+			<div class="form-item mb-05">
+			<div class="bg-gold-gradient">
+				<input
+				type="button"
+				class="btn btn-secondary w-100"
+				value="Refrescar Boletas"
+				/>
+			</div>
+			</div>
 
-        <div class="form-item mb-05">
-          <div class="bg-gold-gradient">
-            <input
-              type="button"
-              class="btn btn-secondary w-100"
-              value="Refrescar Boletas"
-            />
-          </div>
-        </div>
-        
+			<!-- ===================================== -->
+			<!-- Datos necesarios para el pago en PayU -->
+			<!-- ===================================== -->
+			
+			<!-- Aqui va el numero de la boleta. Será un número de 4 digitos -->
+			<input name="extra1" type="hidden" value="9998" />
 
-        <!-- /*FREDDY*/ -->
-        <!-- extra1 es el numero de la boleta a comprar -->
-        <input name="extra1" type="hidden" value="9127" />
+			<input name="merchantId" type="hidden" value="508029" />
+			
+			<input name="accountId" type="hidden" value="512321" />
 
-        <input name="merchantId" type="hidden" value="508029" />
-        
-        <input name="accountId" type="hidden" value="512321" />
+			<input name="description" type="hidden" value="Compra de boleta" />
 
-        <input name="description" type="hidden" value="Test PAYU" />
+			<input name="referenceCode" type="hidden"/>
 
-        <input name="referenceCode" type="hidden"/>
+			<input name="extra2" type="hidden"/>
 
-        <input name="payerFullName" type="hidden"/>
+			<input name="extra3" type="hidden"/>
 
-        <input name="payerMobilePhone" type="hidden"/>
+			<input name="payerFullName" type="hidden"/>
 
-        <input name="amount" type="hidden" value="50000" />
+			<input name="payerMobilePhone" type="hidden"/>
 
-        <input name="tax" type="hidden" value="0" />
+			<!-- Aqui va el precio de la compra. Por ahora es fijo -->
+			<input name="amount" type="hidden" value="50000" />
 
-        <input name="taxReturnBase" type="hidden" value="0" />
+			<!-- Aqui van los impuestos. Si se deja vacío sera el 19% -->
+			<input name="tax" type="hidden" value="0" />
 
-        <input name="currency" type="hidden" value="COP" />
+			<input name="taxReturnBase" type="hidden" value="0" />
 
-        <input
-          name="signature"
-          type="hidden"
-        />
+			<input name="currency" type="hidden" value="COP" />
 
-        <input name="test" type="hidden" value="1" />
+			<input
+			name="signature"
+			type="hidden"
+			/>
 
-        <input
-          name="responseUrl"
-          type="hidden"
-          value="http://127.0.0.1/rifa-web-page/respuesta.php"
-        />
+			<input name="test" type="hidden" value="1" />
 
-        <input
-          name="confirmationUrl"
-          type="hidden"
-          value="http://127.0.0.1/rifa-web-page/confirmacion.php"
-        />
+			<input
+			name="responseUrl"
+			type="hidden"
+			value="http://127.0.0.1/rifa-web-page/respuesta.php"
+			/>
 
-        <div class="form-item mb-05">
-          <input
-            name="Submit"
-            class="btn btn-primary"
-            type="submit"
-            value="Comprar"
-          />
-        </div>
+			<input
+			name="confirmationUrl"
+			type="hidden"
+			value="https://ganatucarro.com/confirmacion.php"
+			/>
 
-        <div class="control-group">
-          <label class="control control-checkbox">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Consequuntur quidem veniam perspiciatis fugit! Dolorum ex sapiente
-            error voluptatibus aliquid. In reiciendis harum temporibus eaque
-            dolorum natus velit impedit sapiente officia!
-            <input type="checkbox" checked="checked" />
-            <div class="control_indicator"></div>
-          </label>
-        </div>
-      </form>
-    </div>
-    <script>
-      function onlyNumberKey(evt) {
-        // Only ASCII character in that range allowed
-        var ASCIICode = evt.which ? evt.which : evt.keyCode;
-        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) return false;
-        return true;
-      }
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
-    <script src="js/index.js"></script>
-    <script
-      src="https://kit.fontawesome.com/981ff97f79.js"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+			<div class="form-item mb-05">
+			<input
+				name="Submit"
+				class="btn btn-primary"
+				type="submit"
+				value="Comprar"
+			/>
+			</div>
+
+			<div class="control-group">
+			<label class="control control-checkbox">
+				Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+				Consequuntur quidem veniam perspiciatis fugit! Dolorum ex sapiente
+				error voluptatibus aliquid. In reiciendis harum temporibus eaque
+				dolorum natus velit impedit sapiente officia!
+				<input type="checkbox" checked="checked" />
+				<div class="control_indicator"></div>
+			</label>
+			</div>
+		</form>
+		</div>
+		<script>
+		function onlyNumberKey(evt) {
+			// Only ASCII character in that range allowed
+			var ASCIICode = evt.which ? evt.which : evt.keyCode;
+			if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) return false;
+			return true;
+		}
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
+		<script src="js/index.js"></script>
+		<script
+		src="https://kit.fontawesome.com/981ff97f79.js"
+		crossorigin="anonymous"
+		></script>
+	</body>
 </html>
