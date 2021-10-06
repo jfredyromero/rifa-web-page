@@ -8,7 +8,7 @@ function onlyNumberKey(evt) {
 var tickets_values = [];
 document.getElementById("tickets-grid-container").addEventListener("click", function(){
 
-	var iframes = Array.from(document.getElementsByTagName("iframe"));	
+	var svg = Array.from(document.getElementsByTagName("path"));	
 	var tickets = Array.from(document.getElementsByName("checkbox-ticket"));
 	var inputExtra1 = document.querySelector('input[name="extra1"]');
 	var inputAmount = document.querySelector('input[name="amount"]');
@@ -21,9 +21,9 @@ document.getElementById("tickets-grid-container").addEventListener("click", func
 	tickets.forEach(t => {
 		if(t.checked == true){
 			tickets_values.push(t.value);
-			iframes[tickets.indexOf(t)].src = "img/ticket-gold.svg";
+			svg[tickets.indexOf(t)].setAttribute("fill","url(#gold)");
 		}else{
-			iframes[tickets.indexOf(t)].src = "img/ticket-silver.svg";
+			svg[tickets.indexOf(t)].setAttribute("fill","url(#silver)");
 		}
 	});
 
