@@ -1,7 +1,7 @@
-.ticket {
-    fill: url("#silver");
+.ticket-svg {
+    fill: url("#silver");    
 }
 
-.ticket:hover {
+.ticket-svg:hover {
     fill: url("#gold");
 }
