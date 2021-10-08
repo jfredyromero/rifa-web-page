@@ -6,17 +6,15 @@ function onlyNumberKey(evt) {
 }
 
 var tickets_values = [];
+var inputAmount = document.querySelector('input[name="amount"]');
 document.getElementById("tickets-grid-container").addEventListener("click", function(){
 
 	var svg = Array.from(document.getElementsByTagName("path"));	
 	var tickets = Array.from(document.getElementsByName("checkbox-ticket"));
 	var inputExtra1 = document.querySelector('input[name="extra1"]');
-	var inputAmount = document.querySelector('input[name="amount"]');
 
 	tickets_values = [];
 	var ticket_price = 50000;
-
-	console.clear();
 
 	tickets.forEach(t => {
 		if(t.checked == true){
@@ -29,10 +27,6 @@ document.getElementById("tickets-grid-container").addEventListener("click", func
 
 	inputExtra1.value = tickets_values.join("-");
 	inputAmount.value = tickets_values.length * ticket_price;
-
-	console.log(inputExtra1.value);
-	console.log(inputAmount.value);
-
 
 	// inputExtra1 = document.querySelector('input[name="extra1"]');
 	// inputAmount = document.querySelector('input[name="amount"]');
@@ -131,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	let payerDocument = document.querySelector('input[name="payerDocument"]');
 	payerDocument.addEventListener('change', () => {
-		let text = payerDocument.value;
+		let text = payerDocument.value + "-" + buyerName.value ;
 		document.querySelector('input[name="extra2"]').value = text;
 	})
 
@@ -145,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	formBoleta.addEventListener('submit', (e) => {
 		generarCodigoReferencia();
 		generarSignature();
-		// generarDescripcion();
+		generarDescripcion();
 	})
 
 	function generarCodigoReferencia() {
@@ -158,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	function generarSignature() {
 		const apiKey = "4Vj8eK4rloUd272L48hsrarnUA";
 		const merchanId = "508029";
-		const amount = "50000";
+		const amount = inputAmount.value;
 		const currency = "COP";
 		let referenceCode = document.querySelector('input[name="referenceCode"]').value;
 		let signature = CryptoJS.MD5(apiKey + "~" + merchanId + "~" + referenceCode + "~" + amount + "~" + currency);

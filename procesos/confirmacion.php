@@ -1,6 +1,7 @@
 <?php
     // Conexion a la base de datos
-    include_once("connection.php");
+    $dominio = "https://www.ganatucarro.com";
+    include_once("../static/connection/connection.php");
     $connection = mysqli_connect($host, $user, $pw, $db);
     mysqli_set_charset($connection, "utf8");
     // Captura de datos
@@ -23,10 +24,11 @@
             $firmacreada = md5("$ApiKey~$merchant_id~$referenceCode~$new_value~$currency~$transactionState");
             // Confirmación de firma
             if (strtoupper($firma) == strtoupper($firmacreada)) {
+                $comprador_datos = explode("-", $_POST['extra2']);
                 $numero_boleta = $_POST['extra1'];
                 $comprador_ip = $_POST['ip'];
-                $comprador_nombre = $_POST['cc_holder'];
-                $comprador_cedula = $_POST['extra2'];
+                $comprador_nombre = $comprador_datos[1];
+                $comprador_cedula = $comprador_datos[0];
                 $comprador_celular = $_POST['phone'];
                 $comprador_correo = $_POST['email_buyer'];
                 $referencia_pago = $_POST['reference_pol'];
@@ -37,20 +39,42 @@
                 $query = "INSERT INTO boletas (numero_boleta, comprador_ip, comprador_nombre, comprador_cedula, comprador_celular, comprador_correo, referencia_pago, referencia_venta, id_transaccion, codigo_referido, fecha_compra) VALUES ('$numero_boleta', '$comprador_ip', '$comprador_nombre', '$comprador_cedula', '$comprador_celular', '$comprador_correo', '$referencia_pago', '$referencia_venta', '$id_transaccion', '$codigo_referido', '$fecha_compra');";
                 $result = mysqli_query($connection, $query);
                 mysqli_close($connection);
+                // Creacion de codigo QR
+                if (file_exists("../static/php/phpqrcode/qrlib.php")){
+                    require "../static/php/phpqrcode/qrlib.php";
+                    $link = "https://www.ganatucarro.com";             //CAMBIARRRRRRR
+                    $nombreArchivo = $referenceCode.".png";
+                    $rutaQR = "../media/codigosQR/".$nombreArchivo;
+                    $tamaño = 100;
+                    $level = "H";
+                    $framesize = 3;
+                    QRcode ::png($link, $rutaQR, $level, $tamaño, $framesize);
+                    if (file_exists($rutaQR)){
+                        $error = 0;
+                        $mensaje = "Archivo generado";
+                    }
+                }else{
+                    $error = 1;
+                    $mensaje = "No existe la libreria";
+                }
+
                 // Envío de correo electrónico
-                $destinatario = "gigia.munoz@gmail.com"; 
-                $asunto = "Este mensaje es de prueba"; 
+                $destinatario = $comprador_correo; 
+                $asunto = "Compra exitosa"; 
                 $cuerpo = ' 
                 <html> 
                 <head> 
-                <title>Prueba de correo</title> 
+                <title>Gana Tu Carro</title> 
                 </head> 
                 <body> 
-                <h1>Hola amigos!</h1> 
-                <p> 
-                <b>Bienvenidos a mi correo electrónico de prueba</b>. Estoy encantado de tener tantos lectores. Este cuerpo del mensaje es del artículo de envío de mails por PHP. Habría que cambiarlo para poner tu propio cuerpo. Por cierto, cambia también las cabeceras del mensaje. 
-                </p>
-                <h1>Tu boleta comprada fue '.$numero_boleta.'</h1> 
+                <div align= "center">
+                <h1>Membresía Gana Tu Carro</h1> 
+                <h1>Tu boleta comprada fue '.$numero_boleta.'</h1>
+                <h3><b>Nombre: </b> '.$comprador_nombre.'</h3>
+                <h3><b>Cedula: </b> '.$comprador_cedula.'</h3>
+                <br>
+                <img src="'.$dominio.'/media/codigosQR/'.$nombreArchivo.'" width="400px" ></img>
+                </div>
                 </body> 
                 </html> 
                 '; 
@@ -60,10 +84,10 @@
                 $headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
 
                 //dirección del remitente 
-                $headers .= "From: Jhon Fredy Romero <jfredyrom@gmail.com>\r\n"; 
+                $headers .= "From: Gana Tu Carro <noreply@ganatucarro.com>\r\n"; 
 
                 //dirección de respuesta, si queremos que sea distinta que la del remitente 
-                $headers .= "Reply-To: jfredyrom@gmail.com\r\n"; 
+                $headers .= "Reply-To: soporte@ganatucarro.com\r\n"; 
 
                 //direcciones que recibirán copia oculta 
                 // $headers .= "Bcc: pepe@pepe.com,juan@juan.com\r\n"; 
