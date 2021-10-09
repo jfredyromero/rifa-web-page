@@ -28,34 +28,6 @@ document.getElementById("tickets-grid-container").addEventListener("click", func
 	inputExtra1.value = tickets_values.join("-");
 	inputAmount.value = tickets_values.length * ticket_price;
 
-	// inputExtra1 = document.querySelector('input[name="extra1"]');
-	// inputAmount = document.querySelector('input[name="amount"]');
-	// inputExtra1.value = allValueTickets;
-	// inputAmount.value = 50000 * checked_tickets.length;
-
-	// console.log(inputExtra1.value);
-	// console.log(inputAmount.value);
-	// console.table(svg);
-
-	// var tickets_values = [];
-	// tickets_values = tickets.filter(n => n.value == true);
-	
-	// var tickets_values = tickets.map(function() {
-	// 	console.log(this.checked)
-	// 	if (this.checked == true){
-	// 		console.log(this.checked)
-	// 		return this.value;
-	// 	}		
-	// });
-
-	// var tickets_values = tickets.filter(n => {
-	// 	if (n.checked == true){
-	// 		return n.value;
-	// 	}	
-	// });
-
-	// console.table(tickets_values);
-
 });
 
 
