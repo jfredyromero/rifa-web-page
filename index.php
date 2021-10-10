@@ -1,3 +1,10 @@
+<?php
+	include_once("static/connection/connection.php");
+    $mysqli = new mysqli($host, $user, $pw, $db);
+    if ($mysqli->connect_error) {
+        exit('Could not connect');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" href="static/css/main.css" />
 	<link rel="stylesheet" href="static/css/checkbox.css" />
-	<title>Prueba Inicial</title>
+	<title>Gana tu Carro</title>
 </head>
 
 <body>
@@ -164,7 +171,7 @@
 
 				<input name="test" type="hidden" value="1" />
 
-				<input name="responseUrl" type="hidden" value="http://ganatucarro.com/procesos/respuesta.php" />
+				<input name="responseUrl" type="hidden" value="http://localhost/rifa-web-page/" />
 
 				<input name="confirmationUrl" type="hidden" value="https://ganatucarro.com/procesos/confirmacion.php" />
 
@@ -188,71 +195,129 @@
 
 	<!-- POPUPS -->
 	<!-- Descomentar si quieren abrir el modal con el botón -->
-	<!-- <button class="btnOpen" id="btnOpen">Abrir</button> -->
+	<button class="btnOpen" id="btnOpen">Abrir</button>
+	
+	<?php
+	$banderaPopUp = false;
+	if (isset($_GET["extra1"])){
+		$ApiKey = "4Vj8eK4rloUd272L48hsrarnUA";
+		$merchant_id = $_GET['merchantId'];
+		$referenceCode = $_GET['referenceCode'];
+		$TX_VALUE = $_GET['TX_VALUE'];
+		$New_value = number_format($TX_VALUE, 1, '.', '');
+		$currency = $_GET['currency'];
+		$transactionState = $_GET['transactionState'];
+		$firma_cadena = "$ApiKey~$merchant_id~$referenceCode~$New_value~$currency~$transactionState";
+		$firmacreada = md5($firma_cadena);
+		$firma = $_GET['signature'];
+		$reference_pol = $_GET['reference_pol'];
+		$cus = $_GET['cus'];
+		$description = $_GET['description'];
+		$pseBank = $_GET['pseBank'];
+		$lapPaymentMethod = $_GET['lapPaymentMethod'];
+		$transactionId = $_GET['transactionId'];
 
+		// Se comparan las firmas por seguridad
+		if (strtoupper($firma) == strtoupper($firmacreada)) {
+			
+			// Solo entra si la transacción es exitosa
+			if ($_GET['transactionState'] == 4 ) {
+				$estadoTx = "Transacción aprobada";
+			}
+			else if ($_GET['transactionState'] == 6 ) {
+				$estadoTx = "Transacción rechazada";
+			}
+			else if ($_GET['transactionState'] == 104 ) {
+				$estadoTx = "Error";
+			}
+			else if ($_GET['transactionState'] == 7 ) {
+				$estadoTx = "Transacción pendiente";
+			}
+			else {
+				$estadoTx=$_GET['mensaje'];
+			}		
+			$banderaPopUp = true;
+	?>
 	<div class="card-popup" id="card-popup">
-
 		<div class="bg-close" id="bg-close"></div>
-
 		<div class="card-content">
 			<div class="card-header">
 				<div class="logo"></div>
 				<h2>Resumen de la Transacción</h2>
 				<i class="fas fa-2x fa-times" id="btnClose"></i>
 			</div>
-
 			<div class="card-info-transaction">
 				<table>
+					<?php
+					$comprador_datos = explode("-", $_GET['extra2']);
+					$comprador_nombre = $comprador_datos[1];
+					$comprador_cedula = $comprador_datos[0];
+					?>
 					<tr>
 						<th>Nombre</th>
-						<td>Jhon Doe</td>
+						<td><?php echo $comprador_nombre; ?></td>
 					</tr>
 					<tr>
 						<th>Cédula</th>
-						<td>100299300400</td>
+						<td><?php echo $comprador_cedula; ?></td>
 					</tr>
 					<tr>
 						<th>Estado de la transaccion</th>
-						<td>Transacción aprobada</td>
+						<td><?php echo $estadoTx; ?></td>
 					</tr>
 					<tr>
 						<th>ID de la transaccion</th>
-						<td>31bfaa79-380d-404f-8a37-ba074457b02b</td>
+						<td><?php echo $transactionId; ?></td>
 					</tr>
 					<tr>
 						<th>Referencia de la venta</th>
-						<td>1401607460</td>
+						<td><?php echo $reference_pol; ?></td>
 					</tr>
 					<tr>
 						<th>Referencia de la transaccion</th>
-						<td>1cf15f6886a5d407ef0561a266f05fb9</td>
+						<td><?php echo $referenceCode; ?></td>
 					</tr>
+					<?php
+					if($pseBank != null) {
+					?>
+						<tr>
+						<td>cus </td>
+						<td><?php echo $cus; ?> </td>
+						</tr>
+						<tr>
+						<td>Banco </td>
+						<td><?php echo $pseBank; ?> </td>
+						</tr>
+					<?php
+					}
+					?>
 					<tr>
 						<th>Valor total</th>
-						<td>$50,000</td>
+						<td>$<?php echo number_format($TX_VALUE); ?></td>
 					</tr>
 					<tr>
 						<th>Moneda</th>
-						<td>COP</td>
+						<td><?php echo $currency; ?></td>
 					</tr>
 					<tr>
 						<th>Descripción</th>
-						<td>Compra de la boleta #0002 válida para sorteo de espectacular vehículo. La compra es realizada a nombre de APPROVED</td>
+						<td><?php echo ($description); ?></td>
 					</tr>
 					<tr>
 						<th>Entidad</th>
-						<td>VISA</td>
+						<td><?php echo ($lapPaymentMethod); ?></td>
 					</tr>
 				</table>
 			</div>
-
 			<div class="card-footer">
 				<button class="btn btn-primary" id="btnAceptar">Aceptar</button>
 			</div>
 		</div>
-
 	</div>
-
+	<?php
+		}
+	}
+	?>			
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -261,11 +326,17 @@
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<!-- Fontawesome -->
 	<script src="https://kit.fontawesome.com/981ff97f79.js" crossorigin="anonymous"></script>
-
+	<!-- Scrips internos -->
 	<script src="static/js/index.js"></script>
 	<script src="static/js/modal.js"></script>
 	<script src="static/js/boletas.js"></script>
-
+	<?php
+	if($banderaPopUp){
+	?>
+	<script src="static/js/abrirModal.js"></script>
+	<?php
+	}
+	?>
 </body>
-
+<!-- http://localhost/rifa-web-page/?merchantId=508029&merchant_name=Test+PayU+Test+comercio&merchant_address=Av+123+Calle+12&telephone=7512354&merchant_url=http%3A%2F%2Fpruebaslapv.xtrweb.com&transactionState=4&lapTransactionState=APPROVED&message=APPROVED&referenceCode=c282fec375dee46186dfe728528cf9bf&reference_pol=1401633362&transactionId=495fa735-3e94-4b5b-9613-a5ec4a85e977&description=Compra+de+las+boletas+%230046%2C+%230580%2C+%237100+y+%239445+v%C3%A1lidas+para+sorteo+de+espectacular+veh%C3%ADculo.+La+compra+es+realizada+a+nombre+de+APPROVED&trazabilityCode=CRED+-+777021655&cus=CRED+-+777021655&orderLanguage=es&extra1=0046-0580-7100-9445&extra2=1002970732-APPROVED&extra3=&polTransactionState=4&signature=8eb8054903387db7458cb4d7c9bd938f&polResponseCode=1&lapResponseCode=APPROVED&risk=&polPaymentMethod=10&lapPaymentMethod=VISA&polPaymentMethodType=2&lapPaymentMethodType=CREDIT_CARD&installmentsNumber=1&TX_VALUE=200000.00&TX_TAX=.00&currency=COP&lng=es&pseCycle=&buyerEmail=jhonrom%40unicauca.edu.co&pseBank=&pseReference1=&pseReference2=&pseReference3=&authorizationCode=847072&TX_ADMINISTRATIVE_FEE=.00&TX_TAX_ADMINISTRATIVE_FEE=.00&TX_TAX_ADMINISTRATIVE_FEE_RETURN_BASE=.00&processingDate=2021-10-10 -->
 </html>

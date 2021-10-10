@@ -1,5 +1,7 @@
 <?php
-    $mysqli = new mysqli("localhost", "root", "", "boleta");
+    
+    include_once("../static/connection/connection.php");
+    $mysqli = new mysqli($host, $user, $pw, $db);
 
     if ($mysqli->connect_error) {
         exit('Could not connect');
