@@ -135,6 +135,11 @@ label {
 	font-size: small;
 }
 
+.fw-1 {
+	font-weight: 100;
+	font-size: normal;
+}
+
 /* flex-box */
 
 .d-flex-row {
@@ -278,6 +283,17 @@ label {
 	border-color: var(--secondary);
 	transition-duration: 0.25s;
 }
+/* input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+} */
+
+.form-input:-webkit-autofill{
+	-webkit-box-shadow: 0 0 0 30px rgb(20, 20, 20) inset !important;
+	-webkit-text-fill-color: #ffffff !important;
+}
 
 input[type="checkbox"] + label {
 	font-weight: bold;
@@ -307,7 +323,16 @@ input[type="checkbox"]:checked + label {
 	width: 100%;
 }
 
+.buy-block a{
+	color: var(--secondary);
+}
+
+.refresh-block span{
+	color: var(--secondary);
+}
+
 .tickets-grid-container {
+	width: auto;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-gap: 1rem;
@@ -315,8 +340,8 @@ input[type="checkbox"]:checked + label {
 }
 
 .ticket{
-	width: 6rem;
-	height: 4rem;
+	width: auto;
+	height: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -332,7 +357,7 @@ input[type="checkbox"]:checked + label {
 .ticket h1{
 	color: var(--dark);
 	position: absolute;
-	font-size: 1.5rem;
+	font-size: 1.4rem;
 	z-index: 1;
 }
 
@@ -352,7 +377,7 @@ input[type="checkbox"]:checked + label {
 
 .card-popup {
 	/* Descomentar para que no aparezca el popup al recargar la pagina */
-    /* display: none; */
+    display: none !important;
 	position: absolute;
 	top: 0;
 	left: 0;

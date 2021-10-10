@@ -7,29 +7,32 @@ function onlyNumberKey(evt) {
 
 var tickets_values = [];
 var inputAmount = document.querySelector('input[name="amount"]');
-document.getElementById("tickets-grid-container").addEventListener("click", function(){
+var inputExtra1 = document.querySelector('input[name="extra1"]');
+var spanAmount = document.getElementById("price");
 
-	var svg = Array.from(document.getElementsByTagName("path"));	
+document.getElementById("tickets-grid-container").addEventListener("click", function () {
+
+	var svg = Array.from(document.getElementsByTagName("path"));
 	var tickets = Array.from(document.getElementsByName("checkbox-ticket"));
-	var inputExtra1 = document.querySelector('input[name="extra1"]');
 
 	tickets_values = [];
 	var ticket_price = 50000;
 
 	tickets.forEach(t => {
-		if(t.checked == true){
+		if (t.checked == true) {
 			tickets_values.push(t.value);
-			svg[tickets.indexOf(t)].setAttribute("fill","url(#gold)");
-		}else{
-			svg[tickets.indexOf(t)].setAttribute("fill","url(#silver)");
+			svg[tickets.indexOf(t)].setAttribute("fill", "url(#gold)");
+		} else {
+			svg[tickets.indexOf(t)].setAttribute("fill", "url(#silver)");
 		}
 	});
 
 	inputExtra1.value = tickets_values.join("-");
 	inputAmount.value = tickets_values.length * ticket_price;
 
-});
+	spanAmount.textContent = "$ "+inputAmount.value; 
 
+});
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -97,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	let payerDocument = document.querySelector('input[name="payerDocument"]');
 	payerDocument.addEventListener('change', () => {
-		let text = payerDocument.value + "-" + buyerName.value ;
+		let text = payerDocument.value + "-" + buyerName.value;
 		document.querySelector('input[name="extra2"]').value = text;
 	})
 
@@ -109,9 +112,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	let formBoleta = document.querySelector('#form-boleta');
 	formBoleta.addEventListener('submit', (e) => {
-		generarCodigoReferencia();
-		generarSignature();
-		generarDescripcion();
+		
+		if (inputExtra1.value == "") {
+			e.preventDefault();
+			Swal.fire({
+				title: 'Oops',
+				text: "Debe seleccionar al menos una boleta!",
+				icon: 'warning',
+				confirmButtonColor: '#3085d6',
+				confirmButtonText: 'Ok'
+			});
+			return false;
+		}else{
+			generarCodigoReferencia();
+			generarSignature();
+			generarDescripcion();
+			return true;
+		}
 	})
 
 	function generarCodigoReferencia() {
@@ -131,10 +148,10 @@ document.addEventListener("DOMContentLoaded", () => {
 		document.querySelector('input[name="signature"]').value = signature + "";
 	}
 
-	function generarDescripcion(){
+	function generarDescripcion() {
 		let nombre = buyerName.value;
 		let boletas = [];
-		for(let ticket of tickets_values){
+		for (let ticket of tickets_values) {
 			boletas.push(" #" + ticket);
 		}
 		let description = "";
