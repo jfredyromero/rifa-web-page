@@ -192,70 +192,7 @@ if ($mysqli->connect_error) {
 
 	<!-- POPUPS -->
 	<!-- Descomentar para probar modal estatico -->
-	<!-- <button class="btnOpen" style="padding: 20px;" id="btnOpen">Abrir</button>
-
-	<div class="card-popup" id="card-popup">
-		<div class="container-flex">
-			<div class="bg-close" id="bg-close"></div>
-			<div class="card-content">
-				<div class="card-header">
-					<div class="logo"></div>
-					<h2>Resumen de la Transacción</h2>
-					<i class="fas fa-2x fa-times" id="btnClose"></i>
-				</div>
-
-				<div class="card-info-transaction">
-					<table>
-						<tr>
-							<th>Nombre</th>
-							<td>Jhon Doe</td>
-						</tr>
-						<tr>
-							<th>Cédula</th>
-							<td>100299300400</td>
-						</tr>
-						<tr>
-							<th>Estado de la transaccion</th>
-							<td>Transacción aprobada</td>
-						</tr>
-						<tr>
-							<th>ID de la transaccion</th>
-							<td>31bfaa79-380d-404f-8a37-ba074457b02b</td>
-						</tr>
-						<tr>
-							<th>Referencia de la venta</th>
-							<td>1401607460</td>
-						</tr>
-						<tr>
-							<th>Referencia de la transaccion</th>
-							<td>1cf15f6886a5d407ef0561a266f05fb9</td>
-						</tr>
-						<tr>
-							<th>Valor total</th>
-							<td>$50,000</td>
-						</tr>
-						<tr>
-							<th>Moneda</th>
-							<td>COP</td>
-						</tr>
-						<tr>
-							<th>Descripción</th>
-							<td>Compra de la boleta #0002 válida para sorteo de espectacular vehículo. La compra es realizada a nombre de APPROVED</td>
-						</tr>
-						<tr>
-							<th>Entidad</th>
-							<td>VISA</td>
-						</tr>
-					</table>
-				</div>
-
-				<div class="card-footer">
-					<button class="btn btn-primary" id="btnAceptar">Aceptar</button>
-				</div>
-			</div>
-		</div>
-	</div> -->
-
+	<!-- <button class="btnOpen" style="padding: 20px;" id="btnOpen">Abrir</button> -->
 	<?php
 	$banderaPopUp = false;
 	if (isset($_GET["extra1"])) {
@@ -378,14 +315,6 @@ if ($mysqli->connect_error) {
 		}
 	}
 	?>
-
-	<?php
-	if ($banderaPopUp) {
-	?>
-		<script src="static/js/abrirModal.js"></script>
-	<?php
-	}
-	?>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
@@ -399,8 +328,13 @@ if ($mysqli->connect_error) {
 <script src="static/js/modal.js"></script>
 <script src="static/js/index.js"></script>
 <script src="static/js/boletas.js"></script>
-
-
+<?php
+if ($banderaPopUp) {
+?>
+<script src="static/js/abrirModal.js"></script>
+<?php
+}
+?>
 <!-- http://localhost/rifa-web-page/?merchantId=508029&merchant_name=Test+PayU+Test+comercio&merchant_address=Av+123+Calle+12&telephone=7512354&merchant_url=http%3A%2F%2Fpruebaslapv.xtrweb.com&transactionState=4&lapTransactionState=APPROVED&message=APPROVED&referenceCode=c282fec375dee46186dfe728528cf9bf&reference_pol=1401633362&transactionId=495fa735-3e94-4b5b-9613-a5ec4a85e977&description=Compra+de+las+boletas+%230046%2C+%230580%2C+%237100+y+%239445+v%C3%A1lidas+para+sorteo+de+espectacular+veh%C3%ADculo.+La+compra+es+realizada+a+nombre+de+APPROVED&trazabilityCode=CRED+-+777021655&cus=CRED+-+777021655&orderLanguage=es&extra1=0046-0580-7100-9445&extra2=1002970732-APPROVED&extra3=&polTransactionState=4&signature=8eb8054903387db7458cb4d7c9bd938f&polResponseCode=1&lapResponseCode=APPROVED&risk=&polPaymentMethod=10&lapPaymentMethod=VISA&polPaymentMethodType=2&lapPaymentMethodType=CREDIT_CARD&installmentsNumber=1&TX_VALUE=200000.00&TX_TAX=.00&currency=COP&lng=es&pseCycle=&buyerEmail=jhonrom%40unicauca.edu.co&pseBank=&pseReference1=&pseReference2=&pseReference3=&authorizationCode=847072&TX_ADMINISTRATIVE_FEE=.00&TX_TAX_ADMINISTRATIVE_FEE=.00&TX_TAX_ADMINISTRATIVE_FEE_RETURN_BASE=.00&processingDate=2021-10-10 -->
 
 </html>
