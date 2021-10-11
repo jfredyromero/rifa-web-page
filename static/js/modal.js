@@ -1,14 +1,12 @@
 $(document).ready(function () {
 
-    // Se abre el popup cada que se recarga la página
-    // $("#card-popup").fadeIn("slow");
-
-    // Descomentar si se quiere abrir el modal con un botón
     $("#btnOpen").on("click", function () {
+        console.log("Abrir modal");
         $("#card-popup").fadeIn("slow");
     });
 
     $("#btnClose").on("click", function () {
+        console.log("Cerrar modal")
         $("#card-popup").fadeOut("slow");
     });
 

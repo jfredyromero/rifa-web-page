@@ -1,7 +1,6 @@
 var datos = "";
 
 function refrescar() {
-	console.clear();
 	var xhttp;
 
 	var tickets = Array.from(document.getElementsByName("checkbox-ticket"));
