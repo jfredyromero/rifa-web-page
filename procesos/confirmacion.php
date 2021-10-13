@@ -2,6 +2,9 @@
     // Conexion a la base de datos
     $dominio = "https://www.ganatucarro.com";
     include_once("../static/connection/connection.php");
+    if (file_exists("../static/php/phpqrcode/qrlib.php")){
+        require "../static/php/phpqrcode/qrlib.php";
+    }
     $connection = mysqli_connect($host, $user, $pw, $db);
     mysqli_set_charset($connection, "utf8");
     // Captura de datos
@@ -23,10 +26,9 @@
             $firma = $_POST['sign'];
             $firmacreada = md5("$ApiKey~$merchant_id~$referenceCode~$new_value~$currency~$transactionState");
             // Confirmación de firma
-            if (strtoupper($firma) == strtoupper($firmacreada)) {
-                $comprador_datos = explode("-", $_POST['extra2']);
-                $numero_boleta = $_POST['extra1'];
+            if (strtoupper($firma) == strtoupper($firmacreada)) {              
                 $comprador_ip = $_POST['ip'];
+                $comprador_datos = explode("-", $_POST['extra2']);
                 $comprador_nombre = $comprador_datos[1];
                 $comprador_cedula = $comprador_datos[0];
                 $comprador_celular = $_POST['phone'];
@@ -36,65 +38,84 @@
                 $id_transaccion = $_POST['transaction_id'];
                 $codigo_referido = $_POST['extra3'];
                 $fecha_compra = $_POST['transaction_date'];
-                $query = "INSERT INTO boletas (numero_boleta, comprador_ip, comprador_nombre, comprador_cedula, comprador_celular, comprador_correo, referencia_pago, referencia_venta, id_transaccion, codigo_referido, fecha_compra) VALUES ('$numero_boleta', '$comprador_ip', '$comprador_nombre', '$comprador_cedula', '$comprador_celular', '$comprador_correo', '$referencia_pago', '$referencia_venta', '$id_transaccion', '$codigo_referido', '$fecha_compra');";
-                $result = mysqli_query($connection, $query);
-                mysqli_close($connection);
-                // Creacion de codigo QR
-                if (file_exists("../static/php/phpqrcode/qrlib.php")){
-                    require "../static/php/phpqrcode/qrlib.php";
+                // Envío de SMS
+                // Codigo para pedir el token
+                $data = array("account" => "00486340924", "password" => "Kaliel0830");
+                $data_string = json_encode($data);
+                $ch = curl_init('https://api.cellvoz.co/v2/auth/login');
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                    'Content-Type: application/json')
+                );
+                $result = curl_exec($ch);
+                $data = json_decode($result);
+                $token = $data->token;
+                $boletas = explode("-", $_POST['extra1']);
+                foreach($boletas as $boleta) {
+                    $query = "INSERT INTO boletas (numero_boleta, comprador_ip, comprador_nombre, comprador_cedula, comprador_celular, comprador_correo, referencia_pago, referencia_venta, id_transaccion, codigo_referido, fecha_compra) VALUES ('$boleta', '$comprador_ip', '$comprador_nombre', '$comprador_cedula', '$comprador_celular', '$comprador_correo', '$referencia_pago', '$referencia_venta', '$id_transaccion', '$codigo_referido', '$fecha_compra');";
+                    $result = mysqli_query($connection, $query);
+
+                    // Creacion de codigo QR
                     $link = "https://www.ganatucarro.com";             //CAMBIARRRRRRR
-                    $nombreArchivo = $referenceCode.".png";
+                    $nombreArchivo = $referenceCode."-".$boleta.".png";
                     $rutaQR = "../media/codigosQR/".$nombreArchivo;
                     $tamaño = 100;
                     $level = "H";
                     $framesize = 3;
-                    QRcode ::png($link, $rutaQR, $level, $tamaño, $framesize);
-                    if (file_exists($rutaQR)){
-                        $error = 0;
-                        $mensaje = "Archivo generado";
-                    }
-                }else{
-                    $error = 1;
-                    $mensaje = "No existe la libreria";
+                    QRcode ::png($link, $rutaQR, $level, $tamaño, $framesize);    
+
+                    // Envío de correo electrónico
+                    $destinatario = $comprador_correo; 
+                    $asunto = "Compra exitosa. Tu boleta es ".$boleta; 
+                    $cuerpo = ' 
+                    <html> 
+                    <head> 
+                    <title>Gana Tu Carro</title> 
+                    </head> 
+                    <body> 
+                    <div align= "center">
+                    <h1>Membresía Gana Tu Carro</h1> 
+                    <h3><b>Nombre: </b> '.$comprador_nombre.'</h3>
+                    <h3><b>Cedula: </b> '.$comprador_cedula.'</h3>
+                    <br>
+                    <br>
+                    <br>
+                    <img src="'.$dominio.'/media/codigosQR/'.$nombreArchivo.'" width="400px" ></img>
+                    </div>
+                    </body> 
+                    </html> 
+                    '; 
+                    //para el envío en formato HTML 
+                    $headers = "MIME-Version: 1.0\r\n"; 
+                    $headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
+                    //dirección del remitente 
+                    $headers .= "From: Gana Tu Carro <noreply@ganatucarro.com>\r\n"; 
+                    //dirección de respuesta, si queremos que sea distinta que la del remitente 
+                    $headers .= "Reply-To: soporte@ganatucarro.com\r\n";     
+                    //direcciones que recibirán copia oculta 
+                    // $headers .= "Bcc: pepe@pepe.com,juan@juan.com\r\n"; 
+                    mail($destinatario, $asunto, $cuerpo, $headers);
+
+                    // Envío de SMS
+                    //Codigo para enviar el mensaje
+                    $data = array("number" => "57".$comprador_celular, "message" => "La compra de su membresía en ganatucarro.com ha sido exitosa con el numero " .$boleta.". Usted puede visualizar su boleta en: ".$link." Suerte!", "type" => "1");
+                    $data_string = json_encode($data);
+                    $ch = curl_init('https://api.cellvoz.co/v2/sms/single');
+                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                        'Content-Type: application/json',
+                        'Authorization: Bearer '.$token,
+                        'api-key: b4403cab3d7927db109ff943627964623debf01f')
+                    );
+                    $result = curl_exec($ch);
                 }
-
-                // Envío de correo electrónico
-                $destinatario = $comprador_correo; 
-                $asunto = "Compra exitosa"; 
-                $cuerpo = ' 
-                <html> 
-                <head> 
-                <title>Gana Tu Carro</title> 
-                </head> 
-                <body> 
-                <div align= "center">
-                <h1>Membresía Gana Tu Carro</h1> 
-                <h1>Tu boleta comprada fue '.$numero_boleta.'</h1>
-                <h3><b>Nombre: </b> '.$comprador_nombre.'</h3>
-                <h3><b>Cedula: </b> '.$comprador_cedula.'</h3>
-                <br>
-                <img src="'.$dominio.'/media/codigosQR/'.$nombreArchivo.'" width="400px" ></img>
-                </div>
-                </body> 
-                </html> 
-                '; 
-
-                //para el envío en formato HTML 
-                $headers = "MIME-Version: 1.0\r\n"; 
-                $headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
-
-                //dirección del remitente 
-                $headers .= "From: Gana Tu Carro <noreply@ganatucarro.com>\r\n"; 
-
-                //dirección de respuesta, si queremos que sea distinta que la del remitente 
-                $headers .= "Reply-To: soporte@ganatucarro.com\r\n"; 
-
-                //direcciones que recibirán copia oculta 
-                // $headers .= "Bcc: pepe@pepe.com,juan@juan.com\r\n"; 
-
-                mail($destinatario, $asunto, $cuerpo, $headers);
+                mysqli_close($connection);
             }
-        }  
+        }
     }
     // Tarjeta de credito
     // 4889135968287203
