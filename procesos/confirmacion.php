@@ -8,6 +8,7 @@
     $connection = mysqli_connect($host, $user, $pw, $db);
     mysqli_set_charset($connection, "utf8");
     // Captura de datos
+
     $method = $_SERVER['REQUEST_METHOD'];
     if($method == "POST"){
         $transactionState = $_POST['state_pol'];
@@ -26,7 +27,7 @@
             $firma = $_POST['sign'];
             $firmacreada = md5("$ApiKey~$merchant_id~$referenceCode~$new_value~$currency~$transactionState");
             // Confirmación de firma
-            if (strtoupper($firma) == strtoupper($firmacreada)) {              
+            if (strtoupper($firma) == strtoupper($firmacreada)) {
                 $comprador_ip = $_POST['ip'];
                 $comprador_datos = explode("-", $_POST['extra2']);
                 $comprador_nombre = $comprador_datos[1];
@@ -38,6 +39,9 @@
                 $id_transaccion = $_POST['transaction_id'];
                 $codigo_referido = $_POST['extra3'];
                 $fecha_compra = $_POST['transaction_date'];
+                $boletas = explode("-", $_POST['extra1']);
+                $imagenesHTML = "";
+
                 // Envío de SMS
                 // Codigo para pedir el token
                 $data = array("account" => "00486340924", "password" => "Kaliel0830");
@@ -52,67 +56,80 @@
                 $result = curl_exec($ch);
                 $data = json_decode($result);
                 $token = $data->token;
-                $boletas = explode("-", $_POST['extra1']);
+
+
                 foreach($boletas as $boleta) {
                     $query = "INSERT INTO boletas (numero_boleta, comprador_ip, comprador_nombre, comprador_cedula, comprador_celular, comprador_correo, referencia_pago, referencia_venta, id_transaccion, codigo_referido, fecha_compra) VALUES ('$boleta', '$comprador_ip', '$comprador_nombre', '$comprador_cedula', '$comprador_celular', '$comprador_correo', '$referencia_pago', '$referencia_venta', '$id_transaccion', '$codigo_referido', '$fecha_compra');";
                     $result = mysqli_query($connection, $query);
+                    // $dato= "Subida a la base de datos ".$boleta;
+                    // $query = "INSERT INTO ver_datos(datos) VALUES ('$dato');";
+                    // $result = mysqli_query($connection, $query);
 
                     // Creacion de codigo QR
-                    $link = "https://www.ganatucarro.com";             //CAMBIARRRRRRR
                     $nombreArchivo = $referenceCode."-".$boleta.".png";
                     $rutaQR = "../media/codigosQR/".$nombreArchivo;
                     $tamaño = 100;
                     $level = "H";
                     $framesize = 3;
-                    QRcode ::png($link, $rutaQR, $level, $tamaño, $framesize);    
-
-                    // Envío de correo electrónico
-                    $destinatario = $comprador_correo; 
-                    $asunto = "Compra exitosa. Tu boleta es ".$boleta; 
-                    $cuerpo = ' 
-                    <html> 
-                    <head> 
-                    <title>Gana Tu Carro</title> 
-                    </head> 
-                    <body> 
-                    <div align= "center">
-                    <h1>Membresía Gana Tu Carro</h1> 
-                    <h3><b>Nombre: </b> '.$comprador_nombre.'</h3>
-                    <h3><b>Cedula: </b> '.$comprador_cedula.'</h3>
-                    <br>
-                    <br>
-                    <br>
-                    <img src="'.$dominio.'/media/codigosQR/'.$nombreArchivo.'" width="400px" ></img>
-                    </div>
-                    </body> 
-                    </html> 
-                    '; 
-                    //para el envío en formato HTML 
-                    $headers = "MIME-Version: 1.0\r\n"; 
-                    $headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
-                    //dirección del remitente 
-                    $headers .= "From: Gana Tu Carro <noreply@ganatucarro.com>\r\n"; 
-                    //dirección de respuesta, si queremos que sea distinta que la del remitente 
-                    $headers .= "Reply-To: soporte@ganatucarro.com\r\n";     
-                    //direcciones que recibirán copia oculta 
-                    // $headers .= "Bcc: pepe@pepe.com,juan@juan.com\r\n"; 
-                    mail($destinatario, $asunto, $cuerpo, $headers);
-
-                    // Envío de SMS
-                    //Codigo para enviar el mensaje
-                    $data = array("number" => "57".$comprador_celular, "message" => "La compra de su membresía en ganatucarro.com ha sido exitosa con el numero " .$boleta.". Usted puede visualizar su boleta en: ".$link." Suerte!", "type" => "1");
-                    $data_string = json_encode($data);
-                    $ch = curl_init('https://api.cellvoz.co/v2/sms/single');
-                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-                        'Content-Type: application/json',
-                        'Authorization: Bearer '.$token,
-                        'api-key: b4403cab3d7927db109ff943627964623debf01f')
-                    );
-                    $result = curl_exec($ch);
+                    $link = $dominio."?referencia_pago=".$referencia_pago."&comprador_nombre=".$comprador_nombre."&comprador_cedula=".$comprador_cedula."&numero_boleta=".$boleta."&archivoQR=".$nombreArchivo;
+                    QRcode ::png(urlencode($link), $rutaQR, $level, $tamaño, $framesize);   
+                    $imagenesHTML = $imagenesHTML.'<h2>Boleta: '.$boleta.'</h2><img src="'.$dominio.'/media/codigosQR/'.$nombreArchivo.'" width="400px" ></img><br>';
+                    // $dato= "QR creado ".$boleta;
+                    // $query = "INSERT INTO ver_datos(datos) VALUES ('$dato');";
+                    // $result = mysqli_query($connection, $query);
                 }
+                //Envío de SMS
+                //Codigo para enviar el mensaje
+                $data = array("number" => "57".$comprador_celular, "message" => "La compra de su membresía en ganatucarro.com ha sido exitosa ", "type" => "1");
+                $data_string = json_encode($data);
+                $ch = curl_init('https://api.cellvoz.co/v2/sms/single');
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                    'Content-Type: application/json',
+                    'Authorization: Bearer '.$token,
+                    'api-key: b4403cab3d7927db109ff943627964623debf01f')
+                );
+                $result = curl_exec($ch);
+                $dato= "SMS enviado ".$boleta;
+                $query = "INSERT INTO ver_datos(datos) VALUES ('$dato');";
+                $result = mysqli_query($connection, $query);
+                                 
+                // Envío de correo electrónico
+                $destinatario = $comprador_correo; 
+                $asunto = "La compra de tu membresía ha sido exitosa!"; 
+                $cuerpo = ' 
+                <html> 
+                <head> 
+                <title>Gana Tu Carro</title> 
+                </head> 
+                <body> 
+                <div align= "center">
+                <h1>Membresía Gana Tu Carro</h1> 
+                <h3><b>Nombre: </b> '.$comprador_nombre.'</h3>
+                <h3><b>Cedula: </b> '.$comprador_cedula.'</h3>
+                <br>
+                <br>'
+                .$imagenesHTML.
+                '
+                </div>
+                </body> 
+                </html> 
+                '; 
+                //para el envío en formato HTML 
+                $headers = "MIME-Version: 1.0\r\n"; 
+                $headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
+                //dirección del remitente 
+                $headers .= "From: Gana Tu Carro <noreply@ganatucarro.com>\r\n"; 
+                //dirección de respuesta, si queremos que sea distinta que la del remitente 
+                $headers .= "Reply-To: soporte@ganatucarro.com\r\n";     
+                //direcciones que recibirán copia oculta 
+                // $headers .= "Bcc: pepe@pepe.com,juan@juan.com\r\n"; 
+                mail($destinatario, $asunto, $cuerpo, $headers);
+                // $dato= "Email enviado ".$boleta;
+                // $query = "INSERT INTO ver_datos(datos) VALUES ('$dato');";
+                // $result = mysqli_query($connection, $query);
                 mysqli_close($connection);
             }
         }

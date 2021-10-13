@@ -1,5 +1,4 @@
 <?php
-    
     include_once("../static/connection/connection.php");
     $mysqli = new mysqli($host, $user, $pw, $db);
 
