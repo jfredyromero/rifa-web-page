@@ -142,7 +142,7 @@ if ($mysqli->connect_error) {
 
 				<input name="accountId" type="hidden" value="512321" />
 
-				<input name="description" type="hidden" value="Hola Mundo" />
+				<input name="description" type="hidden" value="" />
 
 				<input name="referenceCode" type="hidden" />
 
@@ -195,14 +195,11 @@ if ($mysqli->connect_error) {
 	<!-- <button class="btnOpen" style="padding: 20px;" id="btnOpen">Abrir</button> -->
 	<?php
 	$banderaPopUp = false;
-	echo "HOLAAA";
 	if (isset($_GET["referencia_pago"])){
 		$referencia_pago = $_GET["referencia_pago"];
 		$comprador_nombre = $_GET["comprador_nombre"];
 		$comprador_cedula = $_GET["comprador_cedula"];
 		$numero_boleta = $_GET["numero_boleta"];
-		$archivoQR = $_GET["archivoQR"];
-		echo "<h1>Si funciona</h1>";
 	?>
 	<div class="card-popup" id="card-popup">
 		<div class="container-flex">
@@ -249,10 +246,10 @@ if ($mysqli->connect_error) {
 			</div>
 		</div>
 	</div>
-	<?php	
+	<?php
 	$banderaPopUp = true;
 	}
-	else {
+	else if(isset($_GET['signature'])) {
 		$ApiKey = "4Vj8eK4rloUd272L48hsrarnUA";
 		$merchant_id = $_GET['merchantId'];
 		$referenceCode = $_GET['referenceCode'];
@@ -370,6 +367,7 @@ if ($mysqli->connect_error) {
 			</div>
 	<?php
 		}
+	}else{
 	}
 	?>
 </body>

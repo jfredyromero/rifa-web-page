@@ -71,16 +71,22 @@
                     $tamaño = 100;
                     $level = "H";
                     $framesize = 3;
-                    $link = $dominio."?referencia_pago=".$referencia_pago."&comprador_nombre=".$comprador_nombre."&comprador_cedula=".$comprador_cedula."&numero_boleta=".$boleta."&archivoQR=".$nombreArchivo;
-                    QRcode ::png(urlencode($link), $rutaQR, $level, $tamaño, $framesize);   
+                    $link = $dominio."?referencia_pago=".urlencode($referencia_pago)."&comprador_nombre=".urlencode($comprador_nombre)."&comprador_cedula=".urlencode($comprador_cedula)."&numero_boleta=".urlencode($boleta);
+                    QRcode ::png($link, $rutaQR, $level, $tamaño, $framesize);   
                     $imagenesHTML = $imagenesHTML.'<h2>Boleta: '.$boleta.'</h2><img src="'.$dominio.'/media/codigosQR/'.$nombreArchivo.'" width="400px" ></img><br>';
                     // $dato= "QR creado ".$boleta;
                     // $query = "INSERT INTO ver_datos(datos) VALUES ('$dato');";
                     // $result = mysqli_query($connection, $query);
                 }
+                if (count($boletas)>1){
+                    $mesajeSMS= "La compra de sus membresías en ganatucarro.com ha sido exitosa.";
+                }
+                else{
+                    $mesajeSMS= "La compra de su membresía en ganatucarro.com ha sido exitosa.";
+                }
                 //Envío de SMS
                 //Codigo para enviar el mensaje
-                $data = array("number" => "57".$comprador_celular, "message" => "La compra de su membresía en ganatucarro.com ha sido exitosa ", "type" => "1");
+                $data = array("number" => "57".$comprador_celular, "message" => $mensajeSMS, "type" => "1");
                 $data_string = json_encode($data);
                 $ch = curl_init('https://api.cellvoz.co/v2/sms/single');
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -92,9 +98,9 @@
                     'api-key: b4403cab3d7927db109ff943627964623debf01f')
                 );
                 $result = curl_exec($ch);
-                $dato= "SMS enviado ".$boleta;
-                $query = "INSERT INTO ver_datos(datos) VALUES ('$dato');";
-                $result = mysqli_query($connection, $query);
+                // $dato= "SMS enviado ".$boleta;
+                // $query = "INSERT INTO ver_datos(datos) VALUES ('$dato');";
+                // $result = mysqli_query($connection, $query);
                                  
                 // Envío de correo electrónico
                 $destinatario = $comprador_correo; 

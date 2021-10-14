@@ -11,10 +11,10 @@
     $stmt = $mysqli->prepare($sql);
     $stmt->execute();
     $stmt->store_result();
-    $stmt->bind_result($num);    
+    $stmt->bind_result($num);
     
     /* Diseñado para boletas de 4 digitos*/
-    define('NUMDIG',4);
+    define('NUMDIG', 4);
 
     $num_boletas_totales = 10000;
     $num_boletas_desplegar = 12;
@@ -24,6 +24,7 @@
         return substr(strval($n + pow(10,NUMDIG)),1, NUMDIG);
     }    
 
+    $boletas_compradas = [];
     while ($stmt -> fetch()) {        
         $boletas_compradas[] = (int)$num;
     }
@@ -69,7 +70,7 @@
                 //echo  '<input type="checkbox" name="checkbox-ticket" value="'.$tch[$i].'" checked> <label>'.$tch[$i].'</label><br>';
             }
         }else{
-            $boletas_disponibles = array_map("agregarceros",array_diff($boletas_totales,$boletas_compradas));
+            $boletas_disponibles = array_map("agregarceros", array_diff($boletas_totales,$boletas_compradas));
         }
     }
 
@@ -80,8 +81,7 @@
         if(sizeof($boletas_disponibles) >= $num_boletas_desplegar){
             $boletas_desplegadas =  array_rand($boletas_disponibles, $num_boletas_desplegar);
             if($num_boletas_desplegar==1){
-                echo '   
-                
+                echo '                   
                     <div class="ticket">
                         <svg min-width="175" min-height="117" width="100%" height="100%" viewBox="0 0 175 117"
                             fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -110,8 +110,7 @@
              //   echo '<input type="checkbox" name="checkbox-ticket" value="'.$boletas_disponibles[$boletas_desplegadas].'"> <label>'.$boletas_disponibles[$boletas_desplegadas].'</label><br>';
             }else{
                 foreach ($boletas_desplegadas as $b) {
-                    echo ' 
-                
+                    echo '                 
                     <div class="ticket">
                         <svg min-width="175" min-height="117" width="100%" height="100%" viewBox="0 0 175 117"
                             fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -148,7 +147,6 @@
             }else{
                 foreach ($boletas_desplegadas as $b) {
                     echo ' 
-                
                     <div class="ticket">
                         <svg min-width="175" min-height="117" width="100%" height="100%" viewBox="0 0 175 117"
                             fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -173,8 +171,6 @@
                         <h1>'.$b.'</h1>
                         <input type="checkbox" name="checkbox-ticket" value="'.$b.'">
                     </div>';
-                    
-
                    // echo '<input type="checkbox" name="checkbox-ticket" value="'.$b.'"> <label>'.$b.'</label><br>';
                 }
             }            
