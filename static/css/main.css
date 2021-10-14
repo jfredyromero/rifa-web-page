@@ -432,13 +432,13 @@ input[type="checkbox"]:checked + label {
 }
 
 .bg-close {
-	position: absolute;
+	position: fixed;
 	background-color: #4e4e4e6c;
 	top: 0;
 	left: 0;
 	z-index: 2;
 	width: 100%;
-	height: 100%;
+	height: 100vh;
 }
 
 .card-content {
@@ -447,7 +447,7 @@ input[type="checkbox"]:checked + label {
 	flex-direction: column;
 	background-color: var(--dark);
 	border-radius: 0.6rem;
-	padding: 1rem 1.5rem;
+	padding: 1.5rem 1.5rem;
 }
 
 .card-header {
@@ -502,6 +502,25 @@ td {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.virtual-ticket {
+	flex-direction: column;
+	align-items: center;
+}
+
+.virtual-ticket td {
+	width: 50%;
+}
+
+.virtual-ticket .ticket {
+	width: 15rem;
+	height: auto;
+}
+
+.virtual-ticket .ticket h1 {
+	font-weight: bold;
+	font-size: 3rem;
 }
 
 @media (min-width: 1269px) {
