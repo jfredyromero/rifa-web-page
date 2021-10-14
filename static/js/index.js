@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			return false;
 		}else{
 			generarCodigoReferencia();
-			generarSignature();
+			// generarSignature();
 			generarDescripcion();
 			return true;
 		}
@@ -133,20 +133,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	function generarCodigoReferencia() {
 		numeroBoleta = document.querySelector('input[name="extra1"]');
-		let referenceCode = buyerName.value + "-" + mobilePhone.value + "-" + numeroBoleta.value + "-" + Date.now();
-		let hashReferenceCode = CryptoJS.MD5(referenceCode);
-		document.querySelector('input[name="referenceCode"]').value = hashReferenceCode + "";
+		let referenceCode = buyerName.value + "-" + numeroBoleta.value + "-" + Date.now();
+		document.querySelector('input[name="referenceCode"]').value = referenceCode;
 	}
 
-	function generarSignature() {
-		const apiKey = "4Vj8eK4rloUd272L48hsrarnUA";
-		const merchanId = "508029";
-		const amount = inputAmount.value;
-		const currency = "COP";
-		let referenceCode = document.querySelector('input[name="referenceCode"]').value;
-		let signature = CryptoJS.MD5(apiKey + "~" + merchanId + "~" + referenceCode + "~" + amount + "~" + currency);
-		document.querySelector('input[name="signature"]').value = signature + "";
-	}
+	// function generarSignature() {
+	// 	const apiKey = "4Vj8eK4rloUd272L48hsrarnUA";
+	// 	const merchanId = "508029";
+	// 	const amount = inputAmount.value;
+	// 	const currency = "COP";
+	// 	let referenceCode = document.querySelector('input[name="referenceCode"]').value;
+	// 	let signature = CryptoJS.MD5(apiKey + "~" + merchanId + "~" + referenceCode + "~" + amount + "~" + currency);
+	// 	document.querySelector('input[name="signature"]').value = signature + "";
+	// }
 
 	function generarDescripcion() {
 		let nombre = buyerName.value;

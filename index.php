@@ -19,7 +19,7 @@ if ($mysqli->connect_error) {
 
 <body>
 
-	<form id="form-boleta" method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu">
+	<form id="form-boleta" method="post" action="procesos/validacion.php">
 
 		<div class="page-content">
 
@@ -135,12 +135,7 @@ if ($mysqli->connect_error) {
 				<!-- Datos necesarios para el pago en PayU -->
 				<!-- ===================================== -->
 
-				<!-- Aqui va el numero de la boleta. Será un número de 4 digitos -->
-				<input name="extra1" type="hidden" value="" />
-
-				<input name="merchantId" type="hidden" value="508029" />
-
-				<input name="accountId" type="hidden" value="512321" />
+				<input name="extra1" type="hidden" />
 
 				<input name="description" type="hidden" value="" />
 
@@ -154,23 +149,7 @@ if ($mysqli->connect_error) {
 
 				<input name="payerMobilePhone" type="hidden" />
 
-				<!-- Aqui va el precio de la compra. Por ahora es fijo -->
-				<input name="amount" type="hidden" value="0" />
-
-				<!-- Aqui van los impuestos. Si se deja vacío sera el 19% -->
-				<input name="tax" type="hidden" value="0" />
-
-				<input name="taxReturnBase" type="hidden" value="0" />
-
-				<input name="currency" type="hidden" value="COP" />
-
-				<input name="signature" type="hidden" />
-
-				<input name="test" type="hidden" value="1" />
-
-				<input name="responseUrl" type="hidden" value="http://localhost/rifa-web-page/" />
-
-				<input name="confirmationUrl" type="hidden" value="https://ganatucarro.com/procesos/confirmacion.php" />
+				<input name="amount" type="hidden" />
 
 				<div class="buy-block">
 					<div class="form-item mb-05">

@@ -25,7 +25,7 @@
     }    
 
     $boletas_compradas = [];
-    while ($stmt -> fetch()) {        
+    while ($stmt -> fetch()) { 
         $boletas_compradas[] = (int)$num;
     }
 
