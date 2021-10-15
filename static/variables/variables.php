@@ -4,5 +4,5 @@ $merchantId = "508029";
 $accountId = "512321";
 // $dominio = "https://www.ganatucarro.com";
 $dominio = "localhost/rifa-web-page";
-$price = 50000;
+$price = 65000;
 ?>

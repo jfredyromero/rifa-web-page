@@ -16,7 +16,7 @@ document.getElementById("tickets-grid-container").addEventListener("click", func
 	var tickets = Array.from(document.getElementsByName("checkbox-ticket"));
 
 	tickets_values = [];
-	var ticket_price = 50000;
+	var ticket_price = 65000;
 
 	tickets.forEach(t => {
 		if (t.checked == true) {
