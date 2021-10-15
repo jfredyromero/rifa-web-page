@@ -1,10 +1,3 @@
-<?php
-include_once("static/connection/connection.php");
-$mysqli = new mysqli($host, $user, $pw, $db);
-if ($mysqli->connect_error) {
-	exit('Could not connect');
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -168,7 +161,7 @@ if ($mysqli->connect_error) {
 
 				<input name="test" type="hidden" value="1" />
 
-				<input name="responseUrl" type="hidden" value="http://localhost/rifa-web-page/" />
+				<input name="responseUrl" type="hidden" value="https://ganatucarro.com/" />
 
 				<input name="confirmationUrl" type="hidden" value="https://ganatucarro.com/procesos/confirmacion.php" />
 

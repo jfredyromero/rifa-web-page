@@ -1,4 +1,7 @@
-var datos = "";
+document.addEventListener("DOMContentLoaded", () => {
+	window.addEventListener("load", refrescar);
+	document.getElementById("btnRefresh").addEventListener("click", refrescar);
+});
 
 function refrescar() {
 	var xhttp;
@@ -12,6 +15,7 @@ function refrescar() {
 		}
 	});
 
+	var datos = "";
 	datos = tickets_values.join("-");
 
 	document.getElementById("tickets-grid-container").innerHTML = "";
@@ -26,9 +30,8 @@ function refrescar() {
 	var params = new FormData();
 	params.append("tickets_ch", datos);
 
-	xhttp.open("POST", "/rifa-web-page/procesos/boletas.php", true);
+	xhttp.open("POST", "/procesos/boletas.php", true);
 	xhttp.send(params);
 }
 
-window.addEventListener("load", refrescar);
-document.getElementById("btnRefresh").addEventListener("click", refrescar);
+
