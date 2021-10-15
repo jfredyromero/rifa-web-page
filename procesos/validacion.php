@@ -74,27 +74,28 @@ if($method == "POST"){
 </head>
 <body>
     <form id="myForm" style = "display:none;" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu" method="POST">
-        <input name="buyerFullName" value="<?php echo $buyerFullName; ?>">
-        <input name="payerDocument" value="<?php echo $payerDocument; ?>">
-        <input name="mobilePhone" value="<?php echo $mobilePhone; ?>">
-        <input name="buyerEmail" value="<?php echo $buyerEmail; ?>">
-        <input name="extra1" value="<?php echo $extra1; ?>">
-        <input name="merchantId" value="<?php echo $merchantId; ?>">
-        <input name="accountId" value="<?php echo $accountId; ?>">
-        <input name="description" value="<?php echo $description; ?>">
-        <input name="referenceCode" value="<?php echo $referenceCode; ?>">
-        <input name="extra2" value="<?php echo $extra2; ?>">
-        <input name="extra3" value="<?php echo $extra3; ?>">
-        <input name="payerFullName" value="<?php echo $payerFullName; ?>">
-        <input name="payerMobilePhone" value="<?php echo $payerMobilePhone; ?>">
-        <input name="amount" value="<?php echo $amount; ?>">
-        <input name="tax" value="<?php echo $tax; ?>">
-        <input name="taxReturnBase" value="<?php echo $taxReturnBase; ?>">
-        <input name="currency" value="<?php echo $currency; ?>">
-        <input name="signature" value="<?php echo $signature; ?>">
-        <input name="test" value="<?php echo $test; ?>">
-        <input name="responseUrl" value="<?php echo $responseUrl; ?>">
-        <input name="confirmationUrl" value="<?php echo $confirmationUrl; ?>">
+        <input name="buyerFullName" type="hidden" value="<?php echo $buyerFullName; ?>">
+        <input name="payerDocument" type="hidden" value="<?php echo $payerDocument; ?>">
+        <input name="mobilePhone" type="hidden" value="<?php echo $mobilePhone; ?>">
+        <input name="buyerEmail" type="hidden" value="<?php echo $buyerEmail; ?>">
+        <input name="extra1" type="hidden" value="<?php echo $extra1; ?>">
+        <input name="merchantId" type="hidden" value="<?php echo $merchantId; ?>">
+        <input name="accountId" type="hidden" value="<?php echo $accountId; ?>">
+        <input name="description" type="hidden" value="<?php echo $description; ?>">
+        <input name="referenceCode" type="hidden" value="<?php echo $referenceCode; ?>">
+        <input name="extra2" type="hidden" value="<?php echo $extra2; ?>">
+        <input name="extra3" type="hidden" value="<?php echo $extra3; ?>">
+        <input name="payerFullName" type="hidden" value="<?php echo $payerFullName; ?>">
+        <input name="payerMobilePhone" type="hidden" value="<?php echo $payerMobilePhone; ?>">
+        <input name="amount" type="hidden" value="<?php echo $amount; ?>">
+        <input name="tax" type="hidden" value="<?php echo $tax; ?>">
+        <input name="taxReturnBase" type="hidden" value="<?php echo $taxReturnBase; ?>">
+        <input name="currency" type="hidden" value="<?php echo $currency; ?>">
+        <input name="signature" type="hidden" value="<?php echo $signature; ?>">
+        <input name="test" type="hidden" value="<?php echo $test; ?>">
+        <input name="responseUrl" type="hidden" value="<?php echo $responseUrl; ?>">
+        <input name="confirmationUrl" type="hidden" value="https://www.ganatucarro.com/procesos/confirmacion.php">
+        <input name="Submit" type="submit" value="Enviar" >
     </form>
     <div style="display:flex; justify-content: center; align-items: center;">
       <img src="../static/img/timer.gif">

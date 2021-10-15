@@ -109,6 +109,7 @@
         <h1>Error validando firma digital.</h1>
     <?php
         }
+    mysqli_close($connection);
     ?>
     </body>
 </html>

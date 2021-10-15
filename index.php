@@ -1,10 +1,7 @@
 <?php
-include_once("static/connection/connection.php");
-$mysqli = new mysqli($host, $user, $pw, $db);
-
-if ($mysqli->connect_error) {
-	exit('Could not connect');
-}
+   include_once("../static/connection/connection.php");
+   $connection = mysqli_connect($host, $user, $pw, $db);
+   mysqli_set_charset($connection, "utf8");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +18,7 @@ if ($mysqli->connect_error) {
 <body>
 
 	<form id="form-boleta" method="post" action="procesos/validacion.php">
+	<!-- <form id="form-boleta" method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/"> -->
 
 		<div class="page-content">
 
@@ -135,7 +133,7 @@ if ($mysqli->connect_error) {
 				<!-- ===================================== -->
 				<!-- Datos necesarios para el pago en PayU -->
 				<!-- ===================================== -->
-
+        
 				<input name="extra1" type="hidden" />
 
 				<input name="description" type="hidden" value="" />
@@ -404,7 +402,6 @@ if ($banderaPopUp) {
 	<script src="static/js/abrirModal.js"></script>
 <?php
 }
+mysqli_close($connection);
 ?>
-<!-- http://localhost/rifa-web-page/?merchantId=508029&merchant_name=Test+PayU+Test+comercio&merchant_address=Av+123+Calle+12&telephone=7512354&merchant_url=http%3A%2F%2Fpruebaslapv.xtrweb.com&transactionState=4&lapTransactionState=APPROVED&message=APPROVED&referenceCode=c282fec375dee46186dfe728528cf9bf&reference_pol=1401633362&transactionId=495fa735-3e94-4b5b-9613-a5ec4a85e977&description=Compra+de+las+boletas+%230046%2C+%230580%2C+%237100+y+%239445+v%C3%A1lidas+para+sorteo+de+espectacular+veh%C3%ADculo.+La+compra+es+realizada+a+nombre+de+APPROVED&trazabilityCode=CRED+-+777021655&cus=CRED+-+777021655&orderLanguage=es&extra1=0046-0580-7100-9445&extra2=1002970732-APPROVED&extra3=&polTransactionState=4&signature=8eb8054903387db7458cb4d7c9bd938f&polResponseCode=1&lapResponseCode=APPROVED&risk=&polPaymentMethod=10&lapPaymentMethod=VISA&polPaymentMethodType=2&lapPaymentMethodType=CREDIT_CARD&installmentsNumber=1&TX_VALUE=200000.00&TX_TAX=.00&currency=COP&lng=es&pseCycle=&buyerEmail=jhonrom%40unicauca.edu.co&pseBank=&pseReference1=&pseReference2=&pseReference3=&authorizationCode=847072&TX_ADMINISTRATIVE_FEE=.00&TX_TAX_ADMINISTRATIVE_FEE=.00&TX_TAX_ADMINISTRATIVE_FEE_RETURN_BASE=.00&processingDate=2021-10-10 -->
-
 </html>

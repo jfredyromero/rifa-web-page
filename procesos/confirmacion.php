@@ -1,4 +1,5 @@
 <?php
+
     // Conexion a la base de datos
     $dominio = "https://www.ganatucarro.com";
     include_once("../static/connection/connection.php");
@@ -8,11 +9,20 @@
     $connection = mysqli_connect($host, $user, $pw, $db);
     mysqli_set_charset($connection, "utf8");
     // Captura de datos
+    $dato= "Sii entró";
+    $query = "INSERT INTO ver_datos(datos) VALUES ('$dato');";
+    $result = mysqli_query($connection, $query);
 
     $method = $_SERVER['REQUEST_METHOD'];
     if($method == "POST"){
+        $dato= "Sii es POST";
+        $query = "INSERT INTO ver_datos(datos) VALUES ('$dato');";
+        $result = mysqli_query($connection, $query);
         $transactionState = $_POST['state_pol'];
         if($transactionState==4){
+            $dato= "Sii aprobo";
+            $query = "INSERT INTO ver_datos(datos) VALUES ('$dato');";
+            $result = mysqli_query($connection, $query);
             $ApiKey = "4Vj8eK4rloUd272L48hsrarnUA";
             $merchant_id = "508029";
             $referenceCode = $_POST['reference_sale'];
@@ -28,6 +38,9 @@
             $firmacreada = md5("$ApiKey~$merchant_id~$referenceCode~$new_value~$currency~$transactionState");
             // Confirmación de firma
             if (strtoupper($firma) == strtoupper($firmacreada)) {
+                $dato= "Firma correcta";
+                $query = "INSERT INTO ver_datos(datos) VALUES ('$dato');";
+                $result = mysqli_query($connection, $query);
                 $comprador_ip = $_POST['ip'];
                 $comprador_datos = explode("-", $_POST['extra2']);
                 $comprador_nombre = $comprador_datos[1];
@@ -78,11 +91,12 @@
                     // $query = "INSERT INTO ver_datos(datos) VALUES ('$dato');";
                     // $result = mysqli_query($connection, $query);
                 }
+                mysqli_close($connection);
                 if (count($boletas)>1){
-                    $mesajeSMS= "La compra de sus membresías en ganatucarro.com ha sido exitosa.";
+                    $mensajeSMS= "La compra de sus membresías en ganatucarro.com ha sido exitosa.";
                 }
                 else{
-                    $mesajeSMS= "La compra de su membresía en ganatucarro.com ha sido exitosa.";
+                    $mensajeSMS= "La compra de su membresía en ganatucarro.com ha sido exitosa.";
                 }
                 //Envío de SMS
                 //Codigo para enviar el mensaje
@@ -136,7 +150,6 @@
                 // $dato= "Email enviado ".$boleta;
                 // $query = "INSERT INTO ver_datos(datos) VALUES ('$dato');";
                 // $result = mysqli_query($connection, $query);
-                mysqli_close($connection);
             }
         }
     }

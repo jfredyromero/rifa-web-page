@@ -26,7 +26,7 @@ function refrescar() {
 	var params = new FormData();
 	params.append("tickets_ch", datos);
 
-	xhttp.open("POST", "/rifa-web-page/procesos/boletas.php", true);
+	xhttp.open("POST", "procesos/boletas.php", true);
 	xhttp.send(params);
 }
 
