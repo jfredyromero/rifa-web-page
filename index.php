@@ -1,5 +1,5 @@
 <?php
-include_once("static/connection/connection.php");
+include_once("static/connection/connectionLocal.php");
 $mysqli = new mysqli($host, $user, $pw, $db);
 
 if ($mysqli->connect_error) {
@@ -27,8 +27,10 @@ if ($mysqli->connect_error) {
 			<div class="first-section">
 
 				<div class="counter-block d-flex-col">
-					<div class="mb-1 mt-1 logo"></div>
-					<h2 class="titulo mb-1">¡Compra tus Boletas!</h2>
+					<div class="logo">
+						<img src="static/img/logo.png" alt="logo">
+					</div>
+					<h2 class="titulo mb-1">¡Compra tus Membresias!</h2>
 
 					<div class="clock-counter mb-1 d-flex-row">
 						<div class="time-interval-container d-flex-col">
@@ -55,7 +57,12 @@ if ($mysqli->connect_error) {
 
 				<div class="tickets-block">
 					<div class="mb-1 form-item">
-						<label for="">Selecciona tu Boleta <span> *</span></label>
+						<label for="">Selecciona tu Membresía <span> *</span></label>
+						<div class="form-search mb-1">
+							<input class="form-input" id="inpSearch" type="number" placeholder="Busca tu boleta...">
+							<button class="btn btn-primary ms-1" id="btnSearch">Buscar</button>
+						</div>
+						
 						<div class="tickets-grid-container" id="tickets-grid-container">
 
 							<!-- <div class="ticket">
@@ -92,7 +99,7 @@ if ($mysqli->connect_error) {
 				<div class="refresh-block">
 					<div class="form-item mb-1">
 						<div class="bg-gold-gradient">
-							<input type="button" id="btnRefresh" class="btn btn-secondary w-100" value="Refrescar Boletas" />
+							<input type="button" id="btnRefresh" class="btn btn-secondary w-100" value="Refrescar Membresias" />
 						</div>
 					</div>
 
@@ -213,7 +220,9 @@ if ($mysqli->connect_error) {
 				<div class="bg-close" id="bg-close"></div>
 				<div class="card-content">
 					<div class="card-header">
-						<div class="logo me-1"></div>
+						<div class="logo">
+							<img src="static/img/logo.png" alt="logo">
+						</div>
 						<h2 class="me-1">Membresía Gana tu Carro</h2>
 						<i class="fas fa-2x fa-times" id="btnClose"></i>
 					</div>
@@ -305,7 +314,9 @@ if ($mysqli->connect_error) {
 					<div class="bg-close" id="bg-close"></div>
 					<div class="card-content">
 						<div class="card-header">
-							<div class="logo"></div>
+							<div class="logo">
+								<img src="static/img/logo.png" alt="logo">
+							</div>
 							<h2>Resumen de la Transacción</h2>
 							<i class="fas fa-2x fa-times" id="btnClose"></i>
 						</div>

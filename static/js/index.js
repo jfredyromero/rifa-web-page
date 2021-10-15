@@ -30,6 +30,9 @@ document.getElementById("tickets-grid-container").addEventListener("click", func
 	inputExtra1.value = tickets_values.join("-");
 	inputAmount.value = tickets_values.length * ticket_price;
 
+	console.clear();
+	console.log(inputExtra1.value);
+
 	spanAmount.textContent = "$ "+inputAmount.value; 
 
 });

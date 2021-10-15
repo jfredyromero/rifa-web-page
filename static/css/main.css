@@ -172,11 +172,9 @@ label {
 /* .titulo {
 } */
 
-.logo {
-	height: 5em;
-	width: 5em;
-	border-radius: 50%;
-	border: 0.25em inset var(--secondary);
+.logo img{
+	height: 12em;
+	width: auto;
 }
 
 .clock-counter {
@@ -317,8 +315,23 @@ input[type="checkbox"]:checked + label {
 	width: 100%;
 }
 
-.ticket-block {
+.tickets-block {
 	width: 100%;
+}
+
+.tickets-block .form-search{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.tickets-block .form-search input{
+	width: 90%;
+}
+
+.tickets-block .form-search button{
+	width: auto;
 }
 
 .buy-block {
