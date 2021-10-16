@@ -163,6 +163,10 @@ label {
 	width: 100%;
 }
 
+.f-al-l {
+	align-items: flex-end;
+}
+
 .form-item label span {
 	color: var(--secondary);
 }
@@ -172,7 +176,7 @@ label {
 /* .titulo {
 } */
 
-.logo img{
+.logo img {
 	height: 12em;
 	width: auto;
 }
@@ -319,18 +323,18 @@ input[type="checkbox"]:checked + label {
 	width: 100%;
 }
 
-.tickets-block .form-search{
+.tickets-block .form-search {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
 }
 
-.tickets-block .form-search input{
+.tickets-block .form-search input {
 	width: 90%;
 }
 
-.tickets-block .form-search button{
+.tickets-block .form-search button {
 	width: auto;
 }
 
