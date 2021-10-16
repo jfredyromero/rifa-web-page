@@ -465,6 +465,7 @@ input[type="checkbox"]:checked + label {
 	background-color: var(--dark);
 	border-radius: 0.6rem;
 	padding: 1.5rem 1.5rem;
+	transform: scale(0.8);
 }
 
 .card-header {
@@ -478,6 +479,12 @@ input[type="checkbox"]:checked + label {
 .card-header i {
 	cursor: pointer;
 	align-self: flex-start;
+	transition-duration: 0.25s;
+}
+
+.card-header i:hover{
+	color: var(--secondary);
+	transition-duration: 0.25s;
 }
 
 .card-info-transaction {
@@ -573,6 +580,10 @@ td {
 		flex-direction: row;
 		justify-content: space-evenly;
 		align-items: center;
+	}
+
+	.card-content{
+		transform: scale(1);
 	}
 
 	.first-section {
