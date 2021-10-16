@@ -1,5 +1,4 @@
 var datos = "";
-
 function refrescar() {
 	var xhttp;
 
@@ -15,12 +14,14 @@ function refrescar() {
 
 	datos = tickets_values.join("-");
 
-	document.getElementById("tickets-grid-container").innerHTML = "";
+	document.getElementById("tickets-grid-container").innerHTML = '';
+	document.getElementById("loader-container").innerHTML = '<div class="loader"></div>'
 
 	xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("tickets-grid-container").innerHTML = this.responseText;
+			document.getElementById("loader-container").innerHTML = ''
 		}
 	};
 

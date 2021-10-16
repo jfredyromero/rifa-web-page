@@ -30,6 +30,9 @@ if ($mysqli->connect_error) {
 					<div class="logo">
 						<img src="static/img/logo.png" alt="logo">
 					</div>
+					
+					
+
 					<h2 class="titulo mb-1">¡Compra tus Membresias!</h2>
 
 					<div class="clock-counter mb-1 d-flex-row">
@@ -64,8 +67,12 @@ if ($mysqli->connect_error) {
 						</div>
 						
 						<div class="tickets-grid-container" id="tickets-grid-container">
-							//TICKETS
+							<!-- //TICKETS -->
 						</div>
+
+						<div class="loader-container" id="loader-container"></div>
+						
+						
 					</div>
 				</div>
 
@@ -164,13 +171,7 @@ if ($mysqli->connect_error) {
 							</a>
 						</div>
 					</div>
-
 				</div>
-
-
-
-
-
 			</div>
 		</div>
 
@@ -178,8 +179,7 @@ if ($mysqli->connect_error) {
 	</form>
 
 	<!-- POPUPS -->
-	<!-- Descomentar para probar modal estatico -->
-	<!-- <button class="btnOpen" style="padding: 20px;" id="btnOpen">Abrir</button> -->
+	
 	<?php
 	$banderaPopUp = false;
 	if (isset($_GET["referencia_pago"])) {
