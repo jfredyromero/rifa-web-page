@@ -1,5 +1,5 @@
 <?php
-include_once("static/connection/connectionLocal.php");
+include_once("static/connection/connection.php");
 $mysqli = new mysqli($host, $user, $pw, $db);
 
 if ($mysqli->connect_error) {

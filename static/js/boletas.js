@@ -5,6 +5,7 @@ function refrescar() {
 
 	var tickets = Array.from(document.getElementsByName("checkbox-ticket"));
 	var tickets_values = [];
+	var inpSearch = document.getElementById("inpSearch");
 
 	tickets.forEach((t) => {
 		if (t.checked == true) {
@@ -25,6 +26,7 @@ function refrescar() {
 
 	var params = new FormData();
 	params.append("tickets_ch", datos);
+	params.append("inpSearch", inpSearch.value);
 
 	xhttp.open("POST", "/rifa-web-page/procesos/boletas.php", true);
 	xhttp.send(params);
@@ -32,3 +34,4 @@ function refrescar() {
 
 window.addEventListener("load", refrescar);
 document.getElementById("btnRefresh").addEventListener("click", refrescar);
+document.getElementById("btnSearch").addEventListener("click",refrescar);
