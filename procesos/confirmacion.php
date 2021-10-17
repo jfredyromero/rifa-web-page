@@ -1,5 +1,4 @@
 <?php
-
     // Conexion a la base de datos
     $dominio = "https://www.ganatucarro.com";
     include_once("../static/connection/connection.php");
@@ -69,7 +68,6 @@
                 $result = curl_exec($ch);
                 $data = json_decode($result);
                 $token = $data->token;
-
 
                 foreach($boletas as $boleta) {
                     $query = "INSERT INTO boletas (numero_boleta, comprador_ip, comprador_nombre, comprador_cedula, comprador_celular, comprador_correo, referencia_pago, referencia_venta, id_transaccion, codigo_referido, fecha_compra) VALUES ('$boleta', '$comprador_ip', '$comprador_nombre', '$comprador_cedula', '$comprador_celular', '$comprador_correo', '$referencia_pago', '$referencia_venta', '$id_transaccion', '$codigo_referido', '$fecha_compra');";

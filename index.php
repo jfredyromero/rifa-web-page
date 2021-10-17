@@ -1,8 +1,3 @@
-<?php
-   include_once("../static/connection/connection.php");
-   $connection = mysqli_connect($host, $user, $pw, $db);
-   mysqli_set_charset($connection, "utf8");
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -110,16 +105,24 @@
 						<label for="">Correo Electrónico<span> *</span></label>
 						<input class="form-input" type="email" placeholder="ejemplo@gmail.com" name="buyerEmail" required />
 					</div>
-
-					<div class="mb-1 form-item">
-						<label for="">Código de Referencia<span> </span></label>
-						<input class="form-input" type="text" placeholder="" name="codigoReferido" />
-					</div>
+					<br>
 				</div>
 
 				<!-- ===================================== -->
 				<!-- Datos necesarios para el pago en PayU -->
 				<!-- ===================================== -->
+				
+				<?php
+				if (isset($_GET["codigoReferido"])) {
+				?>
+				<input name="codigoReferido" type="hidden" value="<?php echo $_GET["codigoReferido"]; ?>" />
+				<?php
+				}else{
+				?>
+				<input name="codigoReferido" type="hidden" />
+				<?php
+				}
+				?>
         
 				<input name="extra1" type="hidden" />
 
@@ -364,7 +367,6 @@
 			</div>
 	<?php
 		}
-	} else {
 	}
 	?>
 </body>
@@ -386,6 +388,5 @@ if ($banderaPopUp) {
 	<script src="static/js/abrirModal.js"></script>
 <?php
 }
-mysqli_close($connection);
 ?>
 </html>

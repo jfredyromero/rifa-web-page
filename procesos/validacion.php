@@ -97,12 +97,13 @@ if($method == "POST"){
         <input name="confirmationUrl" type="hidden" value="https://www.ganatucarro.com/procesos/confirmacion.php">
         <input name="Submit" type="submit" value="Enviar" >
     </form>
-    <div style="position: absolute; height: 100vw; display:flex; justify-content: center; align-items: center;">
-      <img src="../static/img/timer.gif">
+    <div style="width:100%; position:relative; height:90vh; display:flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="../static/img/timer.gif">
+        <h2>You're being redirected...</h2>
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-        document.getElementById('myForm').submit();
+            document.getElementById('myForm').submit();
         })
     </script>
 </body>
