@@ -334,7 +334,7 @@ input[type="checkbox"]:checked + label {
 	width: 90%;
 }
 
-.tickets-block .form-search button {
+.tickets-block .form-search #btnSearch {
 	width: auto;
 }
 

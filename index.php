@@ -56,7 +56,8 @@
 						<label for="">Selecciona tu Membresía <span> *</span></label>
 						<div class="form-search mb-1">
 							<input class="form-input" id="inpSearch" type="number" placeholder="Busca tu boleta..." min="0" max="9999" onKeyPress="if(this.value.length==4) return false;">
-							<button class="btn btn-primary ms-1" id="btnSearch">Buscar</button>
+							<input type="button" class="btn btn-primary ms-1" id="btnSearch" value="Buscar">
+							<!-- <button class="btn btn-primary ms-1" id="btnSearch">Buscar</button> -->
 						</div>
 						
 						<div class="tickets-grid-container" id="tickets-grid-container">
