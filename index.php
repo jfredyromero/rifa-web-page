@@ -25,8 +25,13 @@
 			<div class="first-section">
 
 				<div class="counter-block d-flex-col">
-					<div class="mb-1 mt-1 logo"></div>
-					<h2 class="titulo mb-1">¡Compra tus Boletas!</h2>
+					<div class="logo">
+						<img src="static/img/logo.png" alt="logo">
+					</div>
+					
+					
+
+					<h2 class="titulo mb-1">¡Compra tus Membresias!</h2>
 
 					<div class="clock-counter mb-1 d-flex-row">
 						<div class="time-interval-container d-flex-col">
@@ -53,48 +58,30 @@
 
 				<div class="tickets-block">
 					<div class="mb-1 form-item">
-						<label for="">Selecciona tu Boleta <span> *</span></label>
-						<div class="tickets-grid-container" id="tickets-grid-container">
-
-							<!-- <div class="ticket">
-								<svg min-width="175" min-height="117" width="100%" height="100%" viewBox="0 0 175 117"
-									fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path class="ticket-svg"
-										d="M38.8889 29.25H136.111V87.75H38.8889V29.25ZM160.417 58.5C160.417 66.5773 166.946 73.125 175 73.125V102.375C175 110.452 168.471 117 160.417 117H14.5833C6.52908 117 0 110.452 0 102.375V73.125C8.05425 73.125 14.5833 66.5773 14.5833 58.5C14.5833 50.4227 8.05425 43.875 0 43.875V14.625C0 6.54773 6.52908 0 14.5833 0H160.417C168.471 0 175 6.54773 175 14.625V43.875C166.946 43.875 160.417 50.4227 160.417 58.5ZM145.833 26.8125C145.833 22.7739 142.569 19.5 138.542 19.5H36.4583C32.4312 19.5 29.1667 22.7739 29.1667 26.8125V90.1875C29.1667 94.2261 32.4312 97.5 36.4583 97.5H138.542C142.569 97.5 145.833 94.2261 145.833 90.1875V26.8125Z"
-										fill="url(#silver)" />
-									<defs>
-										<linearGradient id="silver" x1="87.5" y1="0" x2="87.5" y2="117"
-											gradientUnits="userSpaceOnUse">
-											<stop stop-color="#7C7C7C" />
-											<stop offset="0.5" stop-color="#D9D9D9" />
-											<stop offset="1" stop-color="#6A6A6A" />
-										</linearGradient>
-										<linearGradient id="gold" x1="87.5" y1="0" x2="87.5" y2="117"
-											gradientUnits="userSpaceOnUse">
-											<stop stop-color="#95702c" />
-											<stop offset="0.5" stop-color="#f8dd57" />
-											<stop offset="1" stop-color="#95702c" />
-										</linearGradient>
-									</defs>
-								</svg>
-								<h1>0001</h1>
-								<input type="checkbox" name="checkbox-ticket" value="0001">
-							</div> -->
-
-
-
+						<label for="">Selecciona tu Membresía <span> *</span></label>
+						<div class="form-search mb-1">
+							<input class="form-input" id="inpSearch" type="number" placeholder="Busca tu boleta..." min="0" max="9999" onKeyPress="if(this.value.length==4) return false;">
+							<button class="btn btn-primary ms-1" id="btnSearch">Buscar</button>
 						</div>
+						
+						<div class="tickets-grid-container" id="tickets-grid-container">
+							<!-- //TICKETS -->
+						</div>
+
+						<div class="loader-container" id="loader-container"></div>
+						
+						
 					</div>
 				</div>
 
 				<div class="refresh-block">
 					<div class="form-item mb-1">
 						<div class="bg-gold-gradient">
-							<input type="button" id="btnRefresh" class="btn btn-secondary w-100" value="Refrescar Boletas" />
+							<input type="button" id="btnRefresh" class="btn btn-secondary w-100" value="Refrescar Membresias" />
 						</div>
 					</div>
 
-					<div class="form-item mb-1">
+					<div class="form-item mb-1 f-al-l">
 						<h2>Valor a pagar: <span id="price" class="fw-1">$ 0</span></h2>
 					</div>
 				</div>
@@ -182,13 +169,7 @@
 							</a>
 						</div>
 					</div>
-
 				</div>
-
-
-
-
-
 			</div>
 		</div>
 
@@ -196,8 +177,7 @@
 	</form>
 
 	<!-- POPUPS -->
-	<!-- Descomentar para probar modal estatico -->
-	<!-- <button class="btnOpen" style="padding: 20px;" id="btnOpen">Abrir</button> -->
+	
 	<?php
 	$banderaPopUp = false;
 	if (isset($_GET["referencia_pago"])) {
@@ -211,7 +191,9 @@
 				<div class="bg-close" id="bg-close"></div>
 				<div class="card-content">
 					<div class="card-header">
-						<div class="logo me-1"></div>
+						<div class="logo">
+							<img src="static/img/logo.png" alt="logo">
+						</div>
 						<h2 class="me-1">Membresía Gana tu Carro</h2>
 						<i class="fas fa-2x fa-times" id="btnClose"></i>
 					</div>
@@ -303,7 +285,9 @@
 					<div class="bg-close" id="bg-close"></div>
 					<div class="card-content">
 						<div class="card-header">
-							<div class="logo"></div>
+							<div class="logo">
+								<img src="static/img/logo.png" alt="logo">
+							</div>
 							<h2>Resumen de la Transacción</h2>
 							<i class="fas fa-2x fa-times" id="btnClose"></i>
 						</div>

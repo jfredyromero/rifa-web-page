@@ -97,7 +97,7 @@ if($method == "POST"){
         <input name="confirmationUrl" type="hidden" value="https://www.ganatucarro.com/procesos/confirmacion.php">
         <input name="Submit" type="submit" value="Enviar" >
     </form>
-    <div style="display:flex; justify-content: center; align-items: center;">
+    <div style="position: absolute; height: 100vw; display:flex; justify-content: center; align-items: center;">
       <img src="../static/img/timer.gif">
     </div>
     <script>
