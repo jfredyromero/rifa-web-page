@@ -107,11 +107,11 @@ document.addEventListener("DOMContentLoaded", () => {
 		document.querySelector('input[name="extra2"]').value = text;
 	})
 
-	let codigoReferido = document.querySelector('input[name="codigoReferido"]');
-	codigoReferido.addEventListener('change', () => {
-		let text = codigoReferido.value;
-		document.querySelector('input[name="extra3"]').value = text;
-	})
+	// let codigoReferido = document.querySelector('input[name="codigoReferido"]');
+	// codigoReferido.addEventListener('change', () => {
+	// 	let text = codigoReferido.value;
+	// 	document.querySelector('input[name="extra3"]').value = text;
+	// })
 
 	let formBoleta = document.querySelector('#form-boleta');
 	formBoleta.addEventListener('submit', (e) => {

@@ -114,13 +114,13 @@
 				<!-- ===================================== -->
 				
 				<?php
-				if (isset($_GET["codigoReferido"])) {
+				if (isset($_GET["extra3"])) {
 				?>
-				<input name="codigoReferido" type="hidden" value="<?php echo $_GET["codigoReferido"]; ?>" />
+				<input name="extra3" type="hidden" value="<?php echo $_GET["extra3"]; ?>" />
 				<?php
 				}else{
 				?>
-				<input name="codigoReferido" type="hidden" />
+				<input name="extra3" type="hidden" />
 				<?php
 				}
 				?>
@@ -132,8 +132,6 @@
 				<input name="referenceCode" type="hidden" />
 
 				<input name="extra2" type="hidden" />
-
-				<input name="extra3" type="hidden" />
 
 				<input name="payerFullName" type="hidden" />
 
