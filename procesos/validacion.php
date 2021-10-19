@@ -80,6 +80,7 @@ if($method == "POST"){
     $extra2 = trim(htmlspecialchars($_POST["extra2"]));
 
     // Validación de codigo de referido válido
+    $extra3 = "";
     if(!empty($_POST["extra3"])){
         $extra3 = trim(htmlspecialchars($_POST["extra3"]));
         $sql = "SELECT referido FROM referidos WHERE codigo='$extra3';";
