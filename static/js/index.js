@@ -16,7 +16,7 @@ document.getElementById("tickets-grid-container").addEventListener("click", func
 	var tickets = Array.from(document.getElementsByName("checkbox-ticket"));
 
 	tickets_values = [];
-	var ticket_price = 80000;
+	var ticket_price = document.getElementById('precio').innerHTML;
 
 	tickets.forEach(t => {
 		if (t.checked == true) {
@@ -67,7 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	// });
 
 	const countdown = () => {
-		const tiempoObjetivo = new Date("Jan 1, 2022 00:00:00").getTime();
+		const fechaSorteo = document.getElementById('fechaSorteo').innerHTML;
+		const tiempoObjetivo = new Date(fechaSorteo).getTime();
 		const tiempoActual = new Date().getTime();
 		const tiempoRestante = tiempoObjetivo - tiempoActual;
 

@@ -1,6 +1,10 @@
+
+<?php
+    // Variables del ambiente
+    include_once("static/variables/variables.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -368,6 +372,8 @@
 		}
 	}
 	?>
+	<span id="precio" style="display: none;"><?php echo $price; ?></span>
+	<span id="fechaSorteo" style="display: none;"><?php echo $fecha_sorteo; ?></span>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
