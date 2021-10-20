@@ -1,6 +1,7 @@
 <?php
+    // Variables del ambiente
+    include_once("../static/variables/variables.php");
     // Conexion a la base de datos
-    $dominio = "https://www.ganatucarro.com";
     include_once("../static/connection/connection.php");
     if (file_exists("../static/php/phpqrcode/qrlib.php")){
         require "../static/php/phpqrcode/qrlib.php";
@@ -22,8 +23,6 @@
             $dato= "Sii aprobo";
             $query = "INSERT INTO ver_datos(datos) VALUES ('$dato');";
             $result = mysqli_query($connection, $query);
-            $ApiKey = "4Vj8eK4rloUd272L48hsrarnUA";
-            $merchant_id = "508029";
             $referenceCode = $_POST['reference_sale'];
             $value = $_POST['value'];
             $list_value = explode(".", $value);
@@ -34,7 +33,7 @@
             }
             $currency = $_POST['currency'];
             $firma = $_POST['sign'];
-            $firmacreada = md5("$ApiKey~$merchant_id~$referenceCode~$new_value~$currency~$transactionState");
+            $firmacreada = md5("$ApiKey~$merchantId~$referenceCode~$new_value~$currency~$transactionState");
             // Confirmación de firma
             if (strtoupper($firma) == strtoupper($firmacreada)) {
                 $dato= "Firma correcta";

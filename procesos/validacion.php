@@ -56,8 +56,7 @@ if($method == "POST"){
 
     // Datos establecidos
     $responseUrl = $dominio;
-    //$confirmationUrl = $dominio."/procesos/confirmacion.php";
-    $confirmationUrl = "https://www.ganatucarro.com/procesos/confirmacion.php";
+    $confirmationUrl = $dominio."/procesos/confirmacion.php";
     $tax = 0;
     $taxReturnBase = 0;
     $currency = "COP";
