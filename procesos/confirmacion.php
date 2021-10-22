@@ -55,6 +55,7 @@ if($method == "POST"){
             $data = json_decode($result);
             $token = $data->token;
 
+            $stringBoletas = "";
             foreach($boletas as $boleta) {
                 if($codigo_referido==""){
                     $query2 = "INSERT INTO boletas (numero_boleta, comprador_ip, comprador_nombre, comprador_cedula, comprador_celular, comprador_correo, referencia_pago, referencia_venta, id_transaccion, fecha_compra) VALUES ('$boleta', '$comprador_ip', '$comprador_nombre', '$comprador_cedula', '$comprador_celular', '$comprador_correo', '$referencia_pago', '$referencia_venta', '$id_transaccion', '$fecha_compra');";

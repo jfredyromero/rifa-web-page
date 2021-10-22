@@ -10,7 +10,11 @@ $mysqli = new mysqli($host, $user, $pw, $db);
 if ($mysqli->connect_error) {
     exit('Could not connect');
 }
-$sql = "SELECT * FROM boletas";
+
+$fechaActual = date("Y-m-d H:i:s");
+$nuevaFecha = date("Y-m-d H:i:s", strtotime($fechaActual."- 1 days"));
+
+$sql = "SELECT * FROM boletas WHERE fecha_compra >= '$nuevaFecha'";
 $stmt = $mysqli->prepare($sql);
 $stmt->execute();
 $stmt->store_result();
