@@ -1,0 +1,1 @@
+curl -o /usr/bin/php /home/u791910196/public_html/pruebas/procesos/log.txt "http://pruebas.ganatucarro.com/procesos/mensajeria.php"

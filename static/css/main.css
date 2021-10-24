@@ -30,7 +30,8 @@ body {
 	color: var(--white);
 }
 
-h1,th {
+h1,
+th {
 	font-weight: 400;
 	text-transform: capitalize;
 }
@@ -39,7 +40,8 @@ h2 {
 	font-weight: 300;
 }
 
-p,td {
+p,
+td {
 	font-weight: 100;
 }
 
@@ -58,7 +60,8 @@ label {
 	align-items: center;
 }
 
-.first-section, .second-section{
+.first-section,
+.second-section {
 	width: 20rem;
 }
 
@@ -160,6 +163,10 @@ label {
 	width: 100%;
 }
 
+.f-al-l {
+	align-items: flex-end;
+}
+
 .form-item label span {
 	color: var(--secondary);
 }
@@ -169,11 +176,9 @@ label {
 /* .titulo {
 } */
 
-.logo {
-	height: 5em;
-	width: 5em;
-	border-radius: 50%;
-	border: 0.25em inset var(--secondary);
+.logo img {
+	height: 8em;
+	width: auto;
 }
 
 .clock-counter {
@@ -260,7 +265,6 @@ label {
 	background: var(--gold-gradient);
 }
 
-
 /* Forms*/
 
 .form-input {
@@ -290,7 +294,7 @@ input:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px white inset !important;
 } */
 
-.form-input:-webkit-autofill{
+.form-input:-webkit-autofill {
 	-webkit-box-shadow: 0 0 0 30px rgb(20, 20, 20) inset !important;
 	-webkit-text-fill-color: #ffffff !important;
 }
@@ -315,19 +319,34 @@ input[type="checkbox"]:checked + label {
 	width: 100%;
 }
 
-.ticket-block {
+.tickets-block {
 	width: 100%;
 }
 
-.buy-block{
+.tickets-block .form-search {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.tickets-block .form-search input {
+	width: 90%;
+}
+
+.tickets-block .form-search #btnSearch {
+	width: auto;
+}
+
+.buy-block {
 	width: 100%;
 }
 
-.buy-block a{
+.buy-block a {
 	color: var(--secondary);
 }
 
-.refresh-block span{
+.refresh-block span {
 	color: var(--secondary);
 }
 
@@ -339,29 +358,30 @@ input[type="checkbox"]:checked + label {
 	justify-items: center;
 }
 
-.ticket{
+.ticket {
 	width: auto;
 	height: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	transition-duration: 0.1s;
 }
 
-.ticket iframe{
+.ticket iframe {
 	border: none;
 	width: 100%;
 	height: 100%;
 	z-index: 0;
 }
 
-.ticket h1{
+.ticket h1 {
 	color: var(--dark);
 	position: absolute;
 	font-size: 1.4rem;
 	z-index: 1;
 }
 
-.ticket input{
+.ticket input {
 	width: 6rem;
 	height: 4rem;
 	position: absolute;
@@ -369,8 +389,42 @@ input[type="checkbox"]:checked + label {
 	z-index: 2;
 }
 
-.ticket input:hover{
+.ticket input:hover {
 	cursor: pointer;
+}
+
+.gift-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 5rem;
+	width: 100%;
+}
+
+.bg-gold-gradient-circle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 5rem;
+	width: 5rem;
+	background: var(--gold-gradient);
+	border-radius: 50%;
+}
+
+.bg-dark-circle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 4.5rem;
+	width: 4.5rem;
+	background-color: var(--dark);
+	border-radius: 50%;
+}
+
+.bg-dark-circle a {
+	width: auto;
+	height: 70%;
 }
 
 /* POPUPS */
@@ -385,10 +439,9 @@ input[type="checkbox"]:checked + label {
 	height: 100%;
 	z-index: 1000;
 	color: var(--white);
-	
 }
 
-.container-flex{
+.container-flex {
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -396,57 +449,65 @@ input[type="checkbox"]:checked + label {
 	align-items: center;
 }
 
-.bg-close{
-	position: absolute;
-	background-color: #4e4e4e6c;	
+.bg-close {
+	position: fixed;
+	background-color: #4e4e4e6c;
 	top: 0;
 	left: 0;
 	z-index: 2;
 	width: 100%;
-	height: 100%;
+	height: 100vh;
 }
 
-.card-content{
+.card-content {
 	z-index: 4;
-    display: flex;
-    flex-direction:column;
+	display: flex;
+	flex-direction: column;
 	background-color: var(--dark);
 	border-radius: 0.6rem;
-	padding: 1rem 1.5rem;    
+	padding: 1.5rem 1.5rem;
+	transform: scale(0.8);
 }
 
-.card-header{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-	padding-bottom: 1rem;  
+.card-header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding-bottom: 1rem;
 }
 
-.card-header i{
+.card-header i {
 	cursor: pointer;
 	align-self: flex-start;
+	transition-duration: 0.25s;
 }
 
-.card-info-transaction{
+.card-header i:hover{
+	color: var(--secondary);
+	transition-duration: 0.25s;
+}
+
+.card-info-transaction {
 	display: flex;
 	justify-content: center;
-	padding-bottom: 1rem; 
+	padding-bottom: 1rem;
 }
 
-.card-info-transaction table{
+.card-info-transaction table {
 	background-color: #313131;
 	border-collapse: collapse;
 	width: auto;
 }
 
-.card-info-transaction th,td{
+.card-info-transaction th,
+td {
 	/* border-bottom: 1px solid #ddd; */
 	padding: 0.5rem;
 	text-align: left;
 }
 
-.card-info-transaction td{
+.card-info-transaction td {
 	width: 20rem;
 }
 
@@ -454,25 +515,67 @@ input[type="checkbox"]:checked + label {
 	background-color: #4e4e4e;
 }
 
-.card-info-transaction tr:nth-child(even):hover{
+.card-info-transaction tr:nth-child(even):hover {
 	background-color: #4e4e4e;
 }
 
-.card-info-transaction tr:nth-child(even){
+.card-info-transaction tr:nth-child(even) {
 	background-color: #222222;
 }
 
-.card-footer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.card-footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.virtual-ticket {
+	flex-direction: column;
+	align-items: center;
+}
+
+.virtual-ticket td {
+	width: 50%;
+}
+
+.virtual-ticket .ticket {
+	width: 15rem;
+	height: auto;
+}
+
+.virtual-ticket .ticket h1 {
+	font-weight: bold;
+	font-size: 3rem;
+}
+
+.loader-container{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.loader {
+	display: block;
+    border: 15px solid #f3f3f3; /* Light grey */
+    border-top: 15px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 
-
 @media (min-width: 1269px) {
-
-	.page-content{
+	body {
+		overflow: hidden;
+	}
+	.page-content {
 		display: flex;
 		height: 100vh;
 		flex-direction: row;
@@ -480,24 +583,73 @@ input[type="checkbox"]:checked + label {
 		align-items: center;
 	}
 
-	.first-section{		
+	.ticket:hover{
+		transform: scale(1.1);
+		filter: brightness(1.3);
+		transition-duration: 0.1s;
+	}
+
+	.card-content{
+		transform: scale(1);
+	}
+
+	.first-section {
 		position: relative;
 		width: min-content;
 		min-width: 50%;
 	}
 
-	.line-section{
+	.line-section {
 		width: 2px;
 		height: 80vh;
 		background-color: var(--gray-d);
 	}
 
-	.mb-1{
+	.mb-1 {
 		margin-bottom: 1rem;
 	}
 
-	.tickets-grid-container{
+	.tickets-grid-container {
 		grid-template-columns: repeat(6, 1fr);
 	}
-	
+
+	.gift-container {
+		width: 6rem;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		margin: 0;
+	}
+
+	.bg-gold-gradient-circle {
+		position: relative;
+		width: 100px;
+		height: 100px;
+		-moz-border-radius: 0 100% 0 0;
+		-webkit-border-radius: 0 100% 0 0;
+		border-radius: 0 100% 0 0;
+	}
+
+	.bg-dark-circle {
+		position: absolute;
+		height: 95px;
+		width: 92px;
+		left: 0;
+		bottom: 0;
+		border-radius: 0 100% 0 0;
+	}
+
+	.bg-dark-circle a {
+		position: absolute;
+		left: 0.8rem;
+		bottom: 1.3rem;
+		width: auto;
+		height: 50%;
+		transition-duration: 0.4s;
+	}
+
+	.bg-dark-circle a:hover{
+		transform: scale(1.1);
+		transition-duration: 0.4s;
+	}
 }

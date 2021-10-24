@@ -16,7 +16,7 @@ document.getElementById("tickets-grid-container").addEventListener("click", func
 	var tickets = Array.from(document.getElementsByName("checkbox-ticket"));
 
 	tickets_values = [];
-	var ticket_price = 50000;
+	var ticket_price = document.getElementById('precio').innerHTML;
 
 	tickets.forEach(t => {
 		if (t.checked == true) {
@@ -29,6 +29,9 @@ document.getElementById("tickets-grid-container").addEventListener("click", func
 
 	inputExtra1.value = tickets_values.join("-");
 	inputAmount.value = tickets_values.length * ticket_price;
+
+	console.clear();
+	console.log(inputExtra1.value);
 
 	spanAmount.textContent = "$ "+inputAmount.value; 
 
@@ -64,7 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	// });
 
 	const countdown = () => {
-		const tiempoObjetivo = new Date("Jan 1, 2022 00:00:00").getTime();
+		const fechaSorteo = document.getElementById('fechaSorteo').innerHTML;
+		const tiempoObjetivo = new Date(fechaSorteo).getTime();
 		const tiempoActual = new Date().getTime();
 		const tiempoRestante = tiempoObjetivo - tiempoActual;
 
@@ -104,11 +108,11 @@ document.addEventListener("DOMContentLoaded", () => {
 		document.querySelector('input[name="extra2"]').value = text;
 	})
 
-	let codigoReferido = document.querySelector('input[name="codigoReferido"]');
-	codigoReferido.addEventListener('change', () => {
-		let text = codigoReferido.value;
-		document.querySelector('input[name="extra3"]').value = text;
-	})
+	// let codigoReferido = document.querySelector('input[name="codigoReferido"]');
+	// codigoReferido.addEventListener('change', () => {
+	// 	let text = codigoReferido.value;
+	// 	document.querySelector('input[name="extra3"]').value = text;
+	// })
 
 	let formBoleta = document.querySelector('#form-boleta');
 	formBoleta.addEventListener('submit', (e) => {
@@ -125,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			return false;
 		}else{
 			generarCodigoReferencia();
-			generarSignature();
+			// generarSignature();
 			generarDescripcion();
 			return true;
 		}
@@ -133,20 +137,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	function generarCodigoReferencia() {
 		numeroBoleta = document.querySelector('input[name="extra1"]');
-		let referenceCode = buyerName.value + "-" + mobilePhone.value + "-" + numeroBoleta.value + "-" + Date.now();
-		let hashReferenceCode = CryptoJS.MD5(referenceCode);
-		document.querySelector('input[name="referenceCode"]').value = hashReferenceCode + "";
+		let referenceCode = buyerName.value + "-" + numeroBoleta.value + "-" + Date.now();
+		document.querySelector('input[name="referenceCode"]').value = referenceCode;
 	}
 
-	function generarSignature() {
-		const apiKey = "4Vj8eK4rloUd272L48hsrarnUA";
-		const merchanId = "508029";
-		const amount = inputAmount.value;
-		const currency = "COP";
-		let referenceCode = document.querySelector('input[name="referenceCode"]').value;
-		let signature = CryptoJS.MD5(apiKey + "~" + merchanId + "~" + referenceCode + "~" + amount + "~" + currency);
-		document.querySelector('input[name="signature"]').value = signature + "";
-	}
+	// function generarSignature() {
+	// 	const apiKey = "4Vj8eK4rloUd272L48hsrarnUA";
+	// 	const merchanId = "508029";
+	// 	const amount = inputAmount.value;
+	// 	const currency = "COP";
+	// 	let referenceCode = document.querySelector('input[name="referenceCode"]').value;
+	// 	let signature = CryptoJS.MD5(apiKey + "~" + merchanId + "~" + referenceCode + "~" + amount + "~" + currency);
+	// 	document.querySelector('input[name="signature"]').value = signature + "";
+	// }
 
 	function generarDescripcion() {
 		let nombre = buyerName.value;
