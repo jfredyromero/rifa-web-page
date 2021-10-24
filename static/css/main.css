@@ -374,7 +374,7 @@ input[type="checkbox"]:checked + label {
 	z-index: 0;
 }
 
-.ticket h1 {
+.ticket h1:not(.ticket-popup-number){
 	color: var(--dark);
 	position: absolute;
 	font-size: 1.4rem;
@@ -565,6 +565,51 @@ td {
     animation: spin 2s linear infinite;
 }
 
+.tickets-container-popup {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ticket-popup-number {
+	color: var(--dark);
+	position: absolute;
+	font-size: 2rem;
+	z-index: 1;
+}
+
+.card-info-revancha{
+	padding-bottom: 1rem;
+	margin-bottom: 3rem;
+}
+
+.card-info-premio{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 2rem;
+	margin-top: 1rem;
+}
+
+.card-info-premio a{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.card-info-boletas{
+	display: flex;
+	justify-content: center;
+}
+
+.card-footer-revancha {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -589,9 +634,9 @@ td {
 		transition-duration: 0.1s;
 	}
 
-	.card-content{
+	/* .card-content{
 		transform: scale(1);
-	}
+	} */
 
 	.first-section {
 		position: relative;

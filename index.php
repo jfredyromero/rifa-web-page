@@ -194,14 +194,14 @@
 	?>
 		<div class="card-popup" id="card-popup">
 			<div class="container-flex">
-				<div class="bg-close" id="bg-close"></div>
+				<div class="bg-close"></div>
 				<div class="card-content">
 					<div class="card-header">
 						<div class="logo">
 							<img src="static/img/logo.png" alt="logo">
 						</div>
 						<h2 class="me-1">Membresía Gana tu Carro</h2>
-						<i class="fas fa-2x fa-times" id="btnClose"></i>
+						<i class="fas fa-2x fa-times btn-close"></i>
 					</div>
 					<div class="card-info-transaction virtual-ticket">
 						<div class="ticket mb-1">
@@ -288,14 +288,14 @@
 
 				<div class="container-flex">
 
-					<div class="bg-close" id="bg-close"></div>
+					<div class="bg-close"></div>
 					<div class="card-content">
 						<div class="card-header">
 							<div class="logo">
 								<img src="static/img/logo.png" alt="logo">
 							</div>
 							<h2>Resumen de la Transacción</h2>
-							<i class="fas fa-2x fa-times" id="btnClose"></i>
+							<i class="fas fa-2x fa-times btn-close"></i>
 						</div>
 						<div class="card-info-transaction">
 							<table>
@@ -372,6 +372,49 @@
 		}
 	}
 	?>
+	<div class="card-popup" id="card-popup-revancha">
+		<div class="container-flex">
+			<div class="bg-close"></div>
+			<div class="card-content" style="width:auto">
+				<div class="card-header">
+					<div class="logo">
+						<img src="static/img/logo.png" alt="logo">
+					</div>
+					<h1>¿Te vas a ir sin tu revancha?</h1>
+					<i class="fas fa-2x fa-times btn-close"></i>
+				</div>
+				<div class="card-info-revancha">
+					<div class="card-info-premio">
+						<a href="https://instagram.com/ganatucarro?utm_medium=copy_link" target="_blank">
+							<svg width="40%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+								<path d="M32 448c0 17.7 14.3 32 32 32h160V320H32v128zm256 32h160c17.7 0 32-14.3 32-32V320H288v160zm192-320h-42.1c6.2-12.1 10.1-25.5 10.1-40 0-48.5-39.5-88-88-88-41.6 0-68.5 21.3-103 68.3-34.5-47-61.4-68.3-103-68.3-48.5 0-88 39.5-88 88 0 14.5 3.8 27.9 10.1 40H32c-17.7 0-32 14.3-32 32v80c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-80c0-17.7-14.3-32-32-32zm-326.1 0c-22.1 0-40-17.9-40-40s17.9-40 40-40c19.9 0 34.6 3.3 86.1 80h-86.1zm206.1 0h-86.1c51.4-76.5 65.7-80 86.1-80 22.1 0 40 17.9 40 40s-17.9 40-40 40z" fill="url(#red)"></path>
+								<defs>
+									<linearGradient id="red" x1="256" y1="0" x2="256" y2="512" gradientUnits="userSpaceOnUse">
+										<stop stop-color="#8D1D10" />
+										<stop offset="0.5" stop-color="#F75A48" />
+										<stop offset="1" stop-color="#8D1D10" />
+									</linearGradient>
+								</defs>
+							</svg>
+						</a>
+						<br>
+						<h2>Selecciona tu revancha y participa por un BMW.</h2>
+						<h2>Son $25.000 pesos más por cada una. Animate!</h2>	
+					</div>
+					<div id="card-info-boletas">
+						<div class="tickets-container-popup" id="tickets-container-popup">
+						</div>
+					</div>
+				</div>
+				<div class="card-footer-revancha">
+					<div >
+						<h2>Valor a pagar: <span id="priceRevancha" class="fw-1">$ 0</span></h2>
+					</div>	
+					<button class="btn btn-primary" id="btnAceptar">Continuar</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<span id="precio" style="display: none;"><?php echo $price; ?></span>
 	<span id="fechaSorteo" style="display: none;"><?php echo $fecha_sorteo; ?></span>
 </body>
