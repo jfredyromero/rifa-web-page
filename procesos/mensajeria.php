@@ -66,7 +66,7 @@ foreach ($registros as $registro) {
     
     //Envío de SMS
     //Codigo para enviar el mensaje
-    $mensajeSMS = "Hola ".$registro["comprador_nombre"].". Usted tiene la membresía de gana tu carro: " .$registro["boleta"]. ", que puede consultar en: ";
+    $mensajeSMS = "Hola ".$registro["comprador_nombre"].". Usted tiene la membresía de gana tu carro: " .$registro["boleta"]. ", que puede consultar en: ".$shortLink;
     $data = array("number" => "57".$registro["comprador_celular"], "message" => $mensajeSMS, "type" => "1");
     $data_string = json_encode($data);
     $ch = curl_init('https://api.cellvoz.co/v2/sms/single');
@@ -79,5 +79,6 @@ foreach ($registros as $registro) {
         'api-key: b4403cab3d7927db109ff943627964623debf01f')
     );
     $result = curl_exec($ch);
+    sleep(10);
 }
 ?>
