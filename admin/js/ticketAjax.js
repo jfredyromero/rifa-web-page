@@ -92,6 +92,7 @@ $(document).ready(function () {
 
 	$(".borrar_registro").on("click", function (e) {
 		e.preventDefault();
+		
 		let id = $(this).attr("data-id");
 		let tipo = $(this).attr("data-tipo");
 
@@ -107,7 +108,9 @@ $(document).ready(function () {
 			cancelButtonColor: "#d33",
 			confirmButtonText: "Si, Eliminar!",
 			cancelButtonText: "Cancelar",
+
 		}).then((result) => {
+
 			console.log(result);
 			console.log(result.value);
 			if (result.value) {
@@ -119,14 +122,11 @@ $(document).ready(function () {
 					},
 					url: tipo + "Model.php",
 					success: function (data) {
-						console.table(data);
-						console.log($('[tr-id="' + data.id_eliminado + '"]'));
-						console.table(JSON.parse(data));
-						// jQuery('[data-id="' + data.id_eliminado + '"]')
-						$('[tr-id="' + data.id_eliminado + '"]').remove();
+						let datos = JSON.parse(data);						
+						$('tr[tr-id="' + datos.id_eliminado + '"]').remove();
+						Swal.fire("Eliminado!", "Registro eliminado correctamente", "success");
 					},
-				});
-				Swal.fire("Eliminado!", "Registro eliminado correctamente", "success");
+				});				
 			}
 		});
 	});

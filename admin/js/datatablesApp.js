@@ -9,17 +9,17 @@ $(function() {
         "info": true,
         "autoWidth": false,
         "responsive": true,
-        "Language": {
-            paginate: {
-                next: "Siguiente",
-                previous: "Anterior",
-                last: "Ultimo",
-                first: "Primero"
+        "language": {
+            "paginate": {
+                "next": "Siguiente",
+                "previous": "Anterior",
+                "last": "Ultimo",
+                "first": "Primero"
             },
-            info: 'Mostrando _START_a_END_de_TOTAL_ resultados',
-            emptyTable: 'No hay registros',
-            infoEmpty: '0 registros',
-            search: 'Buscar: '
+            "info": 'Mostrando _START_ a _END_ de _TOTAL_ resultados',
+            "emptyTable": 'No hay registros',
+            "infoEmpty": '0 registros',
+            "search": 'Buscar: '
         }
     });
 });
