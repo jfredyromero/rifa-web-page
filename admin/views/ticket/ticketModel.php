@@ -18,9 +18,9 @@ if ($_POST['registro'] == 'nuevo') {
         $resultado = $connection->query($sql);
 
         if($resultado->num_rows == 1){
-            $respuesta = array(
+            $respuesta = [
                 'respuesta' => 'error'
-            );
+            ];
 
         }else{
 
@@ -456,20 +456,20 @@ if ($_POST['registro'] == 'nuevo') {
                 //direcciones que recibirán copia oculta 
                 // $headers .= "Bcc: pepe@pepe.com,juan@juan.com\r\n"; 
                 mail($destinatario, $asunto, $cuerpo, $headers);
-                $respuesta = array(
+                $respuesta = [
                     'respuesta' => 'exito'
-                );                    
+                ];                    
             } else {
-                $respuesta = array(
-                'respuesta' => 'error'
-                );
+                $respuesta = [
+                    'respuesta' => 'error'
+                ];
             }
         }
 
     } catch (Exception $e) {
-        $respuesta = array(
+        $respuesta = [
             'respuesta' => $e->getMessage()
-        );
+        ];
     }
 
     die(json_encode($respuesta));
@@ -486,21 +486,21 @@ if ($_POST['registro'] == 'eliminar') {
         $stmt->bind_param("i", $id_borrar);
         $stmt->execute();
         if ($stmt->affected_rows) {
-            $respuesta = array(
+            $respuesta = [
                 'respuesta' => 'exito',
                 'id_eliminado' => $id_borrar
-            );
+            ];
         } else {
-            $respuesta = array(
+            $respuesta = [
                 'respuesta' => 'error'
-            );
+            ];
         }
         $stmt->close();
     } catch (Exception $e) {
 
-        $respuesta = array(
+        $respuesta = [
             'respuesta' => $e->getMessage()
-        );
+        ];
     }
 
     die(json_encode($respuesta));

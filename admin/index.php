@@ -51,7 +51,7 @@ include_once("../static/connection/connection.php");
                     <div class="icon">
                         <i class="fas fa-chart-bar"></i>
                     </div>
-                    <a href="/admin/views/ticket/readTicket.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="./views/ticket/readTicket.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
