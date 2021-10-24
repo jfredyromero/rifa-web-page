@@ -1,4 +1,5 @@
 <?php
+
 include_once("../../templates/header.php");
 include_once("../../templates/navbar.php");
 include_once("../../templates/menu.php");
@@ -56,7 +57,7 @@ include_once("../../../static/connection/connection.php");
                                 }
                                 while ($registro = $resultado->fetch_assoc()) { ?>
 
-                                    <tr>
+                                    <tr tr-id="<?php echo $registro['id']; ?>">
                                         <td> <?php echo $registro['numero_boleta']; ?> </td>
                                         <td> <?php echo $registro['comprador_nombre']; ?> </td>
                                         <td> <?php echo $registro['comprador_celular']; ?> </td>
@@ -65,7 +66,6 @@ include_once("../../../static/connection/connection.php");
                                         <td> <?php echo $registro['referido']; ?> </td>
                                         <td> <?php echo $registro['fecha_compra']; ?> </td>
                                         <td>
-
                                             <a href="#" data-id="<?php echo $registro['id']; ?>" data-tipo="ticket" class="btn bg-maroon btn-flat margin rounded borrar_registro">
                                                 <i class="fa fa-trash"></i>
                                             </a>
