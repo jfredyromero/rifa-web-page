@@ -1,4 +1,5 @@
 <?php
+include_once("../../functions/sessions.php");
 include_once("../../templates/header.php");
 include_once("../../templates/navbar.php");
 include_once("../../templates/menu.php");
@@ -90,8 +91,8 @@ include_once("../../templates/menu.php");
                         <input type="hidden" name="extra3">
                         <input type="hidden" name="transaction_date">
 
-                        
- 
+
+
                     </div>
                     <!-- /.card-body -->
 

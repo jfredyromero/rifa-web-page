@@ -1,11 +1,13 @@
 <?php
 
 include_once("templates/header.php");
+include_once("functions/sessions.php");
 include_once("templates/navbar.php");
 include_once("templates/menu.php");
 // Conexion a la base de datos
 include_once("../static/connection/connection.php");
 ?>
+
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -25,7 +27,7 @@ include_once("../static/connection/connection.php");
 
         <!-- Tarjetas Info -->
         <div class="row">
-            
+
             <!-- col -->
             <div class="col-lg-3 col-6">
                 <!-- small box -->
@@ -33,17 +35,17 @@ include_once("../static/connection/connection.php");
                     <div class="inner">
 
                         <?php
-                            try {
-                                //code...
-                                $conn = mysqli_connect($host, $user, $pw, $db);
-                                $sql = "SELECT COUNT(*) as TOTAL FROM boletas";
-                                $resultado = $conn->query($sql);
-                                $num = $resultado->fetch_assoc();
-                            } catch (Exception $e) {
-                                //throw $th;
-                                $error = $e->getMessage();
-                                echo $error;
-                            }
+                        try {
+                            //code...
+                            $conn = mysqli_connect($host, $user, $pw, $db);
+                            $sql = "SELECT COUNT(*) as TOTAL FROM boletas";
+                            $resultado = $conn->query($sql);
+                            $num = $resultado->fetch_assoc();
+                        } catch (Exception $e) {
+                            //throw $th;
+                            $error = $e->getMessage();
+                            echo $error;
+                        }
                         ?>
                         <h3><?php print_r($num['TOTAL']); ?><sup style="font-size: 25px"></sup></h3>
                         <p>Membresias Vendidas</p>
@@ -55,7 +57,7 @@ include_once("../static/connection/connection.php");
                 </div>
             </div>
             <!-- ./col -->
-            
+
         </div>
         <!-- /. Tarjetas Info -->
 

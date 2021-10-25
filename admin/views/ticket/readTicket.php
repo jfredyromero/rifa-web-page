@@ -1,5 +1,5 @@
 <?php
-
+include_once("../../functions/sessions.php");
 include_once("../../templates/header.php");
 include_once("../../templates/navbar.php");
 include_once("../../templates/menu.php");

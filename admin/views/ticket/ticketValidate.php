@@ -1,9 +1,10 @@
 <?php
-
-    $extra1 = $_POST['extra1'];
-    
+    include_once("../../functions/sessions.php");       
     // Conexion a la base de datos
     include_once("../../../static/connection/connection.php");
+
+    $extra1 = $_POST['extra1'];
+
     $conn = mysqli_connect($host, $user, $pw, $db);
     $sql = "SELECT numero_boleta FROM boletas WHERE numero_boleta = $extra1";
     $resultado = $conn->query($sql);

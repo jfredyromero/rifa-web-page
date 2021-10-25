@@ -1,3 +1,47 @@
+//Login
+
+$("#login-admin").on("submit", function (e) {
+	e.preventDefault(); //CON esto evitamos que se abra otra ventana cuando se crea otro administrador
+  
+	var datos = $(this).serializeArray();
+
+	console.table(datos);
+  
+	$.ajax({
+	  type: $(this).attr("method"),
+	  data: datos,
+	  url: $(this).attr("action"),
+	  dataType: "json",
+	  success: function (data) {
+		console.log(data);
+		var resultado = data;
+		if (resultado.respuesta == "exitoso") {
+		  Swal.fire(
+			"Login correcto",
+			"Bienvenid@ " + resultado.usuario + " !!",
+			"success"
+		  );
+  
+		  setTimeout(function () {
+			//window.location.href = 'admin-area.php';
+			window.location.href = "admin-area.php";
+		  }, 2000);
+		} else {
+		  Swal.fire({
+			icon: "error",
+			title: "Oops...",
+			text: "Usuario o password incorrecto",
+		  });
+		}
+	  },
+	});
+  });
+
+  //----------------
+
+
+
+
 $(document).ready(function () {
 	$("#formCreateTicket").on("submit", function (e) {
 		e.preventDefault();

@@ -1,5 +1,6 @@
 <?php
 // Variables del ambiente
+include_once("../../functions/sessions.php");
 include_once("../../../static/variables/variables.php");
 // Conexion a la base de datos
 include_once("../../../static/connection/connection.php");

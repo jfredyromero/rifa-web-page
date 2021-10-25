@@ -1,15 +1,15 @@
-<footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.1.0
-    </div>
-    <strong>Copyright &copy; 2014-2021 AdminLTE.io.</strong> All rights
-    reserved.
-</footer>
+    <footer class="main-footer">
+        <div class="float-left d-none d-xl-block">
+            <b>Version</b> 3.1.0
+        </div>
+        <strong>Copyright &copy; 2014-2021 AdminLTE.io.</strong> All rights
+        reserved.
+    </footer>
 
 <!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-</aside>
+<!-- <aside class="control-sidebar control-sidebar-dark">
+    
+</aside> -->
 <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
@@ -47,9 +47,10 @@
 <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
 <script src="/rifa-web-page/admin/plugins/sweetalert2/js/sweetalert2.all.min.js"></script>
 <script src="/rifa-web-page/admin/js/ticketAjax.js"></script>
-<script src="/rifa-web-page/admin/js/ticketAjax-try.js"></script>
 
 
 
 
 </body>
+
+</html>
