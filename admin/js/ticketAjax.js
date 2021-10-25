@@ -1,43 +1,43 @@
 //Login
 
 $("#login-admin").on("submit", function (e) {
-	e.preventDefault(); //CON esto evitamos que se abra otra ventana cuando se crea otro administrador
-  
-	var datos = $(this).serializeArray();
+	e.preventDefault();
+
+	let datos = $(this).serialize();
 
 	console.table(datos);
-  
-	$.ajax({
-	  type: $(this).attr("method"),
-	  data: datos,
-	  url: $(this).attr("action"),
-	  dataType: "json",
-	  success: function (data) {
-		console.log(data);
-		var resultado = data;
-		if (resultado.respuesta == "exitoso") {
-		  Swal.fire(
-			"Login correcto",
-			"Bienvenid@ " + resultado.usuario + " !!",
-			"success"
-		  );
-  
-		  setTimeout(function () {
-			//window.location.href = 'admin-area.php';
-			window.location.href = "admin-area.php";
-		  }, 2000);
-		} else {
-		  Swal.fire({
-			icon: "error",
-			title: "Oops...",
-			text: "Usuario o password incorrecto",
-		  });
-		}
-	  },
-	});
-  });
 
-  //----------------
+	$.ajax({
+		type: "POST",
+		data: datos,
+		url: "./views/ticket/ticketModel.php",
+		dataType: "json",
+		success: function (data) {
+			console.log(data);
+			let resultado = data;
+			if (resultado.respuesta == "exitoso") {
+				Swal.fire({
+					title: "Login Correcto",
+					text: "Bienvenid@"+resultado.usuario,
+					icon: "success",
+				});
+
+				setTimeout(function () {
+					//window.location.href = 'admin-area.php';
+					window.location.href = "index.php";
+				}, 2000);
+			} else {
+				Swal.fire({
+					icon: "error",
+					title: "Oops...",
+					text: "Usuario o password incorrecto",
+				});
+			}
+		},
+	});
+});
+
+//----------------
 
 
 
@@ -136,7 +136,7 @@ $(document).ready(function () {
 
 	$(".borrar_registro").on("click", function (e) {
 		e.preventDefault();
-		
+
 		let id = $(this).attr("data-id");
 		let tipo = $(this).attr("data-tipo");
 
@@ -166,11 +166,11 @@ $(document).ready(function () {
 					},
 					url: tipo + "Model.php",
 					success: function (data) {
-						let datos = JSON.parse(data);						
+						let datos = JSON.parse(data);
 						$('tr[tr-id="' + datos.id_eliminado + '"]').remove();
 						Swal.fire("Eliminado!", "Registro eliminado correctamente", "success");
 					},
-				});				
+				});
 			}
 		});
 	});

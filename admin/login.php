@@ -64,6 +64,8 @@ if (isset($_GET['cerrar_sesion'])) {
     <link rel="stylesheet" href="./plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="./plugins/adminlte/css/adminlte.min.css">
+    <!-- Sweet Alert 2 -->
+	<link rel="stylesheet" href="/rifa-web-page/admin/plugins/sweetalert2/css/sweetalert2.min.css">
 </head>
 
 <body class="hold-transition login-page">
@@ -76,10 +78,10 @@ if (isset($_GET['cerrar_sesion'])) {
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Iniciar Sesión</p>
 
-                <form action="" method="post">
+                <form action="./views/ticket/ticketModel.php" id="login-admin" method="post">
 
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Correo Electrónico">
+                        <input type="text" class="form-control" name="user" placeholder="Usuario">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -88,7 +90,7 @@ if (isset($_GET['cerrar_sesion'])) {
                     </div>
 
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Contraseña">
+                        <input type="password" class="form-control" name="password" placeholder="Contraseña">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -97,6 +99,7 @@ if (isset($_GET['cerrar_sesion'])) {
                     </div>
 
                     <div class="input-group mb-3">
+                        <input type="hidden" name="login-admin" value="1">
                         <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
                     </div>
 
@@ -116,6 +119,10 @@ if (isset($_GET['cerrar_sesion'])) {
     <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="./plugins/adminlte/js/adminlte.min.js"></script>
+
+    <!-- SweetAlert y Ajax -->
+    <script src="./plugins/sweetalert2/js/sweetalert2.all.min.js"></script>
+    <script src="./js/ticketAjax.js"></script>
 </body>
 
 </html>

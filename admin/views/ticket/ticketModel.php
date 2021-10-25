@@ -1,6 +1,5 @@
 <?php
 // Variables del ambiente
-include_once("../../functions/sessions.php");
 include_once("../../../static/variables/variables.php");
 // Conexion a la base de datos
 include_once("../../../static/connection/connection.php");
@@ -9,6 +8,79 @@ if (file_exists("../../../static/php/phpqrcode/qrlib.php")){
 }
 $connection = mysqli_connect($host, $user, $pw, $db);
 mysqli_set_charset($connection, "utf8");
+
+
+if (isset($_POST['login-admin'])) {
+
+    $usuario = $_POST['user'];
+    $password = $_POST['password'];
+
+    try {
+        //code...
+        $stmt = $connection->prepare("SELECT * FROM admins WHERE usuario = ?");
+        $stmt->bind_param("s", $usuario);
+        $stmt->execute();
+        $stmt->bind_result($id_admin, $usuario_admin, $nombre_admin, $password_admin); //bind_result retorna los resultados de usar SELECT y permite asignarle en ese retorno las variables que se desean usar
+        if ($stmt->affected_rows) {
+            # code...
+            $existe = $stmt->fetch();
+            if ($existe) {
+                # code...
+                if (password_verify($password, $password_admin)) {
+                    # code...
+                    session_start();
+                    $_SESSION['usuario'] = $usuario_admin;
+                    $_SESSION['nombre'] = $nombre_admin;
+
+                    $respuesta = [
+                        'respuesta' => 'exitoso',
+                        'usuario' => $nombre_admin
+                    ];
+                } else {
+                    $respuesta = [
+                        'respuesta' => 'error'
+                    ];
+                }
+            } else {
+                $respuesta = [
+                    'respuesta' => 'error'
+                ];
+            }
+        }
+        $stmt->close();
+        $connection->close();
+    } catch (Exception $e) {
+        //throw $th;
+        echo "Error: " . $e->getMessage();
+    }
+
+    die(json_encode($respuesta));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 if ($_POST['registro'] == 'nuevo') {    
 
