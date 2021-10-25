@@ -84,7 +84,7 @@ include_once("../../templates/menu.php");
                         <!-- Datos Ocultos -->
 
                         <input type="hidden" name="ip">
-                        <input type="hidden" name="reference_pol">
+                        <!-- <input type="hidden" name="reference_pol"> -->
                         <input type="hidden" name="reference_sale">
                         <input type="hidden" name="transaction_id">
                         <input type="hidden" name="extra2">

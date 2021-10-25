@@ -60,28 +60,6 @@ if (isset($_POST['login-admin'])) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if ($_POST['registro'] == 'nuevo') {    
 
     try {
@@ -96,7 +74,7 @@ if ($_POST['registro'] == 'nuevo') {
             ];
 
         }else{
-
+            session_start();
             // Aqui va lo nuestro
             $phone = $_POST['phone'];
             $email_buyer = $_POST['email_buyer'];
@@ -106,7 +84,7 @@ if ($_POST['registro'] == 'nuevo') {
             $comprador_cedula = $_POST['extra2-cc'];
             $comprador_celular = $_POST['phone'];
             $comprador_correo = $_POST['email_buyer'];
-            $referencia_pago = $_POST['reference_pol'];
+            $referencia_pago = $_SESSION['nombre'].'01';
             $referencia_venta = $_POST['reference_sale'];
             $id_transaccion = $_POST['transaction_id'];
             $codigo_referido = $_POST['extra3'];

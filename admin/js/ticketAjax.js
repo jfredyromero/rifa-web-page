@@ -58,9 +58,9 @@ $(document).ready(function () {
 
 		$("input[name='ip']").val(myip);
 
-		let nombreAdmin = "Freddy";
+		// let nombreAdmin = $("input[name='reference_pol']").val();
 
-		$("input[name='reference_pol']").val(nombreAdmin + "01");
+		// $("input[name='reference_pol']").val(nombreAdmin + "01");
 
 		$("input[name='reference_sale']").val(md5($("input[name='extra2-name']").val() + "-" + $("input[name='extra1']").val() + "-" + Date.now()));
 
