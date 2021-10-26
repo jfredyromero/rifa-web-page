@@ -242,7 +242,7 @@
 
 
 					<div class="card-footer mt-1">
-						<button class="btn btn-primary" id="btnAceptar">Aceptar</button>
+						<button class="btn btn-primary btnAceptar">Aceptar</button>
 					</div>
 				</div>
 			</div>
@@ -361,7 +361,7 @@
 							</table>
 						</div>
 						<div class="card-footer">
-							<button class="btn btn-primary" id="btnAceptar">Aceptar</button>
+							<button class="btn btn-primary btnAceptar">Aceptar</button>
 						</div>
 
 					</div>
@@ -402,8 +402,6 @@
 						<h2>Son $25.000 pesos más por cada una. Animate!</h2>	
 					</div>
 					<div id="card-info-boletas">
-						<div class="tickets-container-popup" id="tickets-container-popup">
-						</div>
 					</div>
 				</div>
 				<div class="card-footer-revancha">
@@ -416,6 +414,7 @@
 		</div>
 	</div>
 	<span id="precio" style="display: none;"><?php echo $price; ?></span>
+	<span id="precioRevancha" style="display: none;"><?php echo $priceRevancha; ?></span>
 	<span id="fechaSorteo" style="display: none;"><?php echo $fecha_sorteo; ?></span>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
