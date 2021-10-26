@@ -59,10 +59,23 @@ include_once("../../templates/menu.php");
             </div>
             <div class="card-body">
                 <form role="form" enctype="multipart/form-data" name="createTicket" id="formCreateTicket" method="post" action="ticketModel.php">
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="usuario">Número Membresía</label>
-                            <input type="number" class="form-control" id="ticketNumber" name="extra1" placeholder="Ingresa el número de la membresía" min="0" max="9999" onKeyPress="if(this.value.length==4) return false;" required>
+                    <div class="card-body">                        
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="form-group">
+                                    <label for="usuario">Número Membresía</label>
+                                    <input type="number" class="form-control" id="ticketNumber" name="extra1" placeholder="Ingresa el número de la membresía" min="0" max="9999" onKeyPress="if(this.value.length==4) return false;" required>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                                        <br>
+                                        <input type="checkbox" class="custom-control-input" id="revancha" name="revancha">    
+                                        <label class="custom-control-label" for="revancha">¿Revancha?</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="nombre">Nombre Comprador</label>

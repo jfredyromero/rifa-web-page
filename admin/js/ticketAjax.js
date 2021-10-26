@@ -80,11 +80,10 @@ $(document).ready(function () {
 			beforeSend: function () {
 				swal.fire({
 					title: "Cargando...",
-					html: sweet_loader,
 					allowOutsideClick: false,
 					allowEscapeKey: false,
 					showConfirmButton: false,
-					onRender: function () {
+					didRender: function () {
 						// there will only ever be one sweet alert open.
 						$(".swal2-content").prepend(sweet_loader);
 					},

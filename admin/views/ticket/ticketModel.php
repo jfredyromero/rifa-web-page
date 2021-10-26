@@ -87,6 +87,11 @@ if ($_POST['registro'] == 'nuevo') {
             $referencia_pago = $_SESSION['nombre'].'01';
             $referencia_venta = $_POST['reference_sale'];
             $id_transaccion = $_POST['transaction_id'];
+            if (isset($_POST['revancha'])) {
+                $revancha = 1;
+            }else{
+                $revancha = 0;
+            }
             $codigo_referido = $_POST['extra3'];
             $fecha_compra = $_POST['transaction_date'];
 
@@ -106,10 +111,10 @@ if ($_POST['registro'] == 'nuevo') {
             $token = $data->token;
 
             if($codigo_referido==""){
-                $query = "INSERT INTO boletas (numero_boleta, comprador_ip, comprador_nombre, comprador_cedula, comprador_celular, comprador_correo, referencia_pago, referencia_venta, id_transaccion, fecha_compra) VALUES ('$boleta', '$comprador_ip', '$comprador_nombre', '$comprador_cedula', '$comprador_celular', '$comprador_correo', '$referencia_pago', '$referencia_venta', '$id_transaccion', '$fecha_compra');";
+                $query = "INSERT INTO boletas (numero_boleta, comprador_ip, comprador_nombre, comprador_cedula, comprador_celular, comprador_correo, referencia_pago, referencia_venta, id_transaccion, revancha, fecha_compra) VALUES ('$boleta', '$comprador_ip', '$comprador_nombre', '$comprador_cedula', '$comprador_celular', '$comprador_correo', '$referencia_pago', '$referencia_venta', '$id_transaccion', $revancha,'$fecha_compra');";
             }
             else{
-                $query = "INSERT INTO boletas (numero_boleta, comprador_ip, comprador_nombre, comprador_cedula, comprador_celular, comprador_correo, referencia_pago, referencia_venta, id_transaccion, codigo_referido, fecha_compra) VALUES ('$boleta', '$comprador_ip', '$comprador_nombre', '$comprador_cedula', '$comprador_celular', '$comprador_correo', '$referencia_pago', '$referencia_venta', '$id_transaccion', '$codigo_referido', '$fecha_compra');";
+                $query = "INSERT INTO boletas (numero_boleta, comprador_ip, comprador_nombre, comprador_cedula, comprador_celular, comprador_correo, referencia_pago, referencia_venta, id_transaccion, revancha, codigo_referido, fecha_compra) VALUES ('$boleta', '$comprador_ip', '$comprador_nombre', '$comprador_cedula', '$comprador_celular', '$comprador_correo', '$referencia_pago', '$referencia_venta', '$id_transaccion', $revancha,'$codigo_referido', '$fecha_compra');";
             }
 
             $stmt = $connection->prepare($query);
@@ -119,7 +124,7 @@ if ($_POST['registro'] == 'nuevo') {
             
             if($registros > 0){
                 // Creacion de codigo QR
-                $nombreArchivo = $referenceCode."-".$boleta.".png";
+                $nombreArchivo = $referencia_venta."-".$boleta.".png";
                 $rutaQR = "../../../media/codigosQR/".$nombreArchivo;
                 $tamaño = 100;
                 $level = "H";
