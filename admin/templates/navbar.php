@@ -15,7 +15,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="login.php?cerrar_sesion=true" class="btn btn-success btn-flat float-right">Cerrar sesión</a>
+            <a href="/rifa-web-page/admin/login.php?cerrar_sesion=true" class="btn btn-success btn-flat float-right">Cerrar sesión</a>
         </li>
 
 
