@@ -5,16 +5,17 @@ function onlyNumberKey(evt) {
 	return true;
 }
 
+var revancha_price = document.getElementById("precioRevancha").innerHTML;
 var tickets_values = [];
 var inputAmount = document.querySelector('input[name="amount"]');
 var inputExtra1 = document.querySelector('input[name="extra1"]');
+var ticket_price = document.getElementById('precio').innerHTML;
 var spanAmount = document.getElementById("price");
 
 document.getElementById("tickets-grid-container").addEventListener("click", function () {
 
 	var svg = Array.from(document.getElementsByTagName("path"));
 	var tickets = Array.from(document.getElementsByName("checkbox-ticket"));
-	var ticket_price = document.getElementById('precio').innerHTML;
 
 	// Funciona para resetear. No borrar
 	tickets_values = [];
@@ -117,6 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	function boletasRevancha() {
 		var spanAmountRevancha = document.getElementById("priceRevancha");
 		spanAmountRevancha.textContent = "$ "+inputAmount.value;
+		spanAmountTotal = inputAmount.value;
 		let boletas = "";
 		tickets_values.forEach(t => {
 			boletas += `<div class="ticket">
@@ -138,16 +140,40 @@ document.addEventListener("DOMContentLoaded", () => {
 								</defs>
 							</svg>
 							<h1 class="ticket-popup-number">${t}</h1>
-							<input type="checkbox" name="checkbox-ticket" value="${t}">
+							<input type="checkbox" name="checkbox-ticket-revancha" value="${t}">
 						</div>`;
 		});
-		document.getElementById('tickets-container-popup').innerHTML = boletas;
-	
-		// inputExtra1.value = tickets_values.join("-");
-		// inputAmount.value = tickets_values.length * ticket_price;
-	
-		// console.clear();
-		// console.log(inputExtra1.value);
+		let div = document.createElement('div');
+		div.className = "tickets-container-popup";
+		div.id = "tickets-container-popup";
+		div.innerHTML = boletas;
+		document.getElementById('card-info-boletas').innerHTML = "";
+		document.getElementById('card-info-boletas').append(div);
+		let ticketsRevancha = [];
+		let numeroRevanchas;
+		document.getElementById("tickets-container-popup").addEventListener("click", function () {
+			let svg = Array.from(document.getElementsByClassName("ticket-svg-revancha"));
+			let tickets = Array.from(document.getElementsByName("checkbox-ticket-revancha"));
+			ticketsRevancha = [];
+			numeroRevanchas = 0;
+			tickets.forEach(t => {
+				if (t.checked == true) {
+					ticketsRevancha.push('R' + t.value);
+					numeroRevanchas++;
+					svg[tickets.indexOf(t)].setAttribute("fill", "url(#red)");
+				} else {
+					ticketsRevancha.push(t.value);
+					svg[tickets.indexOf(t)].setAttribute("fill", "url(#gold)");
+				}
+			});
+			
+			let total = parseFloat(numeroRevanchas * revancha_price) + parseFloat(spanAmountTotal);
+			spanAmountRevancha.textContent = "$ "+ total;
+			inputExtra1.value = ticketsRevancha.join("-");
+			inputAmount.value = total;
+			// console.clear();
+			// console.log(inputExtra1.value);
+		});
 	
 		// spanAmount.textContent = "$ "+inputAmount.value; 
 	}
@@ -165,21 +191,9 @@ document.addEventListener("DOMContentLoaded", () => {
 			});
 			return false;
 		}else{
-			// Swal.fire({
-			// 	title: '¿Te vas a ir sin tu revancha?',
-			// 	html: boleta,
-			// 	showCancelButton: true,
-			// 	confirmButtonColor: '#3085d6',
-			// 	cancelButtonColor: '#d33',
-			// 	confirmButtonText: 'Me interesa...'
-			// }).then((result) => {
-			// 	if (result.isConfirmed) {
-			// 		generarCodigoReferencia();
-			// 		generarDescripcion();
-			// 		e.target.submit();
-			// 	}
-			// })
 			boletasRevancha();
+			generarCodigoReferencia();
+			generarDescripcion();
 			$("#card-popup-revancha").fadeIn("slow");
 		}
 	})

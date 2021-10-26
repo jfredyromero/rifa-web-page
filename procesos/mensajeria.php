@@ -55,7 +55,7 @@ $data = json_decode($result);
 $token = $data->token;
 
 foreach ($registros as $registro) {
-    //Acortador de link
+    // Acortador de link
     $link = $dominio."?referencia_pago=".urlencode($registro["referencia_venta"])."&comprador_nombre=".urlencode($registro["comprador_nombre"])."&comprador_cedula=".urlencode($registro["comprador_cedula"])."&numero_boleta=".urlencode($registro["boleta"]);
     $cutly_link = urlencode($link);
     $json = file_get_contents("https://cutt.ly/api/api.php?key=6528f6db6cc1e216fe5e5550190b38eeba522&short=$cutly_link");
@@ -67,6 +67,7 @@ foreach ($registros as $registro) {
     //Envío de SMS
     //Codigo para enviar el mensaje
     $mensajeSMS = "Hola ".$registro["comprador_nombre"].". Usted tiene la membresía de gana tu carro: " .$registro["boleta"]. ", que puede consultar en: ".$shortLink;
+    echo $mensajeSMS."<br>";
     $data = array("number" => "57".$registro["comprador_celular"], "message" => $mensajeSMS, "type" => "1");
     $data_string = json_encode($data);
     $ch = curl_init('https://api.cellvoz.co/v2/sms/single');
@@ -79,6 +80,8 @@ foreach ($registros as $registro) {
         'api-key: 08cf6bb121574a9e24cd041cf2c39832cfe93cc1')
     );
     $result = curl_exec($ch);
+    
+    // echo $registro["comprador_nombre"]."<br>";
     sleep(10);
 }
 ?>

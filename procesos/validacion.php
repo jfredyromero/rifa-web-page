@@ -29,7 +29,17 @@ if($method == "POST"){
 
     // Validación de boletas validas
     $extra1 = trim(htmlspecialchars($_POST["extra1"]));
-    $boletas = explode("-", $extra1);
+    $boletas_raw = explode("-", $extra1);
+    $boletas = [];
+    $aumentoRevancha = 0;
+    foreach ($boletas_raw as $boleta) {
+        if (str_starts_with($boleta, "R")) {
+            $aumentoRevancha = $aumentoRevancha + $priceRevancha;
+            array_push($boletas, str_replace("R", "", $boleta));
+        }else{
+            array_push($boletas, $boleta);
+        }
+    }
     // Boletas validas son las boletas que vienen del formulario que no estan en la base de datos
     // Si las boletas del formulario no estan en la base de datos, las boletas validas son las mismas
     // boletas del formulario
@@ -49,7 +59,7 @@ if($method == "POST"){
     if ($amount === false) {
         exit('Precio en formato no válido');
     }
-    $validacion3 = ($amount==count($boletas)*$price);
+    $validacion3 = ($amount==count($boletas)*$price+$aumentoRevancha);
     if (!$validacion3) {
         exit('Precio Adulterado');
     }
