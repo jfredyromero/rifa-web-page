@@ -23,11 +23,13 @@
 <script src="/rifa-web-page/admin/plugins/adminlte/js/adminlte.min.js"></script>
 
 <!-- DataTables -->
-<!-- <script src="/rifa-web-page/admin/plugins/jquery/jquery.dataTables.min.js"></script>
+<script src="/rifa-web-page/admin/plugins/jquery/jquery.dataTables.min.js"></script>
+<!-- <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script> -->
 <script src="/rifa-web-page/admin/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
 <script src="/rifa-web-page/admin/plugins/datatables/js/dataTables.responsive.min.js"></script>
 <script src="/rifa-web-page/admin/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-<script src="/rifa-web-page/admin/js/datatablesApp.js"></script> -->
+
+<script src="/rifa-web-page/admin/js/datatablesApp.js"></script>
 
 <!-- Bs Custom File Input -->
 <!-- <script src="/admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>

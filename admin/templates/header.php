@@ -17,7 +17,8 @@
 
 	<!-- DataTables -->
     <link rel="stylesheet" href="/rifa-web-page/admin/plugins/datatables/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="/rifa-web-page/admin/plugins/datatables/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="/rifa-web-page/admin/plugins/datatables/css/responsive.bootstrap4.min.css"> 
+	<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"> -->
 
 	<!-- Sweet Alert 2 -->
 	<link rel="stylesheet" href="/rifa-web-page/admin/plugins/sweetalert2/css/sweetalert2.min.css">

@@ -30,64 +30,64 @@ include_once("../../../static/connection/connection.php");
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <div class="table-responsive-sm">
-                            <table id="registros" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Boleta</th>
-                                        <th>Nombre</th>
-                                        <th>Celular</th>
-                                        <th>Correo</th>
-                                        <th>Id transaccion</th>
-                                        <th>Referido</th>
-                                        <th>Fecha</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    try {
-                                        //code...
-                                        $conn = mysqli_connect($host, $user, $pw, $db);
-                                        $sql = "SELECT id, numero_boleta, comprador_nombre, comprador_celular, comprador_correo, id_transaccion, fecha_compra, referidos.referido FROM boletas LEFT JOIN referidos ON codigo_referido = referidos.codigo";
-                                        $resultado = $conn->query($sql);
-                                    } catch (Exception $e) {
-                                        //throw $th;
-                                        $error = $e->getMessage();
-                                        echo $error;
-                                    }
-                                    while ($registro = $resultado->fetch_assoc()) { ?>
 
-                                        <tr tr-id="<?php echo $registro['id']; ?>">
-                                            <td> <?php echo $registro['numero_boleta']; ?> </td>
-                                            <td> <?php echo $registro['comprador_nombre']; ?> </td>
-                                            <td> <?php echo $registro['comprador_celular']; ?> </td>
-                                            <td> <?php echo $registro['comprador_correo']; ?> </td>
-                                            <td> <?php echo $registro['id_transaccion']; ?> </td>
-                                            <td> <?php echo $registro['referido']; ?> </td>
-                                            <td> <?php echo $registro['fecha_compra']; ?> </td>
-                                            <td>
-                                                <button data-id="<?php echo $registro['id']; ?>" data-tipo="ticket" class="btn bg-maroon btn-flat margin rounded borrar_registro">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Boleta</th>
-                                        <th>Nombre</th>
-                                        <th>Celular</th>
-                                        <th>Correo</th>
-                                        <th>Id transaccion</th>
-                                        <th>Referido</th>
-                                        <th>Fecha</th>
-                                        <th>Acciones</th>
+                        <table id="registros" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Boleta</th>
+                                    <th>Nombre</th>
+                                    <th>Celular</th>
+                                    <th>Correo</th>
+                                    <th>Id transaccion</th>
+                                    <th>Referido</th>
+                                    <th>Fecha</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                try {
+                                    //code...
+                                    $conn = mysqli_connect($host, $user, $pw, $db);
+                                    $sql = "SELECT id, numero_boleta, comprador_nombre, comprador_celular, comprador_correo, id_transaccion, fecha_compra, referidos.referido FROM boletas LEFT JOIN referidos ON codigo_referido = referidos.codigo";
+                                    $resultado = $conn->query($sql);
+                                } catch (Exception $e) {
+                                    //throw $th;
+                                    $error = $e->getMessage();
+                                    echo $error;
+                                }
+                                while ($registro = $resultado->fetch_assoc()) { ?>
+
+                                    <tr tr-id="<?php echo $registro['id']; ?>">
+                                        <td> <?php echo $registro['numero_boleta']; ?> </td>
+                                        <td> <?php echo $registro['comprador_nombre']; ?> </td>
+                                        <td> <?php echo $registro['comprador_celular']; ?> </td>
+                                        <td> <?php echo $registro['comprador_correo']; ?> </td>
+                                        <td> <?php echo $registro['id_transaccion']; ?> </td>
+                                        <td> <?php echo $registro['referido']; ?> </td>
+                                        <td> <?php echo $registro['fecha_compra']; ?> </td>
+                                        <td>
+                                            <button data-id="<?php echo $registro['id']; ?>" data-tipo="ticket" class="btn bg-maroon btn-flat margin rounded borrar_registro">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </td>
                                     </tr>
-                                </tfoot>
-                            </table>
-                        </div>
+                                <?php } ?>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Boleta</th>
+                                    <th>Nombre</th>
+                                    <th>Celular</th>
+                                    <th>Correo</th>
+                                    <th>Id transaccion</th>
+                                    <th>Referido</th>
+                                    <th>Fecha</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+
                     </div>
                     <!-- /.card-body -->
                 </div>
