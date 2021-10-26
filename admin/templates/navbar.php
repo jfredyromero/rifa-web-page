@@ -14,5 +14,10 @@
                 <i class="fas fa-expand-arrows-alt"></i>
             </a>
         </li>
+        <li class="nav-item">
+            <a href="login.php?cerrar_sesion=true" class="btn btn-success btn-flat float-right">Cerrar sesión</a>
+        </li>
+
+
     </ul>
 </nav>
