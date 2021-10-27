@@ -186,8 +186,8 @@
 	
 	<?php
 	$banderaPopUp = false;
-	if (isset($_GET["referencia_pago"])) {
-		$referencia_pago = $_GET["referencia_pago"];
+	if (isset($_GET["id_transaccion"])) {
+		$id_transaccion = $_GET["id_transaccion"];
 		$comprador_nombre = $_GET["comprador_nombre"];
 		$comprador_cedula = $_GET["comprador_cedula"];
 		$numero_boleta = $_GET["numero_boleta"];
@@ -233,8 +233,8 @@
 								<td><?php echo $comprador_cedula; ?></td>
 							</tr>
 							<tr>
-								<th>Referencia de pago</th>
-								<td><?php echo $referencia_pago; ?></td>
+								<th>ID Transacción</th>
+								<td><?php echo $id_transaccion; ?></td>
 							</tr>
 						</table>
 					</div>
