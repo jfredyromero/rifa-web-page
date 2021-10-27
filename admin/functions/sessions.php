@@ -9,7 +9,7 @@ function usuario_autenticado() {
 
     if (!revisar_usuario()) {
         # code...
-        header('location: /rifa-web-page/admin/login.php');
+        header('location: /login.php');
         exit();
     }
 }
