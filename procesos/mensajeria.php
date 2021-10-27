@@ -10,15 +10,14 @@ $mysqli = new mysqli($host, $user, $pw, $db);
 if ($mysqli->connect_error) {
     exit('Could not connect');
 }
-
+date_default_timezone_set('America/Bogota');
 $fechaActual = date("Y-m-d H:i:s");
 $nuevaFecha = date("Y-m-d H:i:s", strtotime($fechaActual."- 1 days"));
-
 $sql = "SELECT * FROM boletas WHERE fecha_compra >= '$nuevaFecha'";
 $stmt = $mysqli->prepare($sql);
 $stmt->execute();
 $stmt->store_result();
-$stmt->bind_result($id, $boleta, $comprador_ip, $comprador_nombre, $comprador_cedula, $comprador_celular, $comprador_correo, $referencia_pago, $referencia_venta, $id_transaccion, $codigo_referido, $fecha_compra);
+$stmt->bind_result($id, $boleta, $comprador_ip, $comprador_nombre, $comprador_cedula, $comprador_celular, $comprador_correo, $referencia_pago, $referencia_venta, $id_transaccion, $revancha, $codigo_referido, $fecha_compra);
 $registros = [];
 while ($stmt -> fetch()) { 
     $registro = array(
@@ -32,6 +31,7 @@ while ($stmt -> fetch()) {
         "referencia_pago" => $referencia_pago,
         "referencia_venta" => $referencia_venta,
         "id_transaccion" => $id_transaccion,
+        "revancha" => $revancha,
         "codigo_referido" => $codigo_referido,
         "fecha_compra" => $fecha_compra
     );
@@ -63,9 +63,8 @@ foreach ($registros as $registro) {
     $respuesta = (array)$data[0];
     $url = (array)$respuesta["url"];
     $shortLink = $url["shortLink"];
-    
-    //Envío de SMS
-    //Codigo para enviar el mensaje
+    // Envío de SMS
+    // Codigo para enviar el mensaje
     $mensajeSMS = "Hola ".$registro["comprador_nombre"].". Usted tiene la membresía de gana tu carro: " .$registro["boleta"]. ", que puede consultar en: ".$shortLink;
     echo $mensajeSMS."<br>";
     $data = array("number" => "57".$registro["comprador_celular"], "message" => $mensajeSMS, "type" => "1");
@@ -80,8 +79,6 @@ foreach ($registros as $registro) {
         'api-key: 08cf6bb121574a9e24cd041cf2c39832cfe93cc1')
     );
     $result = curl_exec($ch);
-    
-    // echo $registro["comprador_nombre"]."<br>";
     sleep(10);
 }
 ?>
