@@ -55,10 +55,10 @@ if($method == "POST"){
             $data = json_decode($result);
             $token = $data->token;
 
-            $stringBoletas = "";
             foreach($boletas as $boleta) {
                 if (str_starts_with($boleta, "R")) {
                     $revancha = 1;   
+                    $boleta = str_replace("R", "", $boleta);
                 }else{
                     $revancha = 0;
                 }
@@ -145,7 +145,7 @@ if($method == "POST"){
                                                 <!--[if mso]></td></tr></table><![endif]--></td></tr></table></td>
                             </tr></table><table class="es-content"
                             cellspacing="0" cellpadding="0" align="center"><tr><td
-                                    style="background-image:url(https://ganatucarro.com/static/img/9701519718227204.jpg);background-color:
+                                    style="background-image:url('.$dominio.'/static/img/fondo.jpg);background-color:
                                     #3d4c6b;background-position: left
                                     top;background-repeat:
                                     no-repeat;background-size: cover"
