@@ -145,7 +145,7 @@ if($method == "POST"){
                                                 <!--[if mso]></td></tr></table><![endif]--></td></tr></table></td>
                             </tr></table><table class="es-content"
                             cellspacing="0" cellpadding="0" align="center"><tr><td
-                                    style="background-image:url(.'$dominio'./static/img/fondo.jpg);background-color:
+                                    style="background-image:url('.$dominio.'/static/img/fondo.jpg);background-color:
                                     #3d4c6b;background-position: left
                                     top;background-repeat:
                                     no-repeat;background-size: cover"
