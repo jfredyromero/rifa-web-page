@@ -437,6 +437,7 @@ include_once("static/variables/variables.php");
 	<span id="precioRevancha" style="display: none;"><?php echo $priceRevancha; ?></span>
 	<span id="fechaSorteo" style="display: none;"><?php echo $fecha_sorteo; ?></span>
 </body>
+<script src="static/js/countdown.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
