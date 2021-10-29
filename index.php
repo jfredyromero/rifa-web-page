@@ -150,7 +150,7 @@ include_once("static/variables/variables.php");
 
 					<div class="control-group mb-05">
 						<label class="control control-checkbox">
-							Acepto los <a href="#">terminos y condiciones</a>
+							Acepto los <a target="_blank" href="<?php $dominio?>/rifa-web-page/static/conditions/TERMINOS Y CONDICIONES BMW.pdf">terminos y condiciones</a>
 							<input type="checkbox" required />
 							<div class="control_indicator"></div>
 						</label>

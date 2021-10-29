@@ -678,9 +678,9 @@ td {
 		transition-duration: 0.1s;
 	}
 
-	/* .card-content{
+	.card-content{
 		transform: scale(1);
-	} */
+	}
 
 	.first-section {
 		position: relative;
