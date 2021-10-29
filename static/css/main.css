@@ -574,8 +574,17 @@ td {
 .tickets-container-popup {
 	width: 100%;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+
+.tickets-container-popup .ticket{
+	margin-bottom:1rem;
+}
+
+.tickets-container-popup .ticket:last-of-type{
+	margin-bottom:0;
 }
 
 .ticket-popup-number {
@@ -626,6 +635,10 @@ td {
 }
 
 @media (min-width: 1269px) {
+
+	.tickets-container-popup{
+		flex-direction: row;
+	}
 	/* scale */
 
 	.sc-100 {
@@ -702,10 +715,6 @@ td {
 		transform: scale(1.1);
 		filter: brightness(1.3);
 		transition-duration: 0.1s;
-	}
-
-	.card-content{
-		transform: scale(1);
 	}
 
 	.first-section {

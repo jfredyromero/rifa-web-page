@@ -150,7 +150,7 @@ include_once("static/variables/variables.php");
 
 					<div class="control-group mb-05">
 						<label class="control control-checkbox">
-							Acepto los <a target="_blank" href="<?php $dominio?>/rifa-web-page/static/conditions/TERMINOS Y CONDICIONES BMW.pdf">terminos y condiciones</a>
+							Acepto los <a target="_blank" href="<?php $dominio?>/rifa-web-page/static/conditions/TERMINOS Y CONDICIONES BMW.pdf">términos y condiciones</a>
 							<input type="checkbox" required />
 							<div class="control_indicator"></div>
 						</label>
@@ -215,7 +215,7 @@ include_once("static/variables/variables.php");
 		<div class="card-popup" id="card-popup">
 			<div class="container-flex">
 				<div class="bg-close"></div>
-				<div class="card-content">
+				<div class="card-content sc-100">
 					<div class="card-header">
 						<div class="logo">
 							<img src="static/img/logo.png" alt="logo">
@@ -309,7 +309,7 @@ include_once("static/variables/variables.php");
 				<div class="container-flex">
 
 					<div class="bg-close"></div>
-					<div class="card-content sc-75">
+					<div class="card-content sc-80">
 						<div class="card-header">
 							<div class="logo">
 								<img src="static/img/logo.png" alt="logo">
