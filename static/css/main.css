@@ -629,11 +629,11 @@ td {
 	/* scale */
 
 	.sc-100 {
-		transform: scale(1) !important;
+		transform: scale(1);
 	}
 
 	.sc-95 {
-		transform: scale(0.95) !important;
+		transform: scale(0.95);
 	}
 
 	.sc-90 {
