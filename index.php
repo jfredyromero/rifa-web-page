@@ -309,7 +309,7 @@ include_once("static/variables/variables.php");
 				<div class="container-flex">
 
 					<div class="bg-close"></div>
-					<div class="card-content">
+					<div class="card-content sc-75">
 						<div class="card-header">
 							<div class="logo">
 								<img src="static/img/logo.png" alt="logo">

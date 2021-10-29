@@ -393,7 +393,7 @@ input[type="checkbox"]:checked + label {
 	cursor: pointer;
 }
 
-.gift-container{
+.gift-container {
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -421,13 +421,13 @@ input[type="checkbox"]:checked + label {
 	padding: 1.8rem;
 }
 
-.semicirculo a{
+.semicirculo a {
 	height: 3.5rem;
 	width: 3.5rem;
 	transition-duration: 0.25s;
 }
 
-.semicirculo a:hover{
+.semicirculo a:hover {
 	cursor: pointer;
 	transform: scale(1.1);
 	filter: brightness(1.15);
@@ -626,11 +626,37 @@ td {
 }
 
 @media (min-width: 1269px) {
+	/* scale */
+
+	.sc-100 {
+		transform: scale(1) !important;
+	}
+
+	.sc-95 {
+		transform: scale(0.95) !important;
+	}
+
+	.sc-90 {
+		transform: scale(0.9);
+	}
+
+	.sc-85 {
+		transform: scale(0.85);
+	}
+
+	.sc-80 {
+		transform: scale(0.8);
+	}
+
+	.sc-75 {
+		transform: scale(0.75);
+	}
+
 	body {
 		overflow: hidden;
 	}
 
-	.gift-container{
+	.gift-container {
 		margin: 0;
 		width: auto;
 		height: auto;
@@ -658,7 +684,7 @@ td {
 		padding: 1.8rem 1.8rem 0.8rem 0.8rem;
 	}
 
-	.semicirculo a{
+	.semicirculo a {
 		height: 3.5rem;
 		width: 3.5rem;
 		transition-duration: 0.25s;
@@ -702,5 +728,4 @@ td {
 	.tickets-grid-container {
 		grid-template-columns: repeat(6, 1fr);
 	}
-	
 }
