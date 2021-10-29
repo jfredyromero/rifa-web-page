@@ -1,10 +1,10 @@
-
 <?php
-    // Variables del ambiente
-    include_once("static/variables/variables.php");
+// Variables del ambiente
+include_once("static/variables/variables.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,7 +17,7 @@
 <body>
 
 	<form id="form-boleta" method="post" action="procesos/validacion.php">
-	<!-- <form id="form-boleta" method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/"> -->
+		<!-- <form id="form-boleta" method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/"> -->
 
 		<div class="page-content">
 
@@ -27,8 +27,8 @@
 					<div class="logo">
 						<img src="static/img/logo.png" alt="logo">
 					</div>
-					
-					
+
+
 
 					<h2 class="titulo mb-1">¡Compra tus Membresias!</h2>
 
@@ -63,14 +63,14 @@
 							<input type="button" class="btn btn-primary ms-1" id="btnSearch" value="Buscar">
 							<!-- <button class="btn btn-primary ms-1" id="btnSearch">Buscar</button> -->
 						</div>
-						
+
 						<div class="tickets-grid-container" id="tickets-grid-container">
 							<!-- //TICKETS -->
 						</div>
 
 						<div class="loader-container" id="loader-container"></div>
-						
-						
+
+
 					</div>
 				</div>
 
@@ -116,19 +116,19 @@
 				<!-- ===================================== -->
 				<!-- Datos necesarios para el pago en PayU -->
 				<!-- ===================================== -->
-				
+
 				<?php
 				if (isset($_GET["extra3"])) {
 				?>
-				<input name="extra3" type="hidden" value="<?php echo $_GET["extra3"]; ?>" />
+					<input name="extra3" type="hidden" value="<?php echo $_GET["extra3"]; ?>" />
 				<?php
-				}else{
+				} else {
 				?>
-				<input name="extra3" type="hidden" />
+					<input name="extra3" type="hidden" />
 				<?php
 				}
 				?>
-        
+
 				<input name="extra1" type="hidden" />
 
 				<input name="description" type="hidden" value="" />
@@ -150,7 +150,7 @@
 
 					<div class="control-group mb-05">
 						<label class="control control-checkbox">
-							Acepto los <a href="#">terminos y condiciones</a>
+							Acepto los <a target="_blank" href="<?php $dominio?>/rifa-web-page/static/conditions/TERMINOS Y CONDICIONES BMW.pdf">términos y condiciones</a>
 							<input type="checkbox" required />
 							<div class="control_indicator"></div>
 						</label>
@@ -158,7 +158,7 @@
 
 				</div>
 
-				<div class="gift-container mt-1 mb-1">
+				<!-- <div class="gift-container mt-1 mb-1">
 					<div class="bg-gold-gradient-circle">
 						<div class="bg-dark-circle">
 							<a href="https://instagram.com/ganatucarro?utm_medium=copy_link" target="_blank">
@@ -175,7 +175,27 @@
 							</a>
 						</div>
 					</div>
+				</div> -->
+				<div class="gift-container">
+					<div class="semicirculo-fondo">
+						<div class="semicirculo">
+							<a href="https://instagram.com/ganatucarro?utm_medium=copy_link" target="_blank">
+								<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+									<path d="M32 448c0 17.7 14.3 32 32 32h160V320H32v128zm256 32h160c17.7 0 32-14.3 32-32V320H288v160zm192-320h-42.1c6.2-12.1 10.1-25.5 10.1-40 0-48.5-39.5-88-88-88-41.6 0-68.5 21.3-103 68.3-34.5-47-61.4-68.3-103-68.3-48.5 0-88 39.5-88 88 0 14.5 3.8 27.9 10.1 40H32c-17.7 0-32 14.3-32 32v80c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-80c0-17.7-14.3-32-32-32zm-326.1 0c-22.1 0-40-17.9-40-40s17.9-40 40-40c19.9 0 34.6 3.3 86.1 80h-86.1zm206.1 0h-86.1c51.4-76.5 65.7-80 86.1-80 22.1 0 40 17.9 40 40s-17.9 40-40 40z" fill="url(#gift-gold)"></path>
+									<defs>
+										<linearGradient id="gift-gold" x1="256" y1="0" x2="256" y2="512" gradientUnits="userSpaceOnUse">
+											<stop stop-color="#95702c" />
+											<stop offset="0.5" stop-color="#f8dd57" />
+											<stop offset="1" stop-color="#95702c" />
+										</linearGradient>
+									</defs>
+								</svg>
+							</a>
+						</div>
+					</div>
 				</div>
+				
+
 			</div>
 		</div>
 
@@ -183,11 +203,11 @@
 	</form>
 
 	<!-- POPUPS -->
-	
+
 	<?php
 	$banderaPopUp = false;
-	if (isset($_GET["referencia_pago"])) {
-		$referencia_pago = $_GET["referencia_pago"];
+	if (isset($_GET["id_transaccion"])) {
+		$id_transaccion = $_GET["id_transaccion"];
 		$comprador_nombre = $_GET["comprador_nombre"];
 		$comprador_cedula = $_GET["comprador_cedula"];
 		$numero_boleta = $_GET["numero_boleta"];
@@ -195,7 +215,7 @@
 		<div class="card-popup" id="card-popup">
 			<div class="container-flex">
 				<div class="bg-close"></div>
-				<div class="card-content">
+				<div class="card-content sc-100">
 					<div class="card-header">
 						<div class="logo">
 							<img src="static/img/logo.png" alt="logo">
@@ -233,8 +253,8 @@
 								<td><?php echo $comprador_cedula; ?></td>
 							</tr>
 							<tr>
-								<th>Referencia de pago</th>
-								<td><?php echo $referencia_pago; ?></td>
+								<th>ID Transacción</th>
+								<td><?php echo $id_transaccion; ?></td>
 							</tr>
 						</table>
 					</div>
@@ -289,7 +309,7 @@
 				<div class="container-flex">
 
 					<div class="bg-close"></div>
-					<div class="card-content">
+					<div class="card-content sc-80">
 						<div class="card-header">
 							<div class="logo">
 								<img src="static/img/logo.png" alt="logo">
@@ -399,15 +419,15 @@
 						</a>
 						<br>
 						<h2>Selecciona tu revancha y participa por un BMW.</h2>
-						<h2>Son $25.000 pesos más por cada una. Animate!</h2>	
+						<h2>Son $25.000 pesos más por cada una. Animate!</h2>
 					</div>
 					<div id="card-info-boletas">
 					</div>
 				</div>
 				<div class="card-footer-revancha">
-					<div >
+					<div>
 						<h2>Valor a pagar: <span id="priceRevancha" class="fw-1">$ 0</span></h2>
-					</div>	
+					</div>
 					<button class="btn btn-primary" id="btnAceptar">Continuar</button>
 				</div>
 			</div>
@@ -415,8 +435,10 @@
 	</div>
 	<span id="precio" style="display: none;"><?php echo $price; ?></span>
 	<span id="precioRevancha" style="display: none;"><?php echo $priceRevancha; ?></span>
-	<span id="fechaSorteo" style="display: none;"><?php echo $fecha_sorteo; ?></span>
+	<span id="fecha_sorteo" style="display: none;"><?php echo $fecha_sorteo; ?></span>
+	<span id="fecha_sorteo_countdown" style="display: none;"><?php echo $fecha_sorteo_countdown; ?></span>
 </body>
+<script src="static/js/countdown.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -436,4 +458,5 @@ if ($banderaPopUp) {
 <?php
 }
 ?>
+
 </html>

@@ -40,8 +40,8 @@ include_once("../../../static/connection/connection.php");
                                     <th>Correo</th>
                                     <th>Id transaccion</th>
                                     <th>Referido</th>
+                                    <th>Revancha</th>
                                     <th>Fecha</th>
-                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,7 +49,7 @@ include_once("../../../static/connection/connection.php");
                                 try {
                                     //code...
                                     $conn = mysqli_connect($host, $user, $pw, $db);
-                                    $sql = "SELECT id, numero_boleta, comprador_nombre, comprador_celular, comprador_correo, id_transaccion, fecha_compra, referidos.referido FROM boletas LEFT JOIN referidos ON codigo_referido = referidos.codigo";
+                                    $sql = "SELECT id, numero_boleta, comprador_nombre, comprador_celular, comprador_correo, id_transaccion, revancha, fecha_compra, referidos.referido FROM boletas LEFT JOIN referidos ON codigo_referido = referidos.codigo";
                                     $resultado = $conn->query($sql);
                                 } catch (Exception $e) {
                                     //throw $th;
@@ -65,12 +65,21 @@ include_once("../../../static/connection/connection.php");
                                         <td> <?php echo $registro['comprador_correo']; ?> </td>
                                         <td> <?php echo $registro['id_transaccion']; ?> </td>
                                         <td> <?php echo $registro['referido']; ?> </td>
-                                        <td> <?php echo $registro['fecha_compra']; ?> </td>
                                         <td>
-                                            <button data-id="<?php echo $registro['id']; ?>" data-tipo="ticket" class="btn bg-maroon btn-flat margin rounded borrar_registro">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
+                                            <?php
+                                            if($registro['revancha']==1){
+                                            ?>
+                                            Sí      
+                                            <?php
+                                            }
+                                            else{?>
+                                            No
+                                            <?php
+                                            }
+                                            ?>
                                         </td>
+                                        
+                                        <td> <?php echo $registro['fecha_compra']; ?> </td>
                                     </tr>
                                 <?php } ?>
                             </tbody>
@@ -82,8 +91,8 @@ include_once("../../../static/connection/connection.php");
                                     <th>Correo</th>
                                     <th>Id transaccion</th>
                                     <th>Referido</th>
+                                    <th>Revancha</th>
                                     <th>Fecha</th>
-                                    <th>Acciones</th>
                                 </tr>
                             </tfoot>
                         </table>

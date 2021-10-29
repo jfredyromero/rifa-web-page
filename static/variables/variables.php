@@ -6,5 +6,15 @@ $dominio = "https://www.ganatucarro.com";
 // $dominio = "localhost/rifa-web-page";
 $price = 80000;
 $priceRevancha = 25000;
-$fecha_sorteo = date("Y-m-d H:i:s", mktime(0, 0, 0, 12, 24, 2021));
+
+$horas=0;
+$minutos=0;
+$segundos=0;
+$mes=12;
+$dia=24;
+$anio=2021;
+
+$fecha_sorteo = date("Y-m-d H:i:s", mktime($horas,$minutos,$segundos,$mes,$dia,$anio));
+$fecha_sorteo_countdown = date("M d, Y H:i:s", mktime($horas,$minutos,$segundos,$mes,$dia,$anio));
+
 ?>

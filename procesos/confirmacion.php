@@ -78,7 +78,7 @@ if($method == "POST"){
                 $tamaño = 100;
                 $level = "H";
                 $framesize = 3;
-                $link = $dominio."?referencia_pago=".urlencode($referencia_pago)."&comprador_nombre=".urlencode($comprador_nombre)."&comprador_cedula=".urlencode($comprador_cedula)."&numero_boleta=".urlencode($boleta);
+                $link = $dominio."?id_transaccion=".urlencode($id_transaccion)."&comprador_nombre=".urlencode($comprador_nombre)."&comprador_cedula=".urlencode($comprador_cedula)."&numero_boleta=".urlencode($boleta);
                 QRcode ::png($link, $rutaQR, $level, $tamaño, $framesize);   
                 $imagenesHTML = $imagenesHTML.'<p style="color: #ffffff;font-size:22px"><strong>MEMBRESÍA
                     # '.$boleta.'<br></strong><br></p> <img src="'.$dominio.'/media/codigosQR/'.$nombreArchivo.'" width="400px" ></img><br>';
