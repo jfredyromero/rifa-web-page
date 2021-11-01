@@ -59,13 +59,13 @@ if (isset($_GET['cerrar_sesion'])) {
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="./plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="./plugins/adminlte/css/adminlte.min.css">
+    <link rel="stylesheet" href="plugins/adminlte/css/adminlte.min.css">
     <!-- Sweet Alert 2 -->
-	<link rel="stylesheet" href="./plugins/sweetalert2/css/sweetalert2.min.css">
+	<link rel="stylesheet" href="plugins/sweetalert2/css/sweetalert2.min.css">
 </head>
 
 <body class="hold-transition login-page">
@@ -78,7 +78,7 @@ if (isset($_GET['cerrar_sesion'])) {
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Iniciar Sesión</p>
 
-                <form action="./views/ticket/ticketModel.php" id="login-admin" method="post">
+                <form action="views/ticket/ticketModel.php" id="login-admin" method="post">
 
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" name="user" placeholder="Usuario">
@@ -114,15 +114,15 @@ if (isset($_GET['cerrar_sesion'])) {
     <!-- /.login-box -->
 
     <!-- jQuery -->
-    <script src="./plugins/jquery/jquery.min.js"></script>
+    <script src="plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="./plugins/adminlte/js/adminlte.min.js"></script>
+    <script src="plugins/adminlte/js/adminlte.min.js"></script>
 
     <!-- SweetAlert y Ajax -->
-    <script src="./plugins/sweetalert2/js/sweetalert2.all.min.js"></script>
-    <script src="./js/ticketAjax.js"></script>
+    <script src="plugins/sweetalert2/js/sweetalert2.all.min.js"></script>
+    <script src="js/ticketAjax.js"></script>
 </body>
 
 </html>
