@@ -29,7 +29,7 @@
 <script src="/admin/plugins/datatables/js/dataTables.responsive.min.js"></script>
 <script src="/admin/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
 
-<script src="js/datatablesApp.js"></script>
+<script src="/admin/js/datatablesApp.js"></script>
 
 <!-- Bs Custom File Input -->
 <!-- <script src="/admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>

@@ -131,12 +131,12 @@ if ($_POST['registro'] == 'nuevo') {
                 $framesize = 3;
                 $link = $dominio."?id_transaccion=".urlencode($id_transaccion)."&comprador_nombre=".urlencode($comprador_nombre)."&comprador_cedula=".urlencode($comprador_cedula)."&numero_boleta=".urlencode($boleta);
                 QRcode ::png($link, $rutaQR, $level, $tamaño, $framesize);   
-                $imagenesHTML = '<p style="color: #ffffff;font-size:22px"><strong>MEMBRESÍA
+                $imagenesHTML = '<p style="color: #ffffff;font-size:22px"><strong>CUPO
                     # '.$boleta.'<br></strong><br></p> <img src="'.$dominio.'/media/codigosQR/'.$nombreArchivo.'" width="400px" ></img><br>';
                 
                 //Envío de SMS
                 //Codigo para enviar el mensaje
-                $mensajeSMS= "La compra de su membresía #".$boleta. " en ganatucarro.com ha sido exitosa.";
+                $mensajeSMS= "La compra de tu cupo #".$boleta. " en ganatucarro.com ha sido exitosa.";
                 $data = array("number" => "57".$comprador_celular, "message" => $mensajeSMS, "type" => "1");
                 $data_string = json_encode($data);
                 $ch = curl_init('https://api.cellvoz.co/v2/sms/single');
@@ -152,7 +152,7 @@ if ($_POST['registro'] == 'nuevo') {
                                     
                 // Envío de correo electrónico
                 $destinatario = $comprador_correo; 
-                $asunto = "La compra de tu membresía ha sido exitosa!"; 
+                $asunto = "La compra de tu cupo ha sido exitosa!"; 
                 $cuerpo = ' 
                 
                 <!doctype html><html ⚡4email data-css-strict><head><meta charset="utf-8"><style

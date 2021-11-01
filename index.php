@@ -32,7 +32,7 @@ include_once("static/variables/variables.php");
 
 
 
-					<h2 class="titulo mb-1">¡Compra tus Membresias!</h2>
+					<h2 class="titulo mb-1">¡Compra tus Cupos!</h2>
 
 					<div class="clock-counter mb-1 d-flex-row">
 						<div class="time-interval-container d-flex-col">
@@ -59,11 +59,10 @@ include_once("static/variables/variables.php");
 
 				<div class="tickets-block">
 					<div class="mb-1 form-item">
-						<label for="">Selecciona tu Membresía <span> *</span></label>
+						<label for="">Selecciona tus Cupos <span> *</span></label>
 						<div class="form-search mb-1">
-							<input class="form-input" id="inpSearch" type="number" placeholder="Busca tu boleta..." min="0" max="9999" onKeyPress="if(this.value.length==4) return false;">
+							<input class="form-input" id="inpSearch" type="number" placeholder="Busca tu cupo..." min="0" max="9999" onKeyPress="if(this.value.length==4) return false;">
 							<input type="button" class="btn btn-primary ms-1" id="btnSearch" value="Buscar">
-							<!-- <button class="btn btn-primary ms-1" id="btnSearch">Buscar</button> -->
 						</div>
 
 						<div class="tickets-grid-container" id="tickets-grid-container">
@@ -79,7 +78,7 @@ include_once("static/variables/variables.php");
 				<div class="refresh-block">
 					<div class="form-item mb-1">
 						<div class="bg-gold-gradient">
-							<input type="button" id="btnRefresh" class="btn btn-secondary w-100" value="Refrescar Membresias" />
+							<input type="button" id="btnRefresh" class="btn btn-secondary w-100" value="Refrescar Cupos" />
 						</div>
 					</div>
 
@@ -115,10 +114,6 @@ include_once("static/variables/variables.php");
 					<br>
 				</div>
 
-				<!-- ===================================== -->
-				<!-- Datos necesarios para el pago en PayU -->
-				<!-- ===================================== -->
-
 				<?php
 				if (isset($_GET["extra3"])) {
 				?>
@@ -152,32 +147,13 @@ include_once("static/variables/variables.php");
 
 					<div class="control-group mb-05">
 						<label class="control control-checkbox">
-							Acepto los <a target="_blank" href="<?php $dominio?>/rifa-web-page/static/conditions/TERMINOS Y CONDICIONES BMW.pdf">términos y condiciones</a>
+							Acepto los <a target="_blank" href="static/conditions/TERMINOS Y CONDICIONES BMW.pdf">términos y condiciones</a>
 							<input type="checkbox" required />
 							<div class="control_indicator"></div>
 						</label>
 					</div>
 
 				</div>
-
-				<!-- <div class="gift-container mt-1 mb-1">
-					<div class="bg-gold-gradient-circle">
-						<div class="bg-dark-circle">
-							<a href="https://instagram.com/ganatucarro?utm_medium=copy_link" target="_blank">
-								<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
-									<path d="M32 448c0 17.7 14.3 32 32 32h160V320H32v128zm256 32h160c17.7 0 32-14.3 32-32V320H288v160zm192-320h-42.1c6.2-12.1 10.1-25.5 10.1-40 0-48.5-39.5-88-88-88-41.6 0-68.5 21.3-103 68.3-34.5-47-61.4-68.3-103-68.3-48.5 0-88 39.5-88 88 0 14.5 3.8 27.9 10.1 40H32c-17.7 0-32 14.3-32 32v80c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-80c0-17.7-14.3-32-32-32zm-326.1 0c-22.1 0-40-17.9-40-40s17.9-40 40-40c19.9 0 34.6 3.3 86.1 80h-86.1zm206.1 0h-86.1c51.4-76.5 65.7-80 86.1-80 22.1 0 40 17.9 40 40s-17.9 40-40 40z" fill="url(#gift-gold)"></path>
-									<defs>
-										<linearGradient id="gift-gold" x1="256" y1="0" x2="256" y2="512" gradientUnits="userSpaceOnUse">
-											<stop stop-color="#95702c" />
-											<stop offset="0.5" stop-color="#f8dd57" />
-											<stop offset="1" stop-color="#95702c" />
-										</linearGradient>
-									</defs>
-								</svg>
-							</a>
-						</div>
-					</div>
-				</div> -->
 				<div class="gift-container">
 					<div class="semicirculo-fondo">
 						<div class="semicirculo">
@@ -196,12 +172,8 @@ include_once("static/variables/variables.php");
 						</div>
 					</div>
 				</div>
-				
-
 			</div>
 		</div>
-
-
 	</form>
 
 	<!-- POPUPS -->
@@ -222,7 +194,7 @@ include_once("static/variables/variables.php");
 						<div class="logo">
 							<img src="static/img/logo.png" alt="logo">
 						</div>
-						<h2 class="me-1">Membresía Gana tu Carro</h2>
+						<h2 class="me-1">Cupo Gana tu Carro</h2>
 						<i class="fas fa-2x fa-times btn-close"></i>
 					</div>
 					<div class="card-info-transaction virtual-ticket">
@@ -260,9 +232,6 @@ include_once("static/variables/variables.php");
 							</tr>
 						</table>
 					</div>
-
-
-
 					<div class="card-footer mt-1">
 						<button class="btn btn-primary btnAceptar">Aceptar</button>
 					</div>
@@ -385,10 +354,8 @@ include_once("static/variables/variables.php");
 						<div class="card-footer">
 							<button class="btn btn-primary btnAceptar">Aceptar</button>
 						</div>
-
 					</div>
 				</div>
-
 			</div>
 	<?php
 		}

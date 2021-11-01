@@ -7,6 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>AdminLTE | GanaTuCarro</title>
 
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/png" href="/static/img/logo.png"/>
 	<!-- Google Font: Source Sans Pro -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 	<!-- Font Awesome -->

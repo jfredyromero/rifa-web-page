@@ -31,9 +31,6 @@ document.getElementById("tickets-grid-container").addEventListener("click", func
 	inputExtra1.value = tickets_values.join("-");
 	inputAmount.value = tickets_values.length * ticket_price;
 
-	// console.clear();
-	// console.log(inputExtra1.value);
-
 	spanAmount.textContent = "$ "+inputAmount.value; 
 
 });
@@ -57,12 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		let text = payerDocument.value + "-" + buyerName.value;
 		document.querySelector('input[name="extra2"]').value = text;
 	})
-
-	// let codigoReferido = document.querySelector('input[name="codigoReferido"]');
-	// codigoReferido.addEventListener('change', () => {
-	// 	let text = codigoReferido.value;
-	// 	document.querySelector('input[name="extra3"]').value = text;
-	// })
 
 	function boletasRevancha() {
 		var spanAmountRevancha = document.getElementById("priceRevancha");
@@ -120,11 +111,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			spanAmountRevancha.textContent = "$ "+ total;
 			inputExtra1.value = ticketsRevancha.join("-");
 			inputAmount.value = total;
-			// console.clear();
-			// console.log(inputExtra1.value);
 		});
-	
-		// spanAmount.textContent = "$ "+inputAmount.value; 
+
 	}
 	
 	let formBoleta = document.querySelector('#form-boleta');
@@ -162,9 +150,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		let description = "";
 		if (boletas.length > 1) {
 			last_boletas = boletas.pop();
-			description = `Compra de las boletas${boletas} y${last_boletas} válidas para sorteo de espectacular vehículo. La compra es realizada a nombre de ${nombre}`;
+			description = `Compra de los cupos${boletas} y${last_boletas} válidos. La compra es realizada a nombre de ${nombre}`;
 		} else {
-			description = `Compra de la boleta${boletas} válida para sorteo de espectacular vehículo. La compra es realizada a nombre de ${nombre}`;
+			description = `Compra del cupo${boletas} válido. La compra es realizada a nombre de ${nombre}`;
 		}
 		document.querySelector('input[name="description"]').value = description;
 	}

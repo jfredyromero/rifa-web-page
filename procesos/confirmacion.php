@@ -85,10 +85,10 @@ if($method == "POST"){
             }
             mysqli_close($connection);
             if (count($boletas)>1){
-                $mensajeSMS= "La compra de sus membresías en ganatucarro.com ha sido exitosa.";
+                $mensajeSMS= "La compra de sus cupos en ganatucarro.com ha sido exitosa.";
             }
             else{
-                $mensajeSMS= "La compra de su membresía en ganatucarro.com ha sido exitosa.";
+                $mensajeSMS= "La compra de su cupo en ganatucarro.com ha sido exitosa.";
             }
             //Envío de SMS
             //Codigo para enviar el mensaje
@@ -108,7 +108,7 @@ if($method == "POST"){
             // Envío de correo electrónico
             $membresias=count($boletas);
             $destinatario = $comprador_correo; 
-            $asunto = "La compra de tu membresía ha sido exitosa!"; 
+            $asunto = "La compra de tu cupo ha sido exitosa!"; 
             $cuerpo = ' 
             <!doctype html><html ⚡4email data-css-strict><head><meta charset="utf-8"><style
             amp4email-boilerplate>body{visibility:hidden}</style><script async
@@ -180,7 +180,7 @@ if($method == "POST"){
                                                                         class="es-p25t
                                                                         es-p30b"><h1
                                                                             style="color:
-                                                                            #ffffff">Membresía</h1>
+                                                                            #ffffff">Cupo</h1>
                                                                     </td></tr><tr><td
                                                                         align="center"
                                                                         style="font-size:
@@ -312,7 +312,7 @@ if($method == "POST"){
                                                                             adquirido
                                                                             satisfactoriamente
                                                                             tu
-                                                                            membresía
+                                                                            cupo
                                                                             en
                                                                             ganatucarro.com,
                                                                             podrás
@@ -385,7 +385,7 @@ if($method == "POST"){
                                                                                 <label style="color: #ffffff;font-size:14px">
                                                                                 '.$membresias.'
                                                                                  x
-                                                                                Membresía
+                                                                                Cupo
                                                                             </label></td>
                                                                 </tr><tr><td
                                                                         align="center"
