@@ -12,6 +12,8 @@ include_once("static/variables/variables.php");
 	<link rel="stylesheet" href="static/css/main.css" />
 	<link rel="stylesheet" href="static/css/checkbox.css" />
 	<title>Gana tu Carro</title>
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/png" href="/static/img/logo.png"/>
 </head>
 
 <body>
