@@ -226,6 +226,7 @@ label {
 	font-size: 1rem;
 	text-transform: capitalize;
 	border: none;
+	box-shadow: none;
 }
 
 .btn:hover {
@@ -434,6 +435,27 @@ input[type="checkbox"]:checked + label {
 	transition-duration: 0.25s;
 }
 
+/* MODAL BOOTSTRAP */
+
+.modal-content {
+    background-color: var(--dark);
+}
+
+.modal-header button{
+    background: none;
+    opacity: 1;
+    color: var(--light) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	transition-duration: 0.25s;
+}
+
+.modal-header button:hover{
+	color: var(--secondary);
+	transition-duration: 0.25s;
+}
+
 /* POPUPS */
 
 .card-popup {
@@ -494,11 +516,6 @@ input[type="checkbox"]:checked + label {
 	transition-duration: 0.25s;
 }
 
-.card-info-transaction {
-	display: flex;
-	justify-content: center;
-	padding-bottom: 1rem;
-}
 
 .card-info-transaction table {
 	background-color: #313131;
@@ -514,7 +531,7 @@ td {
 }
 
 .card-info-transaction td {
-	width: 20rem;
+	width: 100%;
 }
 
 .card-info-transaction tr:hover {
@@ -536,8 +553,15 @@ td {
 }
 
 .virtual-ticket {
+	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: center;
+}
+
+.virtual-ticket table{
+	margin-top: 1rem;
+	width: 100%;
 }
 
 .virtual-ticket td {
