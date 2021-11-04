@@ -9,6 +9,10 @@ include_once("static/variables/variables.php");
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 	<link rel="stylesheet" href="static/css/main.css" />
 	<link rel="stylesheet" href="static/css/checkbox.css" />
 	<title>Gana tu Carro</title>
@@ -25,32 +29,32 @@ include_once("static/variables/variables.php");
 
 			<div class="first-section">
 
-				<div class="counter-block d-flex-col">
+				<div class="counter-block d-flex flex-column align-items-center">
 					<div class="logo">
 						<img src="static/img/logo.png" alt="logo">
 					</div>
 
 
 
-					<h2 class="titulo mb-1">¡Compra tus Cupos!</h2>
+					<h2 class="titulo mb-3">¡Compra tus Cupos!</h2>
 
-					<div class="clock-counter mb-1 d-flex-row">
-						<div class="time-interval-container d-flex-col">
+					<div class="mb-3 clock-counter d-flex flex-row align-items-center">
+						<div class="time-interval-container d-flex flex-column justify-content-center align-items-center">
 							<h1 id="dias">00</h1>
 							<h2>Dias</h2>
 						</div>
 						<div class="line"></div>
-						<div class="time-interval-container d-flex-col">
+						<div class="time-interval-container d-flex flex-column justify-content-center align-items-center">
 							<h1 id="horas">00</h1>
 							<h2>Horas</h2>
 						</div>
 						<div class="line"></div>
-						<div class="time-interval-container d-flex-col">
+						<div class="time-interval-container d-flex flex-column justify-content-center align-items-center">
 							<h1 id="minutos">00</h1>
 							<h2>Min</h2>
 						</div>
 						<div class="line"></div>
-						<div class="time-interval-container d-flex-col">
+						<div class="time-interval-container d-flex flex-column justify-content-center align-items-center">
 							<h1 id="segundos">00</h1>
 							<h2>Seg</h2>
 						</div>
@@ -58,11 +62,11 @@ include_once("static/variables/variables.php");
 				</div>
 
 				<div class="tickets-block">
-					<div class="mb-1 form-item">
+					<div class="mb-3 form-item">
 						<label for="">Selecciona tus Cupos <span> *</span></label>
-						<div class="form-search mb-1">
+						<div class="form-search mb-3">
 							<input class="form-input" id="inpSearch" type="number" placeholder="Busca tu cupo..." min="0" max="9999" onKeyPress="if(this.value.length==4) return false;">
-							<input type="button" class="btn btn-primary ms-1" id="btnSearch" value="Buscar">
+							<input type="button" class="btn btn-primary ms-3" id="btnSearch" value="Buscar">
 						</div>
 
 						<div class="tickets-grid-container" id="tickets-grid-container">
@@ -76,13 +80,13 @@ include_once("static/variables/variables.php");
 				</div>
 
 				<div class="refresh-block">
-					<div class="form-item mb-1">
+					<div class="form-item mb-3">
 						<div class="bg-gold-gradient">
 							<input type="button" id="btnRefresh" class="btn btn-secondary w-100" value="Refrescar Cupos" />
 						</div>
 					</div>
 
-					<div class="form-item mb-1 f-al-l">
+					<div class="form-item mb-3 f-al-l">
 						<h2>Valor a pagar: <span id="price" class="fw-1">$ 0</span></h2>
 					</div>
 				</div>
@@ -92,26 +96,25 @@ include_once("static/variables/variables.php");
 
 			<div class="second-section">
 				<div class="form-block">
-					<div class="mb-1 form-item">
+					<div class="mb-3 form-item">
 						<label for="">Nombre Completo<span> *</span></label>
 						<input class="form-input" type="text" placeholder="Nombre" name="buyerFullName" required />
 					</div>
 
-					<div class="mb-1 form-item">
+					<div class="mb-3 form-item">
 						<label for="">Número de Identificación<span> *</span></label>
 						<input class="form-input" type="text" placeholder="1060400300" onkeypress="return onlyNumberKey(event)" name="payerDocument" required />
 					</div>
 
-					<div class="mb-1 form-item">
+					<div class="mb-3 form-item">
 						<label for="">Celular<span> *</span></label>
 						<input class="form-input" id="inpCelular" type="tel" placeholder="3101234567" maxlength="12" name="mobilePhone" required />
 					</div>
 
-					<div class="mb-1 form-item">
+					<div class="mb-5 form-item">
 						<label for="">Correo Electrónico<span> *</span></label>
 						<input class="form-input" type="email" placeholder="ejemplo@gmail.com" name="buyerEmail" required />
 					</div>
-					<br>
 				</div>
 
 				<?php
@@ -141,11 +144,11 @@ include_once("static/variables/variables.php");
 				<input name="amount" type="hidden" />
 
 				<div class="buy-block">
-					<div class="form-item mb-05">
+					<div class="form-item mb-2">
 						<input name="Submit" id="btnSend" class="btn btn-primary" type="submit" value="Comprar" />
 					</div>
 
-					<div class="control-group mb-05">
+					<div class="control-group mb-1">
 						<label class="control control-checkbox">
 							Acepto los <a target="_blank" href="static/conditions/TERMINOS Y CONDICIONES BMW.pdf">términos y condiciones</a>
 							<input type="checkbox" required />
@@ -407,6 +410,7 @@ include_once("static/variables/variables.php");
 	<span id="fecha_sorteo" style="display: none;"><?php echo $fecha_sorteo; ?></span>
 	<span id="fecha_sorteo_countdown" style="display: none;"><?php echo $fecha_sorteo_countdown; ?></span>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="static/js/countdown.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
