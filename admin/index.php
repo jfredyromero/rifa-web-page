@@ -1,9 +1,9 @@
 <?php
 
-include_once("./templates/header.php");
-include_once("./functions/sessions.php");
-include_once("./templates/navbar.php");
-include_once("./templates/menu.php");
+include_once("templates/header.php");
+include_once("functions/sessions.php");
+include_once("templates/navbar.php");
+include_once("templates/menu.php");
 // Conexion a la base de datos
 include_once("../static/connection/connection.php");
 ?>
