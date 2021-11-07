@@ -262,7 +262,7 @@ include_once("static/variables/variables.php");
 				</div>
 
 				<!-- Modal 2 -->
-				<!-- <div class="modal fade" id="MODALEXAMPLE2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade" id="MODALEXAMPLE2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -276,28 +276,31 @@ include_once("static/variables/variables.php");
 								<div class="card-info-revancha">
 									<div class="card-info-premio">
 										<a href="https://instagram.com/ganatucarro?utm_medium=copy_link" target="_blank">
-											<svg width="40%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
-												<path d="M32 448c0 17.7 14.3 32 32 32h160V320H32v128zm256 32h160c17.7 0 32-14.3 32-32V320H288v160zm192-320h-42.1c6.2-12.1 10.1-25.5 10.1-40 0-48.5-39.5-88-88-88-41.6 0-68.5 21.3-103 68.3-34.5-47-61.4-68.3-103-68.3-48.5 0-88 39.5-88 88 0 14.5 3.8 27.9 10.1 40H32c-17.7 0-32 14.3-32 32v80c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-80c0-17.7-14.3-32-32-32zm-326.1 0c-22.1 0-40-17.9-40-40s17.9-40 40-40c19.9 0 34.6 3.3 86.1 80h-86.1zm206.1 0h-86.1c51.4-76.5 65.7-80 86.1-80 22.1 0 40 17.9 40 40s-17.9 40-40 40z" fill="url(#red)"></path>
-												<defs>
-													<linearGradient id="red" x1="256" y1="0" x2="256" y2="512" gradientUnits="userSpaceOnUse">
-														<stop stop-color="#8D1D10" />
-														<stop offset="0.5" stop-color="#F75A48" />
-														<stop offset="1" stop-color="#8D1D10" />
-													</linearGradient>
-												</defs>
-											</svg>
+											<img src="static/img/gift.svg" alt="triangle with all three sides equal" width="60%" height="auto" />
 										</a>
 										<br>
 										<h2>Selecciona tu revancha y participa por un BMW.</h2>
+										<br>
 										<h2>Son $25.000 pesos más por cada una. Animate!</h2>
 									</div>
 									<div id="card-info-boletas">
+										<div class="ticket-modal">
+											<img src="static/img/ticket-gold.svg"></img>
+											<h1>0001</h1>
+										</div>
+										<div class="ticket-modal">
+											<img src="static/img/ticket-gold.svg"></img>
+											<h1>0002</h1>
+										</div>
+										<div class="ticket-modal">
+											<img src="static/img/ticket-gold.svg"></img>
+											<h1>0003</h1>
+										</div>
+
 									</div>
 								</div>
 								<div class="card-footer-revancha">
-									<div>
-										<h2>Valor a pagar: <span id="priceRevancha" class="fw-1">$ 0</span></h2>
-									</div>
+									<h2>Valor a pagar: <span id="priceRevancha" class="fw-1">$ 123.456</span></h2>
 									<button class="btn btn-primary" id="btnAceptar">Continuar</button>
 								</div>
 
@@ -307,7 +310,7 @@ include_once("static/variables/variables.php");
 							</div>
 						</div>
 					</div>
-				</div> -->
+				</div>
 
 				<!-- Modal 3 -->
 				<div class="modal fade" id="MODALEXAMPLE3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -321,25 +324,12 @@ include_once("static/variables/variables.php");
 							</div>
 							<div class="modal-body">
 
-								<div class="card-info-transaction virtual-ticket">
-									<div class="ticket mb-1">
-										<!-- <svg min-width="175" min-height="117" width="100%" height="100%" viewBox="0 0 175 117" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path class="ticket-svg" d="M38.8889 29.25H136.111V87.75H38.8889V29.25ZM160.417 58.5C160.417 66.5773 166.946 73.125 175 73.125V102.375C175 110.452 168.471 117 160.417 117H14.5833C6.52908 117 0 110.452 0 102.375V73.125C8.05425 73.125 14.5833 66.5773 14.5833 58.5C14.5833 50.4227 8.05425 43.875 0 43.875V14.625C0 6.54773 6.52908 0 14.5833 0H160.417C168.471 0 175 6.54773 175 14.625V43.875C166.946 43.875 160.417 50.4227 160.417 58.5ZM145.833 26.8125C145.833 22.7739 142.569 19.5 138.542 19.5H36.4583C32.4312 19.5 29.1667 22.7739 29.1667 26.8125V90.1875C29.1667 94.2261 32.4312 97.5 36.4583 97.5H138.542C142.569 97.5 145.833 94.2261 145.833 90.1875V26.8125Z" fill="url(#gold)" />
-											<defs>
-												<linearGradient id="silver" x1="87.5" y1="0" x2="87.5" y2="117" gradientUnits="userSpaceOnUse">
-													<stop stop-color="#7C7C7C" />
-													<stop offset="0.5" stop-color="#D9D9D9" />
-													<stop offset="1" stop-color="#6A6A6A" />
-												</linearGradient>
-												<linearGradient id="gold" x1="87.5" y1="0" x2="87.5" y2="117" gradientUnits="userSpaceOnUse">
-													<stop stop-color="#95702c" />
-													<stop offset="0.5" stop-color="#f8dd57" />
-													<stop offset="1" stop-color="#95702c" />
-												</linearGradient>
-											</defs>
-										</svg> -->
-										<h1><?php echo "XXXX" ?></h1>
-									</div>
+								<div class="ticket-modal">
+									<img src="static/img/ticket-gold.svg"></img>
+									<h1>XXXX</h1>
+								</div>
+
+								<div class="card-info-transaction">
 
 									<table>
 										<tr>
