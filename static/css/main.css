@@ -69,7 +69,7 @@ label {
 
 /* width*/
 
-.w-100 {
+/* .w-100 {
 	width: 100%;
 }
 
@@ -83,11 +83,11 @@ label {
 
 .w-25 {
 	width: 25%;
-}
+} */
 
 /* Margins */
 
-.m-1 {
+/* .m-1 {
 	margin: 1rem !important;
 }
 
@@ -109,11 +109,11 @@ label {
 
 .me-1 {
 	margin-right: 1rem;
-}
+} */
 
 /* Paddings */
 
-.p-1 {
+/* .p-1 {
 	padding: 1rem;
 }
 
@@ -133,6 +133,8 @@ label {
 	padding-right: 1rem;
 }
 
+*/
+
 .fw-0 {
 	font-weight: 100;
 	font-size: small;
@@ -141,11 +143,15 @@ label {
 .fw-1 {
 	font-weight: 100;
 	font-size: normal;
-}
+} 
 
+.fw-2 {
+	font-weight: 100;
+	font-size:  x-large;
+} 
 /* flex-box */
 
-.d-flex-row {
+/* .d-flex-row {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -155,7 +161,7 @@ label {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-}
+} */
 
 .form-item {
 	display: flex;
@@ -183,8 +189,6 @@ label {
 
 .clock-counter {
 	padding: 0.5rem 0 0.5rem 0;
-	justify-content: space-between;
-	align-items: center;
 	height: auto;
 	width: 95%;
 	border-radius: 0.3rem;
@@ -202,7 +206,6 @@ label {
 	width: 25%;
 	height: 100%;
 	color: var(--dark);
-	justify-content: center;
 }
 
 .time-interval-container h1 {
@@ -227,6 +230,7 @@ label {
 	font-size: 1rem;
 	text-transform: capitalize;
 	border: none;
+	box-shadow: none;
 }
 
 .btn:hover {
@@ -234,7 +238,7 @@ label {
 }
 
 .btn-primary {
-	color: var(--dark);
+	color: var(--dark) !important;
 	background: var(--gold-gradient);
 	transition-duration: 0.25s;
 }
@@ -379,6 +383,7 @@ input[type="checkbox"]:checked + label {
 	position: absolute;
 	font-size: 1.4rem;
 	z-index: 1;
+	margin-bottom: 0;
 }
 
 .ticket input {
@@ -431,6 +436,27 @@ input[type="checkbox"]:checked + label {
 	cursor: pointer;
 	transform: scale(1.1);
 	filter: brightness(1.15);
+	transition-duration: 0.25s;
+}
+
+/* MODAL BOOTSTRAP */
+
+.modal-content {
+    background-color: var(--dark);
+}
+
+.modal-header button{
+    background: none;
+    opacity: 1;
+    color: var(--light) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	transition-duration: 0.25s;
+}
+
+.modal-header button:hover{
+	color: var(--secondary);
 	transition-duration: 0.25s;
 }
 
@@ -494,11 +520,6 @@ input[type="checkbox"]:checked + label {
 	transition-duration: 0.25s;
 }
 
-.card-info-transaction {
-	display: flex;
-	justify-content: center;
-	padding-bottom: 1rem;
-}
 
 .card-info-transaction table {
 	background-color: #313131;
@@ -514,7 +535,7 @@ td {
 }
 
 .card-info-transaction td {
-	width: 20rem;
+	width: 100%;
 }
 
 .card-info-transaction tr:hover {
@@ -536,8 +557,15 @@ td {
 }
 
 .virtual-ticket {
+	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: center;
+}
+
+.virtual-ticket table{
+	margin-top: 1rem;
+	width: 100%;
 }
 
 .virtual-ticket td {
@@ -604,12 +632,14 @@ td {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
 	margin-bottom: 2rem;
 	margin-top: 1rem;
 }
 
 .card-info-premio a {
 	display: flex;
+	cursor: pointer;
 	justify-content: center;
 	align-items: center;
 }
@@ -621,8 +651,40 @@ td {
 
 .card-footer-revancha {
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
 	align-items: center;
+}
+
+.card-footer-revancha h2{
+	margin-bottom: 1rem;
+}
+
+.ticket-modal{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: auto;
+	height: auto;
+	height: fit-content;
+	margin-bottom: 1rem;
+}
+
+.ticket-modal:last-of-type{
+	margin-bottom: 0;
+}
+
+.ticket-modal img{
+	width: 50%;
+}
+
+.ticket-value{
+	position: absolute;
+	color: var(--dark);
+	margin-bottom: 0;	
+}
+
+.ticket-modal:hover > *{
+	cursor: pointer;
 }
 
 @keyframes spin {

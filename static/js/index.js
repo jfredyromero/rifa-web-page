@@ -59,28 +59,18 @@ document.addEventListener("DOMContentLoaded", () => {
 		var spanAmountRevancha = document.getElementById("priceRevancha");
 		spanAmountRevancha.textContent = "$ "+inputAmount.value;
 		spanAmountTotal = inputAmount.value;
+		if(tickets_values.length > 2){
+			document.getElementById("card-popup-revancha").firstElementChild.classList.remove("modal-lg");
+			document.getElementById("card-popup-revancha").firstElementChild.classList.add("modal-xl");
+		}else{
+			document.getElementById("card-popup-revancha").firstElementChild.classList.add("modal-lg");
+			document.getElementById("card-popup-revancha").firstElementChild.classList.remove("modal-xl");
+		}
 		let boletas = "";
 		tickets_values.forEach(t => {
-			boletas += `<div class="ticket">
-							<svg min-width="175" min-height="117" width="50%" viewBox="0 0 175 117"fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path class="ticket-svg-revancha"
-									d="M38.8889 29.25H136.111V87.75H38.8889V29.25ZM160.417 58.5C160.417 66.5773 166.946 73.125 175 73.125V102.375C175 110.452 168.471 117 160.417 117H14.5833C6.52908 117 0 110.452 0 102.375V73.125C8.05425 73.125 14.5833 66.5773 14.5833 58.5C14.5833 50.4227 8.05425 43.875 0 43.875V14.625C0 6.54773 6.52908 0 14.5833 0H160.417C168.471 0 175 6.54773 175 14.625V43.875C166.946 43.875 160.417 50.4227 160.417 58.5ZM145.833 26.8125C145.833 22.7739 142.569 19.5 138.542 19.5H36.4583C32.4312 19.5 29.1667 22.7739 29.1667 26.8125V90.1875C29.1667 94.2261 32.4312 97.5 36.4583 97.5H138.542C142.569 97.5 145.833 94.2261 145.833 90.1875V26.8125Z"
-									fill="url(#gold)" />
-								<defs>
-								<linearGradient id="gold" x1="87.5" y1="0" x2="87.5" y2="117" gradientUnits="userSpaceOnUse">
-									<stop stop-color="#95702c" />
-									<stop offset="0.5" stop-color="#f8dd57" />
-									<stop offset="1" stop-color="#95702c" />
-								</linearGradient>
-								<linearGradient id="red" x1="256" y1="0" x2="256" y2="512" gradientUnits="userSpaceOnUse">
-									<stop stop-color="#8D1D10" />
-									<stop offset="0.5" stop-color="#F75A48" />
-									<stop offset="1" stop-color="#8D1D10" />
-								</linearGradient>
-								</defs>
-							</svg>
-							<h1 class="ticket-popup-number">${t}</h1>
-							<input type="checkbox" name="checkbox-ticket-revancha" value="${t}">
+			boletas += `<div class="ticket-modal" data-checked="false">
+							<img src="static/img/ticket-gold.svg"></img>
+							<h2 class="ticket-value">${t}</h2>
 						</div>`;
 		});
 		let div = document.createElement('div');
@@ -89,21 +79,29 @@ document.addEventListener("DOMContentLoaded", () => {
 		div.innerHTML = boletas;
 		document.getElementById('card-info-boletas').innerHTML = "";
 		document.getElementById('card-info-boletas').append(div);
+		document.querySelectorAll(".ticket-modal").forEach(m => {
+			m.addEventListener("click", (event)=>{
+				if(m.dataset.checked === "false"){
+					m.dataset.checked = "true";
+				}else{
+					m.dataset.checked = "false";
+				}
+			});
+		});
 		let ticketsRevancha = [];
 		let numeroRevanchas;
 		document.getElementById("tickets-container-popup").addEventListener("click", function () {
-			let svg = Array.from(document.getElementsByClassName("ticket-svg-revancha"));
-			let tickets = Array.from(document.getElementsByName("checkbox-ticket-revancha"));
+			let tickets = document.querySelectorAll(".ticket-modal");
 			ticketsRevancha = [];
 			numeroRevanchas = 0;
 			tickets.forEach(t => {
-				if (t.checked == true) {
-					ticketsRevancha.push('R' + t.value);
+				if (t.dataset.checked == "true") {
+					ticketsRevancha.push('R' + t.querySelector('.ticket-value').innerHTML);
 					numeroRevanchas++;
-					svg[tickets.indexOf(t)].setAttribute("fill", "url(#red)");
+					t.querySelector('img').src = "static/img/ticket-red.svg";
 				} else {
-					ticketsRevancha.push(t.value);
-					svg[tickets.indexOf(t)].setAttribute("fill", "url(#gold)");
+					ticketsRevancha.push(t.querySelector('.ticket-value').innerHTML);
+					t.querySelector('img').src = "static/img/ticket-gold.svg";
 				}
 			});
 			
@@ -114,6 +112,10 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 
 	}
+
+	document.getElementById('btnContinuar').addEventListener("click", ()=>{
+		document.getElementById('form-boleta').submit();
+	});
 	
 	let formBoleta = document.querySelector('#form-boleta');
 	formBoleta.addEventListener('submit', (e) => {
@@ -131,7 +133,9 @@ document.addEventListener("DOMContentLoaded", () => {
 			boletasRevancha();
 			generarCodigoReferencia();
 			generarDescripcion();
-			$("#card-popup-revancha").fadeIn("slow");
+			let myModalEl = document.querySelector('#card-popup-revancha');
+    		let modal = bootstrap.Modal.getOrCreateInstance(myModalEl); // Returns a Bootstrap modal instance
+    		modal.show();
 		}
 	})
 

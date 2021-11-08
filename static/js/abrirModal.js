@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $(document).ready(function () {
-        $("#card-popup").fadeIn("slow");
-    });
+    let myModalEl = document.querySelector('#card-popup');
+    let modal = bootstrap.Modal.getOrCreateInstance(myModalEl); // Returns a Bootstrap modal instance
+    modal.show();
 });
