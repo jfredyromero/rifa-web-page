@@ -15,7 +15,7 @@ $("#inpSearch").on("input", function (e) {
                 $("#inpSearch").removeClass("border-gold");
                 $("#inpSearch").addClass("border-danger");
                 $("#btnSearch").prop("disabled", true);
-                $("#avisoTicketComprado").text("Ticket "+$("#inpSearch").val()+" No disponible");
+                $("#avisoTicketComprado").text("El cupo "+$("#inpSearch").val()+" no se encuentra disponible");
             } else {
                 $("#inpSearch").removeClass("border-danger");
                 $("#inpSearch").addClass("border-gold");

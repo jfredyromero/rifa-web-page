@@ -23,21 +23,13 @@ include_once("static/variables/variables.php");
 <body>
 
 	<form id="form-boleta" method="post" action="procesos/validacion.php">
-		<!-- <form id="form-boleta" method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/"> -->
-
 		<div class="page-content">
-
 			<div class="first-section">
-
 				<div class="counter-block d-flex flex-column align-items-center">
 					<div class="logo">
 						<img src="static/img/logo.png" alt="logo">
 					</div>
-
-
-
 					<h2 class="titulo mb-3">¡Compra tus Cupos!</h2>
-
 					<!-- <div class="mb-3 clock-counter d-flex flex-row align-items-center">
 						<div class="time-interval-container d-flex flex-column justify-content-center align-items-center">
 							<h1 id="dias">--</h1>
@@ -60,7 +52,6 @@ include_once("static/variables/variables.php");
 						</div>
 					</div> -->
 				</div>
-
 				<div class="tickets-block">
 					<div class="mb-3 form-item">
 						<label for="">Selecciona tus Cupos <span> *</span></label>
@@ -69,55 +60,43 @@ include_once("static/variables/variables.php");
 							<input class="form-input" id="inpSearch" type="number" placeholder="Busca tu cupo..." min="0" max="9999" onKeyPress="if(this.value.length==4) return false;">
 							<input type="button" class="btn btn-primary ms-3" id="btnSearch" value="Buscar">
 						</div>
-
 						<div class="tickets-grid-container" id="tickets-grid-container">
 							<!-- //TICKETS -->
 						</div>
-
 						<div class="loader-container" id="loader-container"></div>
-
-
 					</div>
 				</div>
-
 				<div class="refresh-block">
 					<div class="form-item mb-3">
 						<div class="bg-gold-gradient">
 							<input type="button" id="btnRefresh" class="btn btn-secondary w-100" value="Refrescar Cupos" />
 						</div>
 					</div>
-
 					<div class="form-item mb-3 f-al-l">
 						<h2>Valor a pagar: <span id="price" class="fw-1">$ 0</span></h2>
 					</div>
 				</div>
 			</div>
-
 			<span class="line-section"></span>
-
 			<div class="second-section">
 				<div class="form-block">
 					<div class="mb-3 form-item">
 						<label for="">Nombre Completo<span> *</span></label>
 						<input class="form-input" type="text" placeholder="Nombre" name="buyerFullName" required />
 					</div>
-
 					<div class="mb-3 form-item">
 						<label for="">Número de Identificación<span> *</span></label>
 						<input class="form-input" type="text" placeholder="1060400300" onkeypress="return onlyNumberKey(event)" name="payerDocument" required />
 					</div>
-
 					<div class="mb-3 form-item">
 						<label for="">Celular<span> *</span></label>
 						<input class="form-input" id="inpCelular" type="tel" placeholder="3101234567" maxlength="12" name="mobilePhone" required />
 					</div>
-
 					<div class="mb-5 form-item">
 						<label for="">Correo Electrónico<span> *</span></label>
 						<input class="form-input" type="email" placeholder="ejemplo@gmail.com" name="buyerEmail" required />
 					</div>
 				</div>
-
 				<?php
 				if (isset($_GET["extra3"])) {
 				?>
