@@ -67,6 +67,10 @@ label {
 
 /* === TOOLS === */
 
+.border-gold{
+	border-color: var(--secondary);
+}
+
 /* width*/
 
 /* .w-100 {

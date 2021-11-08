@@ -64,6 +64,7 @@ include_once("static/variables/variables.php");
 				<div class="tickets-block">
 					<div class="mb-3 form-item">
 						<label for="">Selecciona tus Cupos <span> *</span></label>
+						<span id="avisoTicketComprado" class="text-danger mb-1"></span>
 						<div class="form-search mb-3">
 							<input class="form-input" id="inpSearch" type="number" placeholder="Busca tu cupo..." min="0" max="9999" onKeyPress="if(this.value.length==4) return false;">
 							<input type="button" class="btn btn-primary ms-3" id="btnSearch" value="Buscar">
@@ -405,6 +406,7 @@ include_once("static/variables/variables.php");
 <script src="static/js/modal.js"></script>
 <script src="static/js/index.js"></script>
 <script src="static/js/boletas.js"></script>
+<script src="static/js/ticketDisponible.js"></script>
 <?php
 if ($banderaPopUp) {
 ?>
