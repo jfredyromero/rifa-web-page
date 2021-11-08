@@ -145,6 +145,10 @@ label {
 	font-size: normal;
 } 
 
+.fw-2 {
+	font-weight: 100;
+	font-size:  x-large;
+} 
 /* flex-box */
 
 /* .d-flex-row {
@@ -673,10 +677,14 @@ td {
 	width: 50%;
 }
 
-.ticket-modal h1{
+.ticket-value{
 	position: absolute;
 	color: var(--dark);
 	margin-bottom: 0;	
+}
+
+.ticket-modal:hover > *{
+	cursor: pointer;
 }
 
 @keyframes spin {

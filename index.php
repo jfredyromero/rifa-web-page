@@ -38,27 +38,27 @@ include_once("static/variables/variables.php");
 
 					<h2 class="titulo mb-3">¡Compra tus Cupos!</h2>
 
-					<div class="mb-3 clock-counter d-flex flex-row align-items-center">
+					<!-- <div class="mb-3 clock-counter d-flex flex-row align-items-center">
 						<div class="time-interval-container d-flex flex-column justify-content-center align-items-center">
-							<h1 id="dias">00</h1>
+							<h1 id="dias">--</h1>
 							<h2>Dias</h2>
 						</div>
 						<div class="line"></div>
 						<div class="time-interval-container d-flex flex-column justify-content-center align-items-center">
-							<h1 id="horas">00</h1>
+							<h1 id="horas">--</h1>
 							<h2>Horas</h2>
 						</div>
 						<div class="line"></div>
 						<div class="time-interval-container d-flex flex-column justify-content-center align-items-center">
-							<h1 id="minutos">00</h1>
+							<h1 id="minutos">--</h1>
 							<h2>Min</h2>
 						</div>
 						<div class="line"></div>
 						<div class="time-interval-container d-flex flex-column justify-content-center align-items-center">
-							<h1 id="segundos">00</h1>
+							<h1 id="segundos">--</h1>
 							<h2>Seg</h2>
 						</div>
-					</div>
+					</div> -->
 				</div>
 
 				<div class="tickets-block">
@@ -175,197 +175,11 @@ include_once("static/variables/variables.php");
 						</div>
 					</div>
 				</div>
-
-
-				<!-- PRUEBA MODAL BOOTSTRAP -->
-
-				<!-- Button trigger modal -->
-				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#MODALEXAMPLE">
-					Resumen
-				</button>
-
-				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#MODALEXAMPLE2">
-					Revancha
-				</button>
-
-				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#MODALEXAMPLE3">
-					Cupo
-				</button>
-
-				<!-- Modal 1 -->
-				<div class="modal fade" id="MODALEXAMPLE" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Resumen Transacción</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-									<i class="fas fa-times fa-2x"></i>
-								</button>
-							</div>
-							<div class="modal-body">
-								<div class="card-info-transaction">
-									<table>
-										<?php
-										$comprador_datos = "XY";
-										$comprador_nombre = "X";
-										$comprador_cedula = "Y";
-										?>
-										<tr>
-											<th>Nombre</th>
-											<td><?php echo $comprador_nombre; ?></td>
-										</tr>
-										<tr>
-											<th>Cédula</th>
-											<td><?php echo $comprador_cedula; ?></td>
-										</tr>
-										<tr>
-											<th>Estado de la transaccion</th>
-											<td><?php echo "X" ?></td>
-										</tr>
-										<tr>
-											<th>ID de la transaccion</th>
-											<td><?php echo "X" ?></td>
-										</tr>
-										<tr>
-											<th>Referencia de la venta</th>
-											<td><?php echo "X" ?></td>
-										</tr>
-										<tr>
-											<th>Referencia de la transaccion</th>
-											<td><?php echo "X" ?></td>
-										</tr>
-
-										<tr>
-											<th>Valor total</th>
-											<td>$<?php echo "X" ?></td>
-										</tr>
-										<tr>
-											<th>Moneda</th>
-											<td><?php echo "X" ?></td>
-										</tr>
-										<tr>
-											<th>Descripción</th>
-											<td><?php echo ("X"); ?></td>
-										</tr>
-										<tr>
-											<th>Entidad</th>
-											<td><?php echo ("X"); ?></td>
-										</tr>
-									</table>
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Modal 2 -->
-				<div class="modal fade" id="MODALEXAMPLE2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Revancha</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-									<i class="fas fa-times fa-2x"></i>
-								</button>
-							</div>
-							<div class="modal-body">
-
-								<div class="card-info-revancha">
-									<div class="card-info-premio">
-										<a href="https://instagram.com/ganatucarro?utm_medium=copy_link" target="_blank">
-											<img src="static/img/gift.svg" alt="triangle with all three sides equal" width="60%" height="auto" />
-										</a>
-										<br>
-										<h2>Selecciona tu revancha y participa por un BMW.</h2>
-										<br>
-										<h2>Son $25.000 pesos más por cada una. Animate!</h2>
-									</div>
-									<div id="card-info-boletas">
-										<div class="ticket-modal">
-											<img src="static/img/ticket-gold.svg"></img>
-											<h1>0001</h1>
-										</div>
-										<div class="ticket-modal">
-											<img src="static/img/ticket-gold.svg"></img>
-											<h1>0002</h1>
-										</div>
-										<div class="ticket-modal">
-											<img src="static/img/ticket-gold.svg"></img>
-											<h1>0003</h1>
-										</div>
-
-									</div>
-								</div>
-								<div class="card-footer-revancha">
-									<h2>Valor a pagar: <span id="priceRevancha" class="fw-1">$ 123.456</span></h2>
-									<button class="btn btn-primary" id="btnAceptar">Continuar</button>
-								</div>
-
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Modal 3 -->
-				<div class="modal fade" id="MODALEXAMPLE3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Cupo Gana tu Carro</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-									<i class="fas fa-times fa-2x"></i>
-								</button>
-							</div>
-							<div class="modal-body">
-
-								<div class="ticket-modal">
-									<img src="static/img/ticket-gold.svg"></img>
-									<h1>XXXX</h1>
-								</div>
-
-								<div class="card-info-transaction">
-
-									<table>
-										<tr>
-											<th>Nombre</th>
-											<td><?php echo $comprador_nombre; ?></td>
-										</tr>
-										<tr>
-											<th>Cedula</th>
-											<td><?php echo $comprador_cedula; ?></td>
-										</tr>
-										<tr>
-											<th>ID Transacción</th>
-											<td><?php echo "XXXX" ?></td>
-										</tr>
-									</table>
-								</div>
-								<div class="card-footer mt-1">
-									<button class="btn btn-primary btnAceptar">Aceptar</button>
-								</div>
-
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-
-
 			</div>
 		</div>
 	</form>
 
-	<!-- POPUPS -->
+	<!-- Modales -->
 
 	<?php
 	$banderaPopUp = false;
@@ -375,54 +189,42 @@ include_once("static/variables/variables.php");
 		$comprador_cedula = $_GET["comprador_cedula"];
 		$numero_boleta = $_GET["numero_boleta"];
 	?>
-		<div class="card-popup" id="card-popup">
-			<div class="container-flex">
-				<div class="bg-close"></div>
-				<div class="card-content sc-100">
-					<div class="card-header">
-						<div class="logo">
-							<img src="static/img/logo.png" alt="logo">
-						</div>
-						<h2 class="me-1">Cupo Gana tu Carro</h2>
-						<i class="fas fa-2x fa-times btn-close"></i>
+		<!-- Modal Codigo QR -->
+		<div class="modal fade" id="card-popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+				<div class="modal-content">
+					<div class="modal-header d-flex justify-content-between align-items-center">
+						<img src="static/img/logo.png" width="100px" alt="logo">
+						<h2 class="modal-title" id="exampleModalLabel">Cupo Gana tu Carro</h2>
+						<button type="button" class="btn-close m-0" data-bs-dismiss="modal" aria-label="Close">
+							<i class="fas fa-times fa-2x"></i>
+						</button>
 					</div>
-					<div class="card-info-transaction virtual-ticket">
-						<div class="ticket mb-1">
-							<svg min-width="175" min-height="117" width="100%" height="100%" viewBox="0 0 175 117" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path class="ticket-svg" d="M38.8889 29.25H136.111V87.75H38.8889V29.25ZM160.417 58.5C160.417 66.5773 166.946 73.125 175 73.125V102.375C175 110.452 168.471 117 160.417 117H14.5833C6.52908 117 0 110.452 0 102.375V73.125C8.05425 73.125 14.5833 66.5773 14.5833 58.5C14.5833 50.4227 8.05425 43.875 0 43.875V14.625C0 6.54773 6.52908 0 14.5833 0H160.417C168.471 0 175 6.54773 175 14.625V43.875C166.946 43.875 160.417 50.4227 160.417 58.5ZM145.833 26.8125C145.833 22.7739 142.569 19.5 138.542 19.5H36.4583C32.4312 19.5 29.1667 22.7739 29.1667 26.8125V90.1875C29.1667 94.2261 32.4312 97.5 36.4583 97.5H138.542C142.569 97.5 145.833 94.2261 145.833 90.1875V26.8125Z" fill="url(#gold)" />
-								<defs>
-									<linearGradient id="silver" x1="87.5" y1="0" x2="87.5" y2="117" gradientUnits="userSpaceOnUse">
-										<stop stop-color="#7C7C7C" />
-										<stop offset="0.5" stop-color="#D9D9D9" />
-										<stop offset="1" stop-color="#6A6A6A" />
-									</linearGradient>
-									<linearGradient id="gold" x1="87.5" y1="0" x2="87.5" y2="117" gradientUnits="userSpaceOnUse">
-										<stop stop-color="#95702c" />
-										<stop offset="0.5" stop-color="#f8dd57" />
-										<stop offset="1" stop-color="#95702c" />
-									</linearGradient>
-								</defs>
-							</svg>
+					<div class="modal-body">
+
+						<div class="ticket-modal">
+							<img src="static/img/ticket-gold.svg"></img>
 							<h1><?php echo $numero_boleta; ?></h1>
 						</div>
-
-						<table>
-							<tr>
-								<th>Nombre</th>
-								<td><?php echo $comprador_nombre; ?></td>
-							</tr>
-							<tr>
-								<th>Cedula</th>
-								<td><?php echo $comprador_cedula; ?></td>
-							</tr>
-							<tr>
-								<th>ID Transacción</th>
-								<td><?php echo $id_transaccion; ?></td>
-							</tr>
-						</table>
+						<div class="card-info-transaction">
+							<table>
+								<tr>
+									<th>Nombre</th>
+									<td><?php echo $comprador_nombre; ?></td>
+								</tr>
+								<tr>
+									<th>Cedula</th>
+									<td><?php echo $comprador_cedula; ?></td>
+								</tr>
+								<tr>
+									<th>ID Transacción</th>
+									<td><?php echo $id_transaccion; ?></td>
+								</tr>
+							</table>
+						</div>
 					</div>
-					<div class="card-footer mt-1">
-						<button class="btn btn-primary btnAceptar">Aceptar</button>
+					<div class="modal-footer d-flex justify-content-center align-items-center">
+						<button class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
 					</div>
 				</div>
 			</div>
@@ -464,129 +266,122 @@ include_once("static/variables/variables.php");
 			}
 			$banderaPopUp = true;
 		?>
-			<div class="card-popup" id="card-popup">
 
-				<div class="container-flex">
-
-					<div class="bg-close"></div>
-					<div class="card-content sc-80">
-						<div class="card-header">
-							<div class="logo">
-								<img src="static/img/logo.png" alt="logo">
-							</div>
-							<h2>Resumen de la Transacción</h2>
-							<i class="fas fa-2x fa-times btn-close"></i>
-						</div>
+		<!-- Modal Resumen -->
+		<div class="modal fade" id="card-popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">	
+				<div class="modal-content">
+					<div class="modal-header d-flex justify-content-between align-items-center">
+						<img src="static/img/logo.png" width="100px" alt="logo">
+						<h2 class="modal-title" id="exampleModalLabel">Resumen Transacción</h2>
+						<button type="button" class="btn-close m-0" data-bs-dismiss="modal" aria-label="Close">
+							<i class="fas fa-times fa-2x"></i>
+						</button>
+					</div>
+					<div class="modal-body">
 						<div class="card-info-transaction">
-							<table>
-								<?php
-								$comprador_datos = explode("-", $_GET['extra2']);
-								$comprador_nombre = $comprador_datos[1];
-								$comprador_cedula = $comprador_datos[0];
-								?>
+						<table>
+							<?php
+							$comprador_datos = explode("-", $_GET['extra2']);
+							$comprador_nombre = $comprador_datos[1];
+							$comprador_cedula = $comprador_datos[0];
+							?>
+							<tr>
+								<th>Nombre</th>
+								<td><?php echo $comprador_nombre; ?></td>
+							</tr>
+							<tr>
+								<th>Cédula</th>
+								<td><?php echo $comprador_cedula; ?></td>
+							</tr>
+							<tr>
+								<th>Estado de la transaccion</th>
+								<td><?php echo $estadoTx; ?></td>
+							</tr>
+							<tr>
+								<th>ID de la transaccion</th>
+								<td><?php echo $transactionId; ?></td>
+							</tr>
+							<tr>
+								<th>Referencia de la venta</th>
+								<td><?php echo $reference_pol; ?></td>
+							</tr>
+							<tr>
+								<th>Referencia de la transaccion</th>
+								<td><?php echo $referenceCode; ?></td>
+							</tr>
+							<?php
+							if ($pseBank != null) {
+							?>
 								<tr>
-									<th>Nombre</th>
-									<td><?php echo $comprador_nombre; ?></td>
+									<td>CUS </td>
+									<td><?php echo $cus; ?> </td>
 								</tr>
 								<tr>
-									<th>Cédula</th>
-									<td><?php echo $comprador_cedula; ?></td>
+									<td>Banco </td>
+									<td><?php echo $pseBank; ?> </td>
 								</tr>
-								<tr>
-									<th>Estado de la transaccion</th>
-									<td><?php echo $estadoTx; ?></td>
-								</tr>
-								<tr>
-									<th>ID de la transaccion</th>
-									<td><?php echo $transactionId; ?></td>
-								</tr>
-								<tr>
-									<th>Referencia de la venta</th>
-									<td><?php echo $reference_pol; ?></td>
-								</tr>
-								<tr>
-									<th>Referencia de la transaccion</th>
-									<td><?php echo $referenceCode; ?></td>
-								</tr>
-								<?php
-								if ($pseBank != null) {
-								?>
-									<tr>
-										<td>cus </td>
-										<td><?php echo $cus; ?> </td>
-									</tr>
-									<tr>
-										<td>Banco </td>
-										<td><?php echo $pseBank; ?> </td>
-									</tr>
-								<?php
-								}
-								?>
-								<tr>
-									<th>Valor total</th>
-									<td>$<?php echo number_format($TX_VALUE); ?></td>
-								</tr>
-								<tr>
-									<th>Moneda</th>
-									<td><?php echo $currency; ?></td>
-								</tr>
-								<tr>
-									<th>Descripción</th>
-									<td><?php echo ($description); ?></td>
-								</tr>
-								<tr>
-									<th>Entidad</th>
-									<td><?php echo ($lapPaymentMethod); ?></td>
-								</tr>
-							</table>
+							<?php
+							}
+							?>
+							<tr>
+								<th>Valor total</th>
+								<td>$<?php echo number_format($TX_VALUE); ?></td>
+							</tr>
+							<tr>
+								<th>Moneda</th>
+								<td><?php echo $currency; ?></td>
+							</tr>
+							<tr>
+								<th>Descripción</th>
+								<td><?php echo ($description); ?></td>
+							</tr>
+							<tr>
+								<th>Entidad</th>
+								<td><?php echo ($lapPaymentMethod); ?></td>
+							</tr>
+						</table>
 						</div>
-						<div class="card-footer">
-							<button class="btn btn-primary btnAceptar">Aceptar</button>
-						</div>
+					</div>
+					<div class="modal-footer d-flex justify-content-center align-items-center">
+						<button class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
 					</div>
 				</div>
 			</div>
+		</div>
+
 	<?php
 		}
 	}
 	?>
-	<div class="card-popup" id="card-popup-revancha">
-		<div class="container-flex">
-			<div class="bg-close"></div>
-			<div class="card-content" style="width:auto">
-				<div class="card-header">
-					<div class="logo">
-						<img src="static/img/logo.png" alt="logo">
-					</div>
-					<h1>¿Te vas a ir sin tu revancha?</h1>
-					<i class="fas fa-2x fa-times btn-close"></i>
+	<!-- Modal Revancha -->
+	<div class="modal fade" id="card-popup-revancha" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+			<div class="modal-content">
+				<div class="modal-header d-flex justify-content-between align-items-center">
+					<img src="static/img/logo.png" width="100px" alt="logo">
+					<h2 class="modal-title" id="exampleModalLabel">¿Te vas a ir sin tu revancha?</h2>
+					<button type="button" class="btn-close m-0" data-bs-dismiss="modal" aria-label="Close">
+						<i class="fas fa-times fa-2x"></i>
+					</button>
 				</div>
-				<div class="card-info-revancha">
-					<div class="card-info-premio">
-						<a href="https://instagram.com/ganatucarro?utm_medium=copy_link" target="_blank">
-							<svg width="40%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
-								<path d="M32 448c0 17.7 14.3 32 32 32h160V320H32v128zm256 32h160c17.7 0 32-14.3 32-32V320H288v160zm192-320h-42.1c6.2-12.1 10.1-25.5 10.1-40 0-48.5-39.5-88-88-88-41.6 0-68.5 21.3-103 68.3-34.5-47-61.4-68.3-103-68.3-48.5 0-88 39.5-88 88 0 14.5 3.8 27.9 10.1 40H32c-17.7 0-32 14.3-32 32v80c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-80c0-17.7-14.3-32-32-32zm-326.1 0c-22.1 0-40-17.9-40-40s17.9-40 40-40c19.9 0 34.6 3.3 86.1 80h-86.1zm206.1 0h-86.1c51.4-76.5 65.7-80 86.1-80 22.1 0 40 17.9 40 40s-17.9 40-40 40z" fill="url(#red)"></path>
-								<defs>
-									<linearGradient id="red" x1="256" y1="0" x2="256" y2="512" gradientUnits="userSpaceOnUse">
-										<stop stop-color="#8D1D10" />
-										<stop offset="0.5" stop-color="#F75A48" />
-										<stop offset="1" stop-color="#8D1D10" />
-									</linearGradient>
-								</defs>
-							</svg>
-						</a>
-						<br>
-						<h2>Selecciona tu revancha y participa por un BMW.</h2>
-						<h2>Son $25.000 pesos más por cada una. Animate!</h2>
-					</div>
-					<div id="card-info-boletas">
+				<div class="modal-body">
+					<div class="card-info-revancha">
+						<div class="card-info-premio">
+							<a href="https://instagram.com/ganatucarro?utm_medium=copy_link" target="_blank">
+								<img src="static/img/gift.svg" alt="triangle with all three sides equal" width="40%" height="auto" />
+							</a>
+							<br>
+							<h4>Selecciona tu revancha y participa por un BMW.</h4>
+							<h4>Son $25.000 pesos más por cada una. Animate!</h4>
+						</div>
+						<div id="card-info-boletas">
+						</div>
 					</div>
 				</div>
-				<div class="card-footer-revancha">
-					<div>
-						<h2>Valor a pagar: <span id="priceRevancha" class="fw-1">$ 0</span></h2>
-					</div>
-					<button class="btn btn-primary" id="btnAceptar">Continuar</button>
+				<div class="modal-footer d-flex align-items-center justify-content-between">
+					<h2 class="fw-2">Valor a pagar: <span id="priceRevancha" class="fw-2"></span></h2>
+					<button class="btn btn-primary" id="btnContinuar">Continuar</button>
 				</div>
 			</div>
 		</div>

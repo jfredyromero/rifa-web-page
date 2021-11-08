@@ -21,7 +21,7 @@ let countdown = () => {
 }
 
 document.addEventListener("DOMContentLoaded",function () {
-    countdown();  
+    // countdown();  
 });  
 
-setInterval(countdown, 1000);
+// setInterval(countdown, 1000);
