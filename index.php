@@ -38,7 +38,7 @@ include_once("static/variables/variables.php");
 
 					<h2 class="titulo mb-3">¡Compra tus Cupos!</h2>
 
-5					<!-- <div class="mb-3 clock-counter d-flex flex-row align-items-center">
+					<!-- <div class="mb-3 clock-counter d-flex flex-row align-items-center">
 						<div class="time-interval-container d-flex flex-column justify-content-center align-items-center">
 							<h1 id="dias">--</h1>
 							<h2>Dias</h2>
