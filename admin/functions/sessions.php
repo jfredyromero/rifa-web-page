@@ -1,19 +1,19 @@
 <?php
 
 function revisar_usuario() {
-
     return isset($_SESSION['usuario']);
 }
 
-function usuario_autenticado() {
+function revisar_funcion() {
+    return $_SESSION['funcion']=="admin";
+}
 
-    if (!revisar_usuario()) {
-        # code...
+function usuario_autenticado() {
+    if (!revisar_usuario() || !revisar_funcion()) {
         header('location: login.php');
         exit();
     }
 }
-
 
 session_start();
 usuario_autenticado();

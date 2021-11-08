@@ -25,7 +25,7 @@ $("#login-admin").on("submit", function (e) {
 				setTimeout(function () {
 					//window.location.href = 'admin-area.php';
 					window.location.href = "index.php";
-				}, 2000);
+				}, 100);
 			} else {
 				Swal.fire({
 					icon: "error",

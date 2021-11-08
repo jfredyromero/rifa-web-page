@@ -1,7 +1,6 @@
 <?php
 session_start();
-
-if (isset($_GET['cerrar_sesion'])) {
+if(isset($_GET['cerrar_sesion'])){
     session_destroy();
 }
 ?>

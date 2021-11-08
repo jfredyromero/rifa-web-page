@@ -31,6 +31,7 @@ if (isset($_POST['login-admin'])) {
                     session_start();
                     $_SESSION['usuario'] = $usuario_seller;
                     $_SESSION['nombre'] = $nombre_seller;
+                    $_SESSION['funcion'] = "seller";
 
                     $respuesta = [
                         'respuesta' => 'exitoso',
