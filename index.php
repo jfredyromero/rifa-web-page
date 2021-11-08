@@ -204,7 +204,7 @@ include_once("static/variables/variables.php");
 
 						<div class="ticket-modal">
 							<img src="static/img/ticket-gold.svg"></img>
-							<h1><?php echo $numero_boleta; ?></h1>
+							<h1 class="ticket-value"><?php echo $numero_boleta; ?></h1>
 						</div>
 						<div class="card-info-transaction">
 							<table>
