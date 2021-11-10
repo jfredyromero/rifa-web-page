@@ -1,9 +1,8 @@
 <?php
-$ApiKey = "4Vj8eK4rloUd272L48hsrarnUA";
-$merchantId = "508029";
-$accountId = "512321";
+$ApiKey = "oIu6BOWNx227wmiy0C9hTghU0Y";
+$merchantId = "951878";
+$accountId = "959493";
 $dominio = "https://www.ganatucarro.com";
-// $dominio = "localhost/rifa-web-page";
 $price = 80000;
 $priceRevancha = 25000;
 

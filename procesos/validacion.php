@@ -70,7 +70,7 @@ if($method == "POST"){
     $tax = 0;
     $taxReturnBase = 0;
     $currency = "COP";
-    $test = 1;
+    $test = 0;
 
     // Datos capturados del formulario
     $buyerFullName = trim(htmlspecialchars($_POST["buyerFullName"]));
@@ -121,7 +121,7 @@ if($method == "POST"){
     <title>Validación</title>
 </head>
 <body>
-    <form id="myForm" style = "display:none;" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu" method="POST">
+    <form id="myForm" style = "display:none;" action="https://checkout.payulatam.com/ppp-web-gateway-payu/" method="POST">
         <input name="buyerFullName" type="hidden" value="<?php echo $buyerFullName; ?>">
         <input name="payerDocument" type="hidden" value="<?php echo $payerDocument; ?>">
         <input name="mobilePhone" type="hidden" value="<?php echo $mobilePhone; ?>">

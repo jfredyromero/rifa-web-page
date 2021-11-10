@@ -11,14 +11,14 @@
 	<!-- Google Font: Source Sans Pro -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 	<!-- Font Awesome -->
-	<link rel="stylesheet" href="/rifa-web-page/admin/plugins/fontawesome-free/css/all.min.css">
+	<link rel="stylesheet" href="/seller/plugins/fontawesome-free/css/all.min.css">
 	<!-- Theme style AdminLTE -->
-	<link rel="stylesheet" href="/rifa-web-page/admin/plugins/adminlte/css/adminlte.min.css">
+	<link rel="stylesheet" href="/seller/plugins/adminlte/css/adminlte.min.css">
 	<!-- DataTables -->
-    <link rel="stylesheet" href="/rifa-web-page/admin/plugins/datatables/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="/rifa-web-page/admin/plugins/datatables/css/responsive.bootstrap4.min.css"> 
+    <link rel="stylesheet" href="/seller/plugins/datatables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/seller/plugins/datatables/css/responsive.bootstrap4.min.css"> 
 	<!-- Sweet Alert 2 -->
-	<link rel="stylesheet" href="/rifa-web-page/admin/plugins/sweetalert2/css/sweetalert2.min.css">
+	<link rel="stylesheet" href="/seller/plugins/sweetalert2/css/sweetalert2.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
     <!-- Site wrapper -->

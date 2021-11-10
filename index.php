@@ -18,6 +18,15 @@ include_once("static/variables/variables.php");
 	<title>Gana tu Carro</title>
 	<!-- Favicon -->
 	<link rel="shortcut icon" type="image/png" href="/static/img/logo.png" />
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-MV1P8NVGE5"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'G-MV1P8NVGE5');
+	</script>
 </head>
 
 <body>
@@ -140,7 +149,7 @@ include_once("static/variables/variables.php");
 				<div class="gift-container">
 					<div class="semicirculo-fondo">
 						<div class="semicirculo">
-							<a href="https://instagram.com/ganatucarro?utm_medium=copy_link" target="_blank">
+							<a href="https://instagram.com/ganatucarro/" target="_blank">
 								<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
 									<path d="M32 448c0 17.7 14.3 32 32 32h160V320H32v128zm256 32h160c17.7 0 32-14.3 32-32V320H288v160zm192-320h-42.1c6.2-12.1 10.1-25.5 10.1-40 0-48.5-39.5-88-88-88-41.6 0-68.5 21.3-103 68.3-34.5-47-61.4-68.3-103-68.3-48.5 0-88 39.5-88 88 0 14.5 3.8 27.9 10.1 40H32c-17.7 0-32 14.3-32 32v80c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-80c0-17.7-14.3-32-32-32zm-326.1 0c-22.1 0-40-17.9-40-40s17.9-40 40-40c19.9 0 34.6 3.3 86.1 80h-86.1zm206.1 0h-86.1c51.4-76.5 65.7-80 86.1-80 22.1 0 40 17.9 40 40s-17.9 40-40 40z" fill="url(#gift-gold)"></path>
 									<defs>
@@ -212,7 +221,6 @@ include_once("static/variables/variables.php");
 		<?php
 		$banderaPopUp = true;
 	} else if (isset($_GET['signature'])) {
-		$ApiKey = "4Vj8eK4rloUd272L48hsrarnUA";
 		$merchant_id = $_GET['merchantId'];
 		$referenceCode = $_GET['referenceCode'];
 		$TX_VALUE = $_GET['TX_VALUE'];
@@ -351,7 +359,7 @@ include_once("static/variables/variables.php");
 				<div class="modal-body">
 					<div class="card-info-revancha">
 						<div class="card-info-premio">
-							<a href="https://instagram.com/ganatucarro?utm_medium=copy_link" target="_blank">
+							<a href="https://instagram.com/ganatucarro/" target="_blank">
 								<img src="static/img/gift.svg" alt="triangle with all three sides equal" width="40%" height="auto" />
 							</a>
 							<br>

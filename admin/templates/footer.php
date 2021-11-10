@@ -16,23 +16,23 @@
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="/rifa-web-page/admin/plugins/jquery/jquery.min.js"></script>
+<script src="/admin/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="/rifa-web-page/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="/rifa-web-page/admin/plugins/adminlte/js/adminlte.min.js"></script>
+<script src="/admin/plugins/adminlte/js/adminlte.min.js"></script>
 
 <!-- DataTables -->
-<script src="/rifa-web-page/admin/plugins/jquery/jquery.dataTables.min.js"></script>
+<script src="/admin/plugins/jquery/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-<script src="/rifa-web-page/admin/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-<script src="/rifa-web-page/admin/plugins/datatables/js/dataTables.responsive.min.js"></script>
-<script src="/rifa-web-page/admin/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+<script src="/admin/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="/admin/plugins/datatables/js/dataTables.responsive.min.js"></script>
+<script src="/admin/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
 
-<script src="/rifa-web-page/admin/js/datatablesApp.js"></script>
+<script src="/admin/js/datatablesApp.js"></script>
 
 <!-- Bs Custom File Input -->
-<!-- <script src="/rifa-web-page/admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<!-- <script src="/admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         bsCustomFileInput.init();
@@ -47,8 +47,8 @@
 
 <!-- SweetAlert y Ajax -->
 <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
-<script src="/rifa-web-page/admin/plugins/sweetalert2/js/sweetalert2.all.min.js"></script>
-<script src="/rifa-web-page/admin/js/ticketAjax.js"></script>
+<script src="/admin/plugins/sweetalert2/js/sweetalert2.all.min.js"></script>
+<script src="/admin/js/ticketAjax.js"></script>
 
 
 

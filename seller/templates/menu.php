@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/rifa-web-page/seller/index.php" class="brand-link">
-        <img src="/rifa-web-page/seller/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <a href="/seller/index.php" class="brand-link">
+        <img src="/seller/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Ventas GanaTuCarro</span>
     </a>
 
@@ -17,7 +17,7 @@
                with font-awesome or any other icon font library -->
 
                 <li class="nav-item">
-                <a href="/rifa-web-page/seller/index.php" class="nav-link">
+                <a href="/seller/index.php" class="nav-link">
                         <i class="nav-icon fas fa-home"></i>
                         <p>Inicio</p>
                     </a>
@@ -33,7 +33,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/rifa-web-page/seller/views/ticket/createTicket.php" class="nav-link">
+                            <a href="/seller/views/ticket/createTicket.php" class="nav-link">
                                 <i class="fas fa-plus nav-icon"></i>
                                 <p>Agregar</p>
                             </a>
