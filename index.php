@@ -29,7 +29,7 @@ include_once("static/variables/variables.php");
 					<div class="logo">
 						<img src="static/img/logo.png" alt="logo">
 					</div>
-					<h2 class="titulo mb-3">¡Compra tus Cupos!</h2>
+					<h2 class="titulo fw-2 mb-3">¡Compra tus Cupos!</h2>
 					<!-- <div class="mb-3 clock-counter d-flex flex-row align-items-center">
 						<div class="time-interval-container d-flex flex-column justify-content-center align-items-center">
 							<h1 id="dias">--</h1>
@@ -73,7 +73,7 @@ include_once("static/variables/variables.php");
 						</div>
 					</div>
 					<div class="form-item mb-3 f-al-l">
-						<h2>Valor a pagar: <span id="price" class="fw-1">$ 0</span></h2>
+						<h2 class="fw-2">Valor a pagar: <span id="price" class="fw-2">$ 0</span></h2>
 					</div>
 				</div>
 			</div>
@@ -320,6 +320,9 @@ include_once("static/variables/variables.php");
 								<th>Entidad</th>
 								<td><?php echo ($lapPaymentMethod); ?></td>
 							</tr>
+							<tr>
+								<label for="">En caso de no encontrar el correo de confirmación, revisa el spam <span> *</span></label>
+							</tr>
 						</table>
 						</div>
 					</div>
@@ -372,7 +375,7 @@ include_once("static/variables/variables.php");
 	<span id="fecha_sorteo_countdown" style="display: none;"><?php echo $fecha_sorteo_countdown; ?></span>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="static/js/countdown.js"></script>
+<!-- <script src="static/js/countdown.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -382,7 +385,6 @@ include_once("static/variables/variables.php");
 <!-- Fontawesome -->
 <script src="https://kit.fontawesome.com/981ff97f79.js" crossorigin="anonymous"></script>
 <!-- Scrips internos -->
-<script src="static/js/modal.js"></script>
 <script src="static/js/index.js"></script>
 <script src="static/js/boletas.js"></script>
 <script src="static/js/ticketDisponible.js"></script>
